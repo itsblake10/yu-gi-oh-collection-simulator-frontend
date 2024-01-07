@@ -1,0 +1,96 @@
+.home__grid-item {
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  background: white
+    url("/src/images/Backgrounds/Yu-Gi-Oh\ Booster\ Sim\ \(Grid\ Item\ Background\).svg")
+    no-repeat center;
+  background-size: cover;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  max-height: fit-content;
+  border-radius: 10px;
+}
+
+.item__name {
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 15px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 24px;
+  max-width: 293px;
+}
+
+.item__code {
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.item__release {
+  margin: 5px 0 0 0;
+}
+
+.item__image {
+  max-height: 400px;
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+}
+
+.item__open-button {
+  color: transparent;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: content-box;
+}
+
+.item__open-button:hover {
+  transform: scale(98%);
+  transition: 0.2s ease-in-out;
+  opacity: 85%;
+}
+
+.item__open-button .item__image-text {
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.item__open-button:hover .item__image-text {
+  opacity: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.item__image-text {
+  margin: 0;
+  padding: 0;
+  font-size: x-large;
+  position: relative;
+  bottom: 220px;
+  color: rgb(236, 78, 78);
+  background-color: white;
+  cursor: pointer;
+}
+
+.item__image-text-hover {
+  opacity: 100%;
+}
+
+.item__open-button-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.item__open-button-link:hover {
+  color: inherit;
+}
