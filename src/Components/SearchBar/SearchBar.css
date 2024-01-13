@@ -1,0 +1,36 @@
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.search-bar__input {
+  padding: 0 3px 2px 3px;
+  border-top: none;
+  border-bottom: 1pt solid white;
+  border-left: none;
+  border-right: none;
+  background: none;
+  color: white;
+}
+
+.search-bar__input:focus {
+  outline: none;
+}
+
+.search-bar__button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.search-bar__button:hover {
+  transition: 0.2s;
+  transform: scale(1.2);
+}
+
+.search-bar__button-image {
+  min-width: 20px;
+}

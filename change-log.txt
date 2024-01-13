@@ -1,0 +1,6 @@
+Yu-Gi-Oh Booster Simulator:
+
+14/01/24
+- Create SearchBar component 
+- Create HeaderProfile component
+

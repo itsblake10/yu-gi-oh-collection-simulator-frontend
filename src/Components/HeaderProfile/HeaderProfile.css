@@ -1,0 +1,13 @@
+.header__sign-in {
+  color: white;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: large;
+}
+
+.header__sign-in:hover {
+  color: rgb(236, 78, 78);
+  transition: 0.2s;
+  transform: scale(1.1);
+}

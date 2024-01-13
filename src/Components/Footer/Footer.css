@@ -31,6 +31,7 @@
 .footer__nav-item:hover {
   color: rgb(236, 78, 78);
   transition: 0.2s;
+  transform: scale(1.1);
 }
 
 .footer__logo {

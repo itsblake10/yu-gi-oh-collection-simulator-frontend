@@ -12,8 +12,7 @@
 }
 
 .header__logo {
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding: 20px 0 50px 0;
   max-width: 300px;
   align-self: center;
 }
@@ -24,32 +23,4 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.header__search-bar {
-}
-
-.search-bar__form {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.search-bar__input {
-}
-
-.search-bar__button {
-}
-
-.header__sign-in {
-  color: white;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: large;
-}
-
-.header__sign-in:hover {
-  color: rgb(236, 78, 78);
-  transition: 0.2s;
 }
