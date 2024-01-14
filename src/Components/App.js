@@ -2,13 +2,26 @@ import "./App.css";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
+import BoosterModal from "./BoosterModal/BoosterModal";
+import { useState } from "react";
 
 function App() {
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedBooster, setSelectedBooster] = useState({});
+
+  const handleSelectBooster = (item) => {
+    setActiveModal("booster");
+    setSelectedBooster(item);
+  };
+
   return (
     <div className="App">
       <Header />
-      <Main />
+      <Main onSelectBooster={handleSelectBooster} />
       <Footer />
+      {activeModal === "booster" && (
+        <BoosterModal selectedBooster={selectedBooster} />
+      )}
     </div>
   );
 }

@@ -1,6 +1,11 @@
 Yu-Gi-Oh Booster Simulator:
 
 14/01/24
-- Create SearchBar component 
-- Create HeaderProfile component
+- Create 'SearchBar' component 
+- Create 'HeaderProfile' component
+- Create 'ItemBooster' component for rendering Booster packs 
 
+15/01/24
+- Create 'BoosterModal' component
+- Create 'ItemCard' component for rendering cards in 'BoosterModal'
+- Move Booster Pack data and Card data into seperate files within 'utils'
