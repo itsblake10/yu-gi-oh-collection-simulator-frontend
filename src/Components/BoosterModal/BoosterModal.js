@@ -2,7 +2,7 @@ import "./BoosterModal.css";
 import closeIcon from "../../images/close-icon.svg";
 import ItemCard from "../ItemCard/ItemCard";
 
-const BoosterModal = ({ selectedBooster }) => {
+const BoosterModal = ({ selectedBooster, onClose }) => {
   return (
     <div className="booster__modal">
       <div className="booster__modal-container">
@@ -10,6 +10,7 @@ const BoosterModal = ({ selectedBooster }) => {
           className="booster__modal-close-button"
           src={closeIcon}
           alt="close Button"
+          onClick={onClose}
         />
         <h1 className="booster__modal-title">{selectedBooster.name}</h1>
         <div className="booster__modal-pack-opener">

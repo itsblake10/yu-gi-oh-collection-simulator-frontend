@@ -14,13 +14,20 @@ function App() {
     setSelectedBooster(item);
   };
 
+  const handleModalClose = () => {
+    setActiveModal("");
+  };
+
   return (
     <div className="App">
       <Header />
       <Main onSelectBooster={handleSelectBooster} />
       <Footer />
       {activeModal === "booster" && (
-        <BoosterModal selectedBooster={selectedBooster} />
+        <BoosterModal
+          selectedBooster={selectedBooster}
+          onClose={handleModalClose}
+        />
       )}
     </div>
   );

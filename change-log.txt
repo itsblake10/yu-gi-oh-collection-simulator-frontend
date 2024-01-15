@@ -9,3 +9,7 @@ Yu-Gi-Oh Booster Simulator:
 - Create 'BoosterModal' component
 - Create 'ItemCard' component for rendering cards in 'BoosterModal'
 - Move Booster Pack data and Card data into seperate files within 'utils'
+
+16/01/24
+- Add handler for closing modals
+- Add data for 'LOB' cards

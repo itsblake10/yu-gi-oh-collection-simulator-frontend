@@ -6,6 +6,8 @@
 
 .search-bar__input {
   padding: 0 3px 2px 3px;
+  min-width: 215px;
+  min-height: 30px;
   border-top: none;
   border-bottom: 1pt solid white;
   border-left: none;
