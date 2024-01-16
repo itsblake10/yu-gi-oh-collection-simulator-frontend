@@ -1,4 +1,5 @@
-import lobCards from "./cardData";
+import lobCards from "./cardData/lobCards";
+import mrdCards from "./cardData/mrdCards";
 
 /* -------------------------------------------------------------------------- */
 /*                               BOOSTER IMAGES                               */
@@ -50,7 +51,7 @@ export const boosterPacks = [
     releaseDate: "June 26th 2002",
     releaseYear: 2002,
     boosterImage: boosterPackMrd,
-    // cardList: ,
+    cardList: mrdCards,
     packSize: 9,
     totalCards: 144,
     common: 100,

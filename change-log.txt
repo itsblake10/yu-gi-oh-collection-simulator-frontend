@@ -13,3 +13,8 @@ Yu-Gi-Oh Booster Simulator:
 16/01/24
 - Add handler for closing modals
 - Add data for 'LOB' cards
+
+17/01/24
+- Add data for 'LOB' cards
+- Add data for 'MRD' cards
+- Refactor card data
