@@ -18,3 +18,9 @@ Yu-Gi-Oh Booster Simulator:
 - Add data for 'LOB' cards
 - Add data for 'MRD' cards
 - Refactor card data
+
+18/01/24
+- Add data for 'SRL' cards
+- Add data for 'PSV' cards
+- Add data for 'LON' cards
+- Add key for <ItemCard />

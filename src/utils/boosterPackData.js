@@ -1,5 +1,8 @@
 import lobCards from "./cardData/lobCards";
 import mrdCards from "./cardData/mrdCards";
+import srlCards from "./cardData/srlCards";
+import psvCards from "./cardData/psvCards";
+import lonCards from "./cardData/lonCards";
 
 /* -------------------------------------------------------------------------- */
 /*                               BOOSTER IMAGES                               */
@@ -69,7 +72,7 @@ export const boosterPacks = [
     releaseDate: "September 26th 2002",
     releaseYear: 2002,
     boosterImage: boosterPackSrl,
-    // cardList: ,
+    cardList: srlCards,
     packSize: 9,
     totalCards: 104,
     common: 65,
@@ -87,7 +90,7 @@ export const boosterPacks = [
     releaseDate: "October 20th 2002",
     releaseYear: 2002,
     boosterImage: boosterPackPsv,
-    // cardList: ,
+    cardList: psvCards,
     packSize: 9,
     totalCards: 105,
     common: 66,
@@ -105,7 +108,7 @@ export const boosterPacks = [
     releaseDate: "March 1st 2003",
     releaseYear: 2003,
     boosterImage: boosterPackLon,
-    // cardList: ,
+    cardList: lonCards,
     packSize: 9,
     totalCards: 105,
     common: 66,

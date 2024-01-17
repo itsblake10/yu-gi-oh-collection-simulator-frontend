@@ -101,7 +101,7 @@ const BoosterModal = ({ selectedBooster, onClose }) => {
           <h3 className="booster__modal-cardlist-title">Card List</h3>
           <ul className="booster__modal-cardlist">
             {selectedBooster.cardList.map((item) => (
-              <ItemCard item={item} />
+              <ItemCard item={item} key={item._id} />
             ))}
           </ul>
         </div>
