@@ -1,9 +1,11 @@
 import "./HeaderProfile.css";
 
-const HeaderProfile = () => {
+const HeaderProfile = ({ onClickSigninSignup }) => {
   return (
     <div className="header__profile">
-      <button className="header__sign-in">Sign In / Sign up</button>
+      <button className="header__sign-in" onClick={onClickSigninSignup}>
+        Sign In / Sign up
+      </button>
       {/*<p>PROFILE</p> */}
     </div>
   );

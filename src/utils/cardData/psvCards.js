@@ -15,17 +15,18 @@ const psvCards = [
   //Jinzo
   {
     _id: 0,
-    name: "Jinzo",
     code: "PSV-000",
-    cardImage: jinzo,
+    name: "Jinzo",
     rarity: "Secret Rare (SE)",
-    cardType: "Machine/Effect Monster",
+    cardType: "Monster",
+    types: "Machine/Effect Monster",
     attribute: "DARK",
     level: 6,
     atk: 2400,
     def: 1500,
     description:
       "Trap Cards, and their effects on the field, cannot be activated. Negate all Trap effects on the field.",
+    cardImage: jinzo,
   },
 ];
 

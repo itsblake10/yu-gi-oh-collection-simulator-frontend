@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 
 const BoosterModal = ({ selectedBooster, onClose }) => {
   return (
-    <div className="booster__modal">
+    <div className="modal booster__modal">
       <div className="booster__modal-container">
         <img
           className="booster__modal-close-button"

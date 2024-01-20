@@ -1,5 +1,12 @@
 .booster__modal {
   transition: visibility 0.2s, opacity 0.2s linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 .booster__modal-close-button {
@@ -179,6 +186,8 @@
   grid-template-columns: repeat(12, 60px);
   grid-template-rows: auto;
   justify-content: center;
+  max-height: 170px;
+  overflow: scroll;
 }
 
 .booster__modal-cardlist-item {
