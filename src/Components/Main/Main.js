@@ -2,7 +2,7 @@ import "./Main.css";
 import ItemBooster from "../ItemBooster/ItemBooster";
 import { boosterPacks } from "../../utils/boosterPackData";
 
-const Main = ({ onSelectBooster }) => {
+const Main = () => {
   return (
     <main className="home__page">
       <h1 className="home__title">Booster Packs</h1>
@@ -13,11 +13,7 @@ const Main = ({ onSelectBooster }) => {
         </select>
         <ul className="home__grid">
           {boosterPacks.map((item) => (
-            <ItemBooster
-              item={item}
-              key={item._id}
-              onSelectBooster={onSelectBooster}
-            />
+            <ItemBooster item={item} key={item._id} />
           ))}
         </ul>
       </div>

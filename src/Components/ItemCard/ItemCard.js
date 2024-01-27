@@ -2,9 +2,9 @@ import "./ItemCard.css";
 
 const ItemCard = ({ item }) => {
   return (
-    <li className="booster__modal-cardlist-item">
+    <li className="booster__cardlist-item">
       <img
-        className="booster__modal-cardlist-image"
+        className="booster__cardlist-image"
         src={item.cardImage}
         alt={item.name}
       />

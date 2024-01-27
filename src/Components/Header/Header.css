@@ -12,9 +12,12 @@
 }
 
 .header__logo {
-  padding: 20px 0 50px 0;
   max-width: 300px;
+}
+
+.header__logo_link {
   align-self: center;
+  padding: 20px 0 50px 0;
 }
 
 /* ------------------------------------ x ----------------------------------- */

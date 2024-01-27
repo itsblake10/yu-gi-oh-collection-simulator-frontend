@@ -6,7 +6,12 @@ Modals
 - Create Sign-in/Sign-up modal 
 
 UI
+- Change from booster pack modal to whole page (DONE)
 - Change color scheme
 
 Data
 - Add card data for LOB cards (DONE)
+
+Fix
+- Fix Routes (needing to manually refresh page for booster-page to be loaded)
+- Fix cardlist (width of cardlist creating a scrollbar)

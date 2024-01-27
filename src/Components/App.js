@@ -1,23 +1,24 @@
 import "./App.css";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
+import BoosterPage from "./BoosterPage/BoosterPage";
 import Footer from "./Footer/Footer";
-import BoosterModal from "./BoosterModal/BoosterModal";
 import FormModal from "./FormModal/FormModal";
 import { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+// import { boosterPacks } from "../utils/boosterPackData";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [selectedBooster, setSelectedBooster] = useState({});
+  // const [selectedBooster, setSelectedBooster] = useState({});
 
   const handleClickSigninSignup = () => {
     setActiveModal("signinSignup");
   };
 
-  const handleSelectBooster = (item) => {
-    setActiveModal("booster");
-    setSelectedBooster(item);
-  };
+  // const handleSelectBooster = (item) => {
+  //   setSelectedBooster(item);
+  // };
 
   const handleModalClose = () => {
     setActiveModal("");
@@ -50,14 +51,15 @@ function App() {
   return (
     <div className="App">
       <Header onClickSigninSignup={handleClickSigninSignup} />
-      <Main onSelectBooster={handleSelectBooster} />
+      <Switch>
+        <Route exact path="/">
+          <Main />
+        </Route>
+        <Route path="/booster-page/:id">
+          <BoosterPage />
+        </Route>
+      </Switch>
       <Footer />
-      {activeModal === "booster" && (
-        <BoosterModal
-          selectedBooster={selectedBooster}
-          onClose={handleModalClose}
-        />
-      )}
       {activeModal === "signinSignup" && (
         <FormModal onClose={handleModalClose} title="Sign Up" />
       )}
