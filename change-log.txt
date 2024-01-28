@@ -24,3 +24,11 @@ Yu-Gi-Oh Booster Simulator:
 - Add data for 'PSV' cards
 - Add data for 'LON' cards
 - Add key for <ItemCard />
+
+25/01/24
+- Move booster opener from modal to whole page
+- Add Routes for each booster pack
+
+29/01/24
+- Move booster opener from modal to whole page
+- Add Routes for each booster pack

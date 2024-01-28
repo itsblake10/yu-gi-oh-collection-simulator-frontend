@@ -1,8 +1,12 @@
 .header {
-  background-color: black;
+  background: url(../../images/Backgrounds/yugioh-booster-sim\(main-background\).png)
+    no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   max-width: 100vw;
   position: relative;
   padding: 40px 40px 0 40px;
+  box-sizing: content-box;
 }
 
 .header__container {
