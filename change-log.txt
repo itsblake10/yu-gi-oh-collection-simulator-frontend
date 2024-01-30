@@ -26,9 +26,12 @@ Yu-Gi-Oh Booster Simulator:
 - Add key for <ItemCard />
 
 25/01/24
-- Move booster opener from modal to whole page
+- Move booster opener from modal to whole page (start creating booster opener page)
 - Add Routes for each booster pack
 
 29/01/24
-- Move booster opener from modal to whole page
-- Add Routes for each booster pack
+- Change color scheme (add backgrounds)
+- Edit booster opener page
+
+31/01/24
+- Change color scheme (add backgrounds)

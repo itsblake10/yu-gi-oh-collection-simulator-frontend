@@ -4,5 +4,9 @@
 }
 
 .App {
+  background: url(../images/Backgrounds/yugioh-booster-sim\(main-background\).png)
+    no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   /* max-width: 100vw; */
 }

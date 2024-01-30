@@ -1,8 +1,8 @@
 .footer {
-  background: url(../../images/Backgrounds/yugioh-booster-sim\(main-background\).png)
+  /* background: url(../../images/Backgrounds/yugioh-booster-sim\(main-background\).png)
     no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   padding: 0 40px;
   max-width: 100vw;
 }

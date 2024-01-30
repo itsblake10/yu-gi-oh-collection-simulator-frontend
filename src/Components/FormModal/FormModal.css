@@ -26,15 +26,17 @@
 .form__modal-container {
   min-width: 800px;
   min-height: fit-content;
-  background-color: white;
-  border: 10px solid rgb(206, 59, 59);
+  background: white
+    url("/src/images/Backgrounds/yugioh-booster-sim\(grid-item\ background\).svg")
+    no-repeat center;
+  background-size: cover;
+  border: 10px solid rgb(3, 25, 228);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  border-radius: 8%;
 }
 
 .form__modal-title {
