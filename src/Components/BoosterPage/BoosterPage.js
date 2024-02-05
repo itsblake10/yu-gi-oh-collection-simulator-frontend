@@ -2,6 +2,7 @@ import "./BoosterPage.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { useParams } from "react-router-dom";
 import { boosterPacks } from "../../utils/boosterPackData";
+import yugiohCardBack from "../../images/yu-gi-oh-card-back.png";
 
 const BoosterPage = () => {
   console.log("BoosterPage component rendered");
@@ -17,9 +18,14 @@ const BoosterPage = () => {
       <div className="booster__container">
         <div className="booster__breakdown-container">
           <h2 className="booster__breakdown-title">Pack Breakdown</h2>
+          <h3 className="booster__breakdown-pack-size">
+            Pack Size: {selectedBooster.packSize} Cards
+          </h3>
           <div className="booster__breakdown-list">
             <ul className="booster__breakdown-list_total">
-              <p className="booster__list-container-title">Total</p>
+              <p className="booster__list-container-title">
+                Total: {selectedBooster.totalCards}
+              </p>
               <li className="booster__breakdown-list-item">
                 Common:
                 <p
@@ -65,7 +71,7 @@ const BoosterPage = () => {
             </ul>
 
             <ul className="booster__breakdown-list_opened">
-              <p className="booster__list-container-title">Opened</p>
+              <p className="booster__list-container-title">Opened: 0</p>
               <li className="booster__breakdown-list-item">
                 Common:
                 <p className="booster__breakdown-list-qauntity">0</p>
@@ -90,12 +96,27 @@ const BoosterPage = () => {
           </div>
         </div>
         <div className="booster__pack-opener">
-          <img
-            className="booster__pack"
-            src={selectedBooster.boosterImage}
-            alt={selectedBooster.name}
-          />
+          <button className="booster__pack-open-button">
+            <img
+              className="booster__pack"
+              src={selectedBooster.boosterImage}
+              alt={selectedBooster.name}
+            />
+          </button>
+          <span className="booster__pack_animation"></span>
         </div>
+      </div>
+
+      <div className="booster__pack-cards">
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
+        <img className="img" src={yugiohCardBack} />
       </div>
 
       <div className="booster__cardlist-container">

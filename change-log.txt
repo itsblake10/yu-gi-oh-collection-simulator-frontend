@@ -35,3 +35,8 @@ Yu-Gi-Oh Booster Simulator:
 
 31/01/24
 - Change color scheme (add backgrounds)
+
+06/02/24
+- Rearranged BoosterPage 
+- Added initital card back images
+- Added booster pack hover animation
