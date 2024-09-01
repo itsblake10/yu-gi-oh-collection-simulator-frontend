@@ -1,0 +1,35 @@
+@keyframes pulsate {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loadingImg1,
+.loadingImg2,
+.loadingImg3,
+.loadingImg4 {
+  width: 50px;
+  animation: pulsate 4s ease-in-out infinite;
+}
+
+.loadingImg1 {
+  animation-delay: 0s;
+}
+
+.loadingImg2 {
+  animation-delay: 0.5s;
+}
+
+.loadingImg3 {
+  animation-delay: 1s;
+}
+
+.loadingImg4 {
+  animation-delay: 1.5s;
+}

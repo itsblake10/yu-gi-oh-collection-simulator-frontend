@@ -1,12 +1,13 @@
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import BoosterPage from "./BoosterPage/BoosterPage";
-import Footer from "./Footer/Footer";
-import FormModal from "./FormModal/FormModal";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import BoosterPage from "../BoosterPage/BoosterPage";
+import Footer from "../Footer/Footer";
+import FormModal from "../FormModal/FormModal";
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 // import { boosterPacks } from "../utils/boosterPackData";
+import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path="/booster-page/:id">
           <BoosterPage />
+        </Route>
+        <Route path="/loadingAnimation">
+          <LoadingAnimation />
         </Route>
       </Switch>
       <Footer />
