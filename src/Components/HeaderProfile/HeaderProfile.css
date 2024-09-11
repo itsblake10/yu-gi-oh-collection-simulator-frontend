@@ -1,13 +1,104 @@
-.header__sign-in {
+/* .header__profile {
+  display: flex;
+  align-items: center;
+} */
+
+.header__profile {
+  margin: 0 50px 0 0;
+}
+
+.header__profile-signin-signup {
+  display: flex;
+  flex-direction: row;
+}
+
+.header__sign-in,
+.header__sign-up {
   color: white;
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: large;
+  font-size: 28px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.header__sign-in:hover {
+.header__sign-in:hover,
+.header__sign-up:hover {
   color: rgb(236, 78, 78);
-  transition: 0.2s;
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.header__sign-in-slash {
+  color: white;
+  display: inline;
+  padding: 0 10px 0 10px;
+  font-size: 28px;
+}
+
+.header__profile-dropdown {
+  position: relative;
+  display: flex;
+  padding-top: 8px;
+}
+
+.header__profile-menu-button {
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.header__profile-menu {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, visibility 0s 0.4s, opacity 0.3s ease;
+  position: absolute;
+  top: 100%;
+  right: 60px;
+  background-color: transparent;
+  min-width: 150px;
+  z-index: 1;
+}
+
+.header__profile-menu.open {
+  max-height: 100px;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 0.4s ease, visibility 0s, opacity 0.3s ease;
+}
+
+.header__profile-menu-icon {
+  transition: transform 0.3s ease;
+  margin: 0 0 0 8px;
+  min-width: 16px;
+}
+
+.header__profile-menu-icon.open {
+  transform: rotate(-90deg);
+}
+
+.header__profile-dropdown .header__profile-menu {
+  display: block;
+}
+
+.header__profile-list {
+  list-style-type: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+}
+
+.header__profile-list-item {
+  font-size: 24px;
+  border-bottom: white 1pt solid;
+}
+
+.header__profile-list .header__profile-list-item:hover {
+  color: #f94040;
+  border-bottom: #f94040 1pt solid;
 }

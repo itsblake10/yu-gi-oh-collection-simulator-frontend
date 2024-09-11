@@ -1,21 +1,10 @@
 Yu-Gi-Oh Booster Simulator:
 
 Modals
-- Add overlay to modals (DONE)
-- Add close on 'Esc' and close on click outside for modals (DONE)
-- Create Sign-in/Sign-up modal ###
 
 UI
-- Change from booster pack modal to whole page (DONE)
-- Change color scheme (DONE)
-- Add hover animation for booster pack on BoosterPage (DONE)
 - Rearrange Booster__container so it contains the whole page ###
 - Change back of card image ###
 
-Data
-- Add card data for LOB cards (DONE)
-
 Fix
 - Fix Routes (needing to manually refresh page for booster-page to be loaded) ###
-- Fix cardlist (width of cardlist creating a scrollbar) (DONE)
-- Fix Booster pack hover animation (Reposition) ###

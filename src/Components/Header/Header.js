@@ -4,13 +4,16 @@ import SearchBar from "../SearchBar/SearchBar";
 import HeaderProfile from "../HeaderProfile/HeaderProfile";
 import { Link } from "react-router-dom";
 
-const Header = ({ onClickSigninSignup }) => {
+const Header = ({ onClickSignin, onClickSignup }) => {
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__nav">
           <SearchBar />
-          <HeaderProfile onClickSigninSignup={onClickSigninSignup} />
+          <HeaderProfile
+            onClickSignin={onClickSignin}
+            onClickSignup={onClickSignup}
+          />
         </div>
         <Link className="header__logo_link" to="/">
           <img

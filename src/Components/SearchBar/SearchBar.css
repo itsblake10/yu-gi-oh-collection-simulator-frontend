@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
+  margin: 0 0 0 50px;
+}
+
+.search-bar__container {
+  align-content: center;
 }
 
 .search-bar__input {
-  padding: 0 3px 2px 3px;
-  min-width: 215px;
+  min-width: 250px;
   min-height: 30px;
   border-top: none;
   border-bottom: 1pt solid white;
@@ -14,6 +18,7 @@
   border-right: none;
   background: none;
   color: white;
+  font-size: 20px;
 }
 
 .search-bar__input:focus {
@@ -34,5 +39,5 @@
 }
 
 .search-bar__button-image {
-  min-width: 20px;
+  min-width: 25px;
 }

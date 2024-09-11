@@ -13,8 +13,12 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   // const [selectedBooster, setSelectedBooster] = useState({});
 
-  const handleClickSigninSignup = () => {
-    setActiveModal("signinSignup");
+  const handleClickSignin = () => {
+    setActiveModal("signin");
+  };
+
+  const handleClickSignup = () => {
+    setActiveModal("signup");
   };
 
   // const handleSelectBooster = (item) => {
@@ -51,7 +55,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header onClickSigninSignup={handleClickSigninSignup} />
+      <Header
+        onClickSignin={handleClickSignin}
+        onClickSignup={handleClickSignup}
+      />
       <Switch>
         <Route exact path="/">
           <Main />
@@ -64,7 +71,10 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-      {activeModal === "signinSignup" && (
+      {activeModal === "signin" && (
+        <FormModal onClose={handleModalClose} title="Sign In" />
+      )}
+      {activeModal === "signup" && (
         <FormModal onClose={handleModalClose} title="Sign Up" />
       )}
     </div>
