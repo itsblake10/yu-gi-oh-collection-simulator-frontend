@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin: 0 0 0 50px;
 }
 
 .search-bar__container {
   align-content: center;
+  margin: 0 0 0 50px;
 }
 
 .search-bar__input {
@@ -31,11 +31,12 @@
   color: white;
   font-size: medium;
   cursor: pointer;
+  transition: transform 0.3s ease-out, color 0.3s ease-out;
 }
 
 .search-bar__button:hover {
-  transition: 0.2s;
-  transform: scale(1.2);
+  transform: scale(1.1);
+  opacity: 70%;
 }
 
 .search-bar__button-image {

@@ -107,18 +107,6 @@ const BoosterPage = () => {
         </div>
       </div>
 
-      <div className="booster__pack-cards">
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-        <img className="img" src={yugiohCardBack} />
-      </div>
-
       <div className="booster__cardlist-container">
         <h3 className="booster__cardlist-title">Card List</h3>
         <ul className="booster__cardlist">

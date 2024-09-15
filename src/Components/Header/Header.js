@@ -9,7 +9,7 @@ const Header = ({ onClickSignin, onClickSignup }) => {
     <header className="header">
       <div className="header__container">
         <div className="header__nav">
-          <SearchBar />
+          <SearchBar className="search-bar__container" />
           <HeaderProfile
             onClickSignin={onClickSignin}
             onClickSignup={onClickSignup}

@@ -5,7 +5,7 @@ import BoosterPage from "../BoosterPage/BoosterPage";
 import Footer from "../Footer/Footer";
 import FormModal from "../FormModal/FormModal";
 import { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 // import { boosterPacks } from "../utils/boosterPackData";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
@@ -59,17 +59,12 @@ function App() {
         onClickSignin={handleClickSignin}
         onClickSignup={handleClickSignup}
       />
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/booster-page/:id">
-          <BoosterPage />
-        </Route>
-        <Route path="/loadingAnimation">
-          <LoadingAnimation />
-        </Route>
-      </Switch>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/booster-page/:id" component={BoosterPage} />
+        </Switch>
+      </Router>
       <Footer />
       {activeModal === "signin" && (
         <FormModal onClose={handleModalClose} title="Sign In" />

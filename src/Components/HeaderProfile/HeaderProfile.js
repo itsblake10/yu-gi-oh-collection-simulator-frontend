@@ -31,7 +31,7 @@ const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
         </button>
         <nav className={`header__profile-menu ${menuOpen ? "open" : ""}`}>
           <ul className="header__profile-list">
-            <li className="header__profile-list-item">Home</li>
+            <li className="header__profile-list-item">Booster Packs</li>
             <li className="header__profile-list-item">All Cards</li>
             <li className="header__profile-list-item">Log Out</li>
           </ul>

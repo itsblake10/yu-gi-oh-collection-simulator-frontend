@@ -39,8 +39,6 @@
   height: 200px;
   cursor: pointer;
   align-self: center;
-  position: relative;
-  border: 3px solid rgb(0, 162, 255);
   z-index: 1;
 }
 
@@ -53,26 +51,11 @@
   border: none;
 }
 
-.booster__pack-opener:hover .booster__pack_animation {
-  display: block;
-  animation: pulsate-hover 0.3s ease-in-out infinite;
-}
-
-.booster__pack_animation {
-  display: none;
-  min-width: 115px;
-  min-height: 200px;
-  position: absolute;
-  top: 19px;
-  left: 0px;
-  border: 3px solid rgb(0, 162, 255);
-}
-
 .booster__breakdown-container {
   min-width: 350px;
   max-height: fit-content;
   background: transparent;
-  border: 5px solid white;
+  border: 5px solid rgb(0, 162, 255);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -134,7 +117,7 @@
   min-height: max-content;
   background-color: white;
   /* border: 3px solid rgb(3, 25, 228); */
-  border: 5px solid white;
+  border: 5px solid rgb(0, 162, 255);
   /* padding: 30px 0 30px 0; */
   background: transparent;
 }
