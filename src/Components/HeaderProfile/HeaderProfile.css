@@ -99,6 +99,19 @@
   transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
 }
 
+.header__profile-list-link {
+  text-decoration: none;
+  color: white;
+}
+
+.header__profile-list-link:hover {
+  color: #f94040;
+}
+
+/* .header__profile-list-link.active {
+  color: #f94040;
+} */
+
 .header__profile-list .header__profile-list-item:hover {
   color: #f94040;
   border-bottom: #f94040 1pt solid;
