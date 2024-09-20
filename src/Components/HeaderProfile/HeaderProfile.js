@@ -1,12 +1,13 @@
 import "./HeaderProfile.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
 import { useState } from "react";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen); // Toggle menu open state
+    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
 
   return (
@@ -32,14 +33,23 @@ const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
         <nav className={`header__profile-menu ${menuOpen ? "open" : ""}`}>
           <ul className="header__profile-list">
             <li className="header__profile-list-item">
-              <a class="header__profile-list-link" href="/">
+              <NavLink
+                className="header__profile-list-link"
+                to="/"
+                exact
+                activeClassName="active"
+              >
                 Booster Packs
-              </a>
+              </NavLink>
             </li>
             <li className="header__profile-list-item">
-              <a class="header__profile-list-link" href="/all-cards">
+              <NavLink
+                className="header__profile-list-link"
+                to="/all-cards"
+                activeClassName="active"
+              >
                 All Cards
-              </a>
+              </NavLink>
             </li>
           </ul>
         </nav>

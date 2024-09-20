@@ -1,5 +1,5 @@
 import "./ItemBooster.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ItemBooster = ({ item }) => {
   return (
@@ -7,7 +7,7 @@ const ItemBooster = ({ item }) => {
       <p className="item__name">{item.name}</p>
       <p className="item__code">({item.code})</p>
       <p className="item__release">{item.releaseDate}</p>
-      <Link className="item__link" to={`/booster-page/${item._id}`}>
+      <NavLink className="item__link" to={`/booster-page/${item._id}`}>
         <button className="item__open-button" type="button">
           <img
             className="item__image"
@@ -16,7 +16,7 @@ const ItemBooster = ({ item }) => {
           />
           <p className="item__image-text">OPEN</p>
         </button>
-      </Link>
+      </NavLink>
       <p className="item__pack-size">{item.packSize} Cards</p>
     </li>
   );

@@ -3,22 +3,22 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import BoosterPage from "../BoosterPage/BoosterPage";
 import Footer from "../Footer/Footer";
-import FormModal from "../FormModal/FormModal";
 import { useEffect, useState } from "react";
-import { Route, Switch, Router } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import SignupModal from "../SignupModal/SignupModal";
 // import { boosterPacks } from "../utils/boosterPackData";
-import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
+// import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   // const [selectedBooster, setSelectedBooster] = useState({});
 
   const handleClickSignin = () => {
-    setActiveModal("signin");
+    setActiveModal("sign-in");
   };
 
   const handleClickSignup = () => {
-    setActiveModal("signup");
+    setActiveModal("sign-up");
   };
 
   // const handleSelectBooster = (item) => {
@@ -64,11 +64,11 @@ function App() {
         <Route path="/booster-page/:id" component={BoosterPage} />
       </Switch>
       <Footer />
-      {activeModal === "signin" && (
-        <FormModal onClose={handleModalClose} title="Sign In" />
-      )}
-      {activeModal === "signup" && (
-        <FormModal onClose={handleModalClose} title="Sign Up" />
+      {/* {activeModal === "sign-in" && (
+        <SigninModal onClose={handleModalClose} title="Sign-In" />
+      )} */}
+      {activeModal === "sign-up" && (
+        <SignupModal onClose={handleModalClose} buttonText={"Sign Up"} />
       )}
     </div>
   );

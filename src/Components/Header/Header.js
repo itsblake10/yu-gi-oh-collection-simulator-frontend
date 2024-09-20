@@ -2,7 +2,7 @@ import "./Header.css";
 import yugiohLogo from "../../images/yu-gi-oh-booster-sim-logo.png";
 import SearchBar from "../SearchBar/SearchBar";
 import HeaderProfile from "../HeaderProfile/HeaderProfile";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = ({ onClickSignin, onClickSignup }) => {
   return (
@@ -15,13 +15,13 @@ const Header = ({ onClickSignin, onClickSignup }) => {
             onClickSignup={onClickSignup}
           />
         </div>
-        <Link className="header__logo_link" to="/">
+        <NavLink className="header__logo_link" to="/">
           <img
             className="header__logo"
             src={yugiohLogo}
             alt="Yu-Gi-Oh Booster Pack Simulator Logo"
           />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

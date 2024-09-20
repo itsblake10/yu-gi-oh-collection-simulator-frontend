@@ -25,7 +25,7 @@
 .header__sign-in:hover,
 .header__sign-up:hover {
   color: rgb(236, 78, 78);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .header__sign-in-slash {
@@ -110,6 +110,8 @@
 
 /* .header__profile-list-link.active {
   color: #f94040;
+  font-style: bold;
+  border-bottom: #f94040;
 } */
 
 .header__profile-list .header__profile-list-item:hover {
