@@ -11,10 +11,10 @@
 }
 
 .home__title {
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
-  color: aliceblue;
-  margin: 60px 0 30px 0;
+  color: white;
+  margin: 40px 0 30px 0;
 }
 
 .home__grid-options {
@@ -46,8 +46,8 @@
 }
 
 .home__grid-filter option {
-  background-color: white; /* Background of dropdown options */
-  color: black; /* Default text color for options */
+  background-color: white;
+  color: black;
 }
 
 .home__grid {

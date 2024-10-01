@@ -9,7 +9,7 @@
 .modal__label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .modal__input {
@@ -18,4 +18,21 @@
   min-height: 28px;
   padding: 5px;
   margin-top: 5px;
+}
+
+.modal__existing-email-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.modal__text {
+  margin: 0 5px 0 0;
+  font-weight: bold;
+}
+
+.modal__existing-email {
+  display: inline;
 }

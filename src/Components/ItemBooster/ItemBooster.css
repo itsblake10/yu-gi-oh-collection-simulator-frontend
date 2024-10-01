@@ -27,11 +27,9 @@
 }
 
 .item__code {
-  margin: 0;
+  margin: 5px 0 0 0;
   font-size: large;
   font-weight: bold;
-  margin-bottom: 0;
-  margin-top: 5px;
 }
 
 .item__release {
@@ -41,6 +39,7 @@
 .item__image {
   max-height: 400px;
   cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .item__link {
@@ -48,31 +47,28 @@
 }
 
 .item__open-button {
-  color: transparent;
-  background-color: transparent;
   padding: 0;
   margin: 0;
   border: none;
-  box-sizing: content-box;
-  transition: 0.2s ease-in-out;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   max-height: 400px;
 }
 
 .item__open-button:hover {
   transform: scale(98%);
-  opacity: 85%;
+  opacity: 100%;
 }
 
 .item__open-button .item__image-text {
   opacity: 0;
-  padding: 0;
-  margin: 0;
+}
+
+.item__open-button:hover .item__image {
+  opacity: 85%;
 }
 
 .item__open-button:hover .item__image-text {
   opacity: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .item__image-text {
@@ -84,19 +80,6 @@
   color: rgb(0, 162, 255);
   background-color: white;
   cursor: pointer;
-}
-
-.item__image-text-hover {
-  opacity: 100%;
-}
-
-.item__open-button-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.item__open-button-link:hover {
-  color: inherit;
 }
 
 .item__pack-size {

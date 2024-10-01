@@ -1,7 +1,7 @@
 import "./Header.css";
 import yugiohLogo from "../../images/yu-gi-oh-booster-sim-logo.png";
 import SearchBar from "../SearchBar/SearchBar";
-import HeaderProfile from "../HeaderProfile/HeaderProfile";
+import HeaderNav from "../HeaderNav/HeaderNav";
 import { NavLink } from "react-router-dom";
 
 const Header = ({ onClickSignin, onClickSignup }) => {
@@ -10,7 +10,7 @@ const Header = ({ onClickSignin, onClickSignup }) => {
       <div className="header__container">
         <div className="header__nav">
           <SearchBar className="search-bar__container" />
-          <HeaderProfile
+          <HeaderNav
             onClickSignin={onClickSignin}
             onClickSignup={onClickSignup}
           />

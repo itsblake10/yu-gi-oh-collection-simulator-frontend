@@ -1,9 +1,9 @@
 import "./HeaderProfile.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
-import { useState } from "react";
+// import { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
-const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
+const HeaderProfile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,14 +12,9 @@ const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
 
   return (
     <div className="header__profile">
-      <div className="header__profile-signin-signup">
-        <button className="header__sign-in" onClick={onClickSignin}>
-          Sign In
-        </button>
-        <p className="header__sign-in-slash">|</p>
-        <button className="header__sign-up" onClick={onClickSignup}>
-          Sign Up
-        </button>
+      <p className="header__profile-username">username123xdfdsfsd</p>
+      <div className="header__profile-image-container">
+        <img className="header__profile-image" src={blueEyesWhiteDragon} />
       </div>
       <div className="header__profile-dropdown">
         <button className="header__profile-menu-button" onClick={toggleMenu}>
@@ -50,11 +45,18 @@ const HeaderProfile = ({ onClickSignin, onClickSignup }) => {
               >
                 All Cards
               </NavLink>
+              <NavLink
+                className="header__profile-list-link"
+                to="/profile-account"
+                activeClassName="active"
+              >
+                Profile/Account
+              </NavLink>
+              <button className="header__profile-list-link">Log Out</button>
             </li>
           </ul>
         </nav>
       </div>
-      {/*<p>PROFILE</p> */}
     </div>
   );
 };

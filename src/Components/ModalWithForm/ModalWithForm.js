@@ -3,19 +3,19 @@ import closeIcon from "../../images/close-icon.svg";
 
 const ModalWithForm = ({ onClose, title, children, name, buttonText }) => {
   return (
-    <div className="modal modal__form">
-      <div className="modal__form-container">
+    <div className="modal">
+      <div className="modal__container">
         <img
-          className="modal__form-close-button"
+          className="modal__close-button"
           src={closeIcon}
           alt="close Button"
           onClick={onClose}
         />
-        <p className="modal__form-title">{title}</p>
-        <form className="modal__form-form" name={name}>
+        <p className="modal__title">{title}</p>
+        <form className="modal__form" name={name}>
           {children}
         </form>
-        <button className="modal__form-button">{buttonText}</button>
+        <button className="modal__button">{buttonText}</button>
       </div>
     </div>
   );

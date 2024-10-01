@@ -1,0 +1,65 @@
+.cardlist__item {
+  min-width: 100px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  background: white
+    url("/src/images/Backgrounds/yugioh-booster-sim\(grid-item\ background\).svg")
+    no-repeat center;
+  background-size: cover;
+  align-items: center;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
+}
+
+.cardlist__item-name {
+  font-size: 11px;
+  margin: 2px 0 0 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  max-height: 16px;
+  max-width: 100px;
+}
+
+.cardlist__item-code {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.cardlist__item-open-button {
+  color: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  transition: transform 0.1s, opacity 0.1s;
+  max-height: 100px;
+  cursor: pointer;
+}
+
+.cardlist__item-open-button:hover {
+  transform: scale(1.02);
+}
+
+.cardlist__item-image {
+  max-width: 80px;
+  height: 110px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cardlist__item-image-text {
+  font-size: 12px;
+  position: absolute;
+  align-self: center;
+  min-width: 80px;
+  bottom: 42px;
+  color: rgb(0, 162, 255);
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: opacity 0.1s ease;
+  opacity: 0;
+}
+
+.cardlist__item-open-button:hover .cardlist__item-image-text {
+  opacity: 100%;
+}

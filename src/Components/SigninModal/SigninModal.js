@@ -1,11 +1,11 @@
-import "./SignupModal.css";
+import "./SigninModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignupModal = ({ onClose, buttonText }) => {
+const SigninModal = ({ onClose, buttonText }) => {
   return (
     <ModalWithForm
-      title="Sign Up"
-      name="register-user"
+      title="Sign In"
+      name="Login-user"
       buttonText={buttonText}
       onClose={onClose}
     >
@@ -24,19 +24,6 @@ const SignupModal = ({ onClose, buttonText }) => {
           />
         </label>
         <label className="modal__label">
-          Email:
-          <input
-            className="modal__input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            // value={userEmail}
-            minLength="5"
-            maxLength="50"
-            // onChange={handleEmailChange}
-          />
-        </label>
-        <label className="modal__label">
           Password:
           <input
             className="modal__input"
@@ -49,22 +36,9 @@ const SignupModal = ({ onClose, buttonText }) => {
             // onChange={handlePasswordChange}
           />
         </label>
-        <label className="modal__label">
-          Confirm Password:
-          <input
-            className="modal__input"
-            type="password"
-            name="confirm-password"
-            placeholder="Confirm Password"
-            // value={userPassword}
-            minLength="5"
-            maxLength="1000"
-            // onChange={handlePasswordChange}
-          />
-        </label>
       </fieldset>
     </ModalWithForm>
   );
 };
 
-export default SignupModal;
+export default SigninModal;

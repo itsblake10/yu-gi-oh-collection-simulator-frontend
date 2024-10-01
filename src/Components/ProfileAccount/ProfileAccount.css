@@ -1,0 +1,95 @@
+.profile-account__page {
+  margin: 0 auto;
+}
+
+.profile-account__title {
+  font-size: 40px;
+  color: white;
+  padding: 40px 0 30px 0;
+  text-align: center;
+}
+
+.profile-account__page-background {
+  background-color: rgba(3, 0, 79, 0.5);
+  position: relative;
+  padding: 50px 0 40px 0;
+  border-top: 1px solid rgb(0, 162, 255);
+  border-bottom: 1px solid rgb(0, 162, 255);
+}
+
+.profile-account__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+}
+
+.profile-account__settings {
+  display: flex;
+  /* min-width: 1000px; */
+  flex-direction: row;
+  padding: 0 15px 0 15px;
+  margin: 0 auto;
+  border-bottom: 2pt solid #f94040;
+}
+
+.profile-account__user-profile {
+  min-width: 300px;
+}
+
+.profile-account__user-image-container {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #f94040;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-account__user-image {
+  max-width: 100%;
+  /* max-height: 100%; */
+  object-fit: cover;
+}
+
+.profile-account__username {
+  max-width: 220px;
+  box-sizing: border-box;
+  position: relative;
+  bottom: 55px;
+  left: 82px;
+  color: white;
+  border-bottom: 3px #f94040 solid;
+  padding: 0 30px 3px 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profile-account__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 0 auto;
+  gap: 40px;
+}
+
+.profile-account__button {
+  cursor: pointer;
+  min-width: 125px;
+  min-height: 30px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #f94040;
+  border-radius: 15px;
+  margin: 0 0 15px 0;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-account__button:hover {
+  color: #f94040;
+  transform: scale(102%);
+}

@@ -1,7 +1,7 @@
 import "./Footer.css";
 import yugiohLogo from "../../images/yu-gi-oh-booster-sim-logo.png";
 
-const Footer = () => {
+const Footer = ({ onClickTOS, onClickCopyright }) => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="footer">
@@ -12,8 +12,12 @@ const Footer = () => {
           alt="Yu-Gi-Oh Booster Pack Simulator Logo"
         />
         <ul className="footer__nav">
-          <li className="footer__nav-item">Terms of Service</li>
-          <li className="footer__nav-item">Copyright</li>
+          <button className="footer__nav-item" onClick={onClickTOS}>
+            Terms of Service
+          </button>
+          <button className="footer__nav-item" onClick={onClickCopyright}>
+            Copyright
+          </button>
         </ul>
       </div>
       <p className="footer__copyright">© All Rights Reserved {currentYear}</p>
