@@ -27,6 +27,13 @@
 
 .profile-stats__card-image {
   max-width: 80px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.profile-stats__card-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px 5px rgba(37, 172, 255, 0.5);
 }
 
 .profile-stats__sub-title {

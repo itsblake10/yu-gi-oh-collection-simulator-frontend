@@ -2,6 +2,7 @@ import "./HeaderNav.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
 import { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import HeaderProfile from "../HeaderProfile/HeaderProfile";
 
 const HeaderNav = ({ onClickSignin, onClickSignup }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ const HeaderNav = ({ onClickSignin, onClickSignup }) => {
           </ul>
         </nav>
       </div>
-      {/*<p>PROFILE</p> */}
+      {/* <HeaderProfile /> */}
     </div>
   );
 };

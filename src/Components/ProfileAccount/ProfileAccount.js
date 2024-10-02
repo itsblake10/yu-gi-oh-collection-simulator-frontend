@@ -8,6 +8,7 @@ const ProfileAccount = ({
   onClickChangeAvatar,
   onClickChangeEmail,
   onClickChangePassword,
+  onClickCardInfo,
 }) => {
   return (
     <main className="profile-account__page">
@@ -53,7 +54,7 @@ const ProfileAccount = ({
               </button>
             </div>
           </div>
-          <ProfileStats />
+          <ProfileStats onClickCardInfo={onClickCardInfo} />
         </div>
       </div>
     </main>

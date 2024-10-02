@@ -1,7 +1,7 @@
 import "./ProfileStats.css";
 import blueEyesWhiteDragon from "../../images/LOB-cards/blueEyesWhiteDragon-LOB.png";
 
-const ProfileStats = () => {
+const ProfileStats = ({ onClickCardInfo }) => {
   return (
     <div className="profile-stats__container">
       <h2 className="profile-stats__title">Stats</h2>
@@ -11,6 +11,7 @@ const ProfileStats = () => {
             className="profile-stats__card-image"
             src={blueEyesWhiteDragon}
             alt="card"
+            onClick={onClickCardInfo}
           />
           <div className="profile-stats__card-pulled-most-container">
             <h3 className="profile-stats__sub-title">Card Pulled Most</h3>

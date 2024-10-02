@@ -1,7 +1,8 @@
 import "./HeaderProfile.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
-// import { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import blueEyesWhiteDragon from "../../images/LOB-cards/blueEyesWhiteDragon-LOB.png";
 
 const HeaderProfile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -45,6 +46,8 @@ const HeaderProfile = () => {
               >
                 All Cards
               </NavLink>
+            </li>
+            <li className="header__profile-list-item">
               <NavLink
                 className="header__profile-list-link"
                 to="/profile-account"
@@ -52,7 +55,9 @@ const HeaderProfile = () => {
               >
                 Profile/Account
               </NavLink>
-              <button className="header__profile-list-link">Log Out</button>
+            </li>
+            <li className="header__profile-list-item">
+              <button className="header__profile-list-button">Log Out</button>
             </li>
           </ul>
         </nav>

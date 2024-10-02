@@ -113,6 +113,7 @@ function App() {
               onClickChangeAvatar={handleClickChangeAvatar}
               onClickChangeEmail={handleClickChangeEmail}
               onClickChangePassword={handleClickChangePassword}
+              onClickCardInfo={handleClickCardInfo}
             />
           )}
         />
