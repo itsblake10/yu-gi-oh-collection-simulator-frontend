@@ -1,7 +1,6 @@
 import ProfileStats from "../ProfileStats/ProfileStats";
 import "./ProfileAccount.css";
-import blueEyesWhiteDragon from "../../images/LOB-cards/blueEyesWhiteDragon-LOB.png";
-// import ItemCard from "../ItemCard/ItemCard";
+import Armaill from "../../images/temp/Armaill.jpg";
 
 const ProfileAccount = ({
   onClickChangeUsername,
@@ -18,10 +17,7 @@ const ProfileAccount = ({
           <div className="profile-account__settings">
             <div className="profile-account__user-profile">
               <div className="profile-account__user-image-container">
-                <img
-                  className="profile-account__user-image"
-                  src={blueEyesWhiteDragon}
-                />
+                <img className="profile-account__user-image" src={Armaill} />
               </div>
               <p className="profile-account__username">
                 username123xdfdsfsdfsdfsdf

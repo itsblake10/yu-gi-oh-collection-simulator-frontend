@@ -2,7 +2,7 @@ import "./HeaderProfile.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
 import { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import blueEyesWhiteDragon from "../../images/LOB-cards/blueEyesWhiteDragon-LOB.png";
+import Armaill from "../../images/temp/Armaill.jpg";
 
 const HeaderProfile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const HeaderProfile = () => {
     <div className="header__profile">
       <p className="header__profile-username">username123xdfdsfsd</p>
       <div className="header__profile-image-container">
-        <img className="header__profile-image" src={blueEyesWhiteDragon} />
+        <img className="header__profile-image" src={Armaill} />
       </div>
       <div className="header__profile-dropdown">
         <button className="header__profile-menu-button" onClick={toggleMenu}>

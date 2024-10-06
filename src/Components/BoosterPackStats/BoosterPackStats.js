@@ -7,13 +7,13 @@ const BoosterPackStats = ({ selectedBoosterPack }) => {
       <h3 className="booster__breakdown-pack-size">
         Pack Size:
         <span className="booster__breakdown-pack-size_color">
-          {selectedBoosterPack.packSize} Cards
+          {selectedBoosterPack.num_of_cards} Cards
         </span>
       </h3>
       <div className="booster__breakdown-list">
         <ul className="booster__breakdown-list_total">
           <p className="booster__list-container-title">
-            Total: {selectedBoosterPack.totalCards}
+            Total: {selectedBoosterPack.num_of_cards}
           </p>
           <li className="booster__breakdown-list-item">
             Common:

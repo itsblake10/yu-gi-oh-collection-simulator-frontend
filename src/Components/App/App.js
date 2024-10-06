@@ -15,12 +15,48 @@ import ChangeUsernameModal from "../ChangeUsernameModal/ChangeUsernameModal";
 import ChangeAvatarModal from "../ChangeAvatarModal/ChangeAvatarModal";
 import ChangeEmailModal from "../ChangeEmailModal/ChangeEmailModal";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
+import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 // import { boosterPacks } from "../utils/boosterPackData";
 // import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  // const [selectedBooster, setSelectedBooster] = useState({});
+  const [boosterPacks, setBoosterPacks] = useState([]);
+  const [selectedBooster, setSelectedBooster] = useState({});
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleModalEscClose = (event) => {
+      if (event.key === "Escape") {
+        handleModalClose();
+      }
+    };
+
+    const handleModalClickOutside = (event) => {
+      if (event.target.classList.contains("modal")) {
+        handleModalClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleModalEscClose);
+    document.addEventListener("mousedown", handleModalClickOutside);
+
+    return () => {
+      document.removeEventListener("keydown", handleModalEscClose);
+      document.removeEventListener("mousedown", handleModalClickOutside);
+    };
+  }, [activeModal]);
+
+  useEffect(() => {
+    getAllBoosterPacks()
+      .then((data) => {
+        setBoosterPacks(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const handleClickSignin = () => {
     setActiveModal("sign-in");
@@ -58,37 +94,13 @@ function App() {
     setActiveModal("change-password");
   };
 
-  // const handleSelectBooster = (item) => {
-  //   setSelectedBooster(item);
-  // };
+  const handleSelectBooster = (item) => {
+    setSelectedBooster(item);
+  };
 
   const handleModalClose = () => {
     setActiveModal("");
   };
-
-  useEffect(() => {
-    if (!activeModal) return;
-
-    const handleModalEscClose = (event) => {
-      if (event.key === "Escape") {
-        handleModalClose();
-      }
-    };
-
-    const handleModalClickOutside = (event) => {
-      if (event.target.classList.contains("modal")) {
-        handleModalClose();
-      }
-    };
-
-    document.addEventListener("keydown", handleModalEscClose);
-    document.addEventListener("mousedown", handleModalClickOutside);
-
-    return () => {
-      document.removeEventListener("keydown", handleModalEscClose);
-      document.removeEventListener("mousedown", handleModalClickOutside);
-    };
-  }, [activeModal]);
 
   return (
     <div className="App">
@@ -97,11 +109,25 @@ function App() {
         onClickSignup={handleClickSignup}
       />
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <Main
+              {...props}
+              boosterPacks={boosterPacks}
+              onClickBoosterPack={handleSelectBooster}
+            />
+          )}
+        />
         <Route
           path="/booster-page/:id"
           render={(props) => (
-            <BoosterPage {...props} onClickCardInfo={handleClickCardInfo} />
+            <BoosterPage
+              {...props}
+              onClickCardInfo={handleClickCardInfo}
+              selectedBooster={selectedBooster}
+            />
           )}
         />
         <Route

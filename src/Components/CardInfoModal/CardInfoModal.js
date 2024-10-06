@@ -1,6 +1,6 @@
 import "./CardInfoModal.css";
 import closeIcon from "../../images/close-icon.svg";
-import blueEyesWhiteDragon from "../../images/LOB-cards/blueEyesWhiteDragon-LOB.png";
+import Armaill from "../../images/temp/Armaill.jpg";
 
 const CardInfoModal = ({ onClose }) => {
   return (
@@ -16,7 +16,7 @@ const CardInfoModal = ({ onClose }) => {
         <div className="card-info__container">
           <img
             className="card-info__Image"
-            src={blueEyesWhiteDragon}
+            src={Armaill}
             // alt={item.name}
           />
           <ul className="card-info__list">
