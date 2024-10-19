@@ -1,13 +1,13 @@
 import "./BoosterPackStats.css";
 
-const BoosterPackStats = ({ selectedBoosterPack }) => {
+const BoosterPackStats = ({ selectedBoosterPack, packSize }) => {
   return (
     <div className="booster__breakdown-container">
       <h2 className="booster__breakdown-title">Pack Breakdown</h2>
       <h3 className="booster__breakdown-pack-size">
         Pack Size:
         <span className="booster__breakdown-pack-size_color">
-          {selectedBoosterPack.num_of_cards} Cards
+          {packSize} Cards
         </span>
       </h3>
       <div className="booster__breakdown-list">

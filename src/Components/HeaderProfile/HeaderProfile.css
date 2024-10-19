@@ -1,19 +1,23 @@
 .header__profile {
-  /* min-width: 300px; */
+  margin: 0 50px 0 0;
 }
 
 .header__profile-username {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  font-size: 16px;
   max-width: 220px;
   box-sizing: border-box;
-  position: relative;
-  top: 50px;
-  right: 208px;
+  position: absolute;
+  top: 70px;
+  right: 160px;
   color: white;
   border-bottom: 3px #f94040 solid;
-  padding: 0 30px 3px 20px;
+  border-radius: 15px;
+  padding: 0 35px 3px 15px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  z-index: 0;
 }
 
 .header__profile-image-container {
@@ -22,7 +26,6 @@
   border: 3px solid #f94040;
   border-radius: 100%;
   overflow: hidden;
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +35,7 @@
   max-width: 100%;
   /* max-height: 100%; */
   object-fit: cover;
+  z-index: 2;
 }
 
 .header__profile-dropdown {
@@ -41,16 +45,19 @@
 }
 
 .header__profile-menu-button {
+  display: flex;
   position: absolute;
-  top: -35px;
-  left: -95px;
+  top: -37px;
+  right: 60px;
   color: white;
   background: none;
   border: none;
   border-bottom: 3px solid #f94040;
+  border-radius: 15px;
   cursor: pointer;
+  padding: 0 50px 0 25px;
+  font-family: "audiowide", "Helvetica Neue", sans-serif;
   font-size: 18px;
-  padding: 0 25px 0 25px;
 }
 
 .header__profile-menu {
@@ -60,15 +67,15 @@
   opacity: 0;
   transition: max-height 0.4s ease, visibility 0s 0.4s, opacity 0.3s ease;
   position: absolute;
-  top: 100%;
-  right: 50px;
+  top: -5px;
+  right: 40px;
   background-color: rgba(0, 0, 128, 0.2);
   min-width: 150px;
   z-index: 1;
 }
 
 .header__profile-menu.open {
-  max-height: 120px;
+  max-height: 125px;
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
@@ -98,7 +105,7 @@
 }
 
 .header__profile-list-item {
-  font-size: 20px;
+  font-size: 18px;
   border-bottom: white 1pt solid;
   transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
 }
@@ -112,8 +119,8 @@
   color: white;
   background: none;
   border: none;
+  font-family: "audiowide", "Helvetica Neue", sans-serif;
   font-size: 18px;
-  font-weight: normal;
 }
 
 .header__profile-list-button:hover {

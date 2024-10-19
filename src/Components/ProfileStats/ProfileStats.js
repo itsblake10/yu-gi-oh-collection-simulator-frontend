@@ -16,15 +16,15 @@ const ProfileStats = ({ onClickCardInfo }) => {
           <div className="profile-stats__card-pulled-most-container">
             <h3 className="profile-stats__sub-title">Card Pulled Most</h3>
             <ul className="profile-stats__list">
-              <li className="profile-stats__list-item">
+              <li className="profile-stats__list-label">
                 Name:
-                <span className="profile-stats__text_color">
+                <span className="profile-stats__list-item">
                   Blue Eyes White Dragon
                 </span>
               </li>
-              <li className="profile-stats__list-item">
+              <li className="profile-stats__list-label">
                 Qauntity:
-                <span className="profile-stats__text_color">13</span>
+                <span className="profile-stats__list-item">13</span>
               </li>
             </ul>
           </div>
@@ -32,13 +32,13 @@ const ProfileStats = ({ onClickCardInfo }) => {
         <div className="profile-stats__general">
           <h3 className="profile-stats__sub-title">General</h3>
           <ul className="profile-stats__list">
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Booster Packs Opened:
-              <span className="profile-stats__text_color">54</span>
+              <span className="profile-stats__list-item">54</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Unique Cards Pulled:
-              <span className="profile-stats__text_color">264</span>
+              <span className="profile-stats__list-item">264</span>
             </li>
           </ul>
         </div>
@@ -48,33 +48,33 @@ const ProfileStats = ({ onClickCardInfo }) => {
         <div className="profile-stats__rarity">
           <h3 className="profile-stats__sub-title">Rarity</h3>
           <ul className="profile-stats__list">
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Common Cards:
-              <span className="profile-stats__text_color">85</span>
+              <span className="profile-stats__list-item">85</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Rare Cards:
-              <span className="profile-stats__text_color">64</span>
+              <span className="profile-stats__list-item">64</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Super Rare Cards:
-              <span className="profile-stats__text_color">42</span>
+              <span className="profile-stats__list-item">42</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Ultra Rare Cards:
-              <span className="profile-stats__text_color">24</span>
+              <span className="profile-stats__list-item">24</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Secret Rare Cards:
-              <span className="profile-stats__text_color">78</span>
+              <span className="profile-stats__list-item">78</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Ghost Rare Cards:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Quarter Century Rare Cards:
-              <span className="profile-stats__text_color">7</span>
+              <span className="profile-stats__list-item">7</span>
             </li>
           </ul>
         </div>
@@ -82,25 +82,25 @@ const ProfileStats = ({ onClickCardInfo }) => {
         <div className="profile-stats__card-types">
           <h3 className="profile-stats__sub-title">Card Types</h3>
           <ul className="profile-stats__list">
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Normal Monster Cards:
-              <span className="profile-stats__text_color">122</span>
+              <span className="profile-stats__list-item">122</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Effect Monster Cards:
-              <span className="profile-stats__text_color">53</span>
+              <span className="profile-stats__list-item">53</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Spell Cards:
-              <span className="profile-stats__text_color">78</span>
+              <span className="profile-stats__list-item">78</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Trap Cards:
-              <span className="profile-stats__text_color">97</span>
+              <span className="profile-stats__list-item">97</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               Ritual Cards:
-              <span className="profile-stats__text_color">14</span>
+              <span className="profile-stats__list-item">14</span>
             </li>
           </ul>
         </div>
@@ -116,45 +116,45 @@ const ProfileStats = ({ onClickCardInfo }) => {
             </option>
           </select>
           <ul className="profile-stats__list">
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               MRD:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               MRL/SRL:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               PSV:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LON:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
-            <li className="profile-stats__list-item">
+            <li className="profile-stats__list-label">
               LOB:
-              <span className="profile-stats__text_color">12</span>
+              <span className="profile-stats__list-item">12</span>
             </li>
           </ul>
         </div>

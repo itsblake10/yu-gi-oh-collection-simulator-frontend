@@ -1,25 +1,3 @@
-.modal__inputs {
-  display: flex;
-  flex-direction: column;
-  /* justify-items: center; */
-  border: none;
-  min-width: 450px;
-}
-
-.modal__label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5px;
-}
-
-.modal__input {
-  border: 1.8pt rgb(0, 162, 255) solid;
-  border-radius: 5px;
-  min-height: 28px;
-  padding: 5px;
-  margin-top: 5px;
-}
-
 .modal__existing-email-container {
   display: flex;
   flex-direction: row;

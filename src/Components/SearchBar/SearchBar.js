@@ -1,14 +1,14 @@
 import "./SearchBar.css";
 import searchBarButton from "../../images/search-bar-button.svg";
 
-const SearchBar = ({ className }) => {
+const SearchBar = ({ searchBarPlaceHolder }) => {
   return (
     <form className="search-bar">
-      <div className={className}>
+      <div className="search-bar__container">
         <input
           className="search-bar__input"
           type="text"
-          placeholder="Search..."
+          placeholder={searchBarPlaceHolder}
         />
         <button className="search-bar__button" type="submit">
           <img

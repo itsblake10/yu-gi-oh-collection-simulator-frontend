@@ -11,14 +11,14 @@
 }
 
 .booster__breakdown-title {
-  font-size: larger;
+  font-size: 18px;
   text-decoration: underline;
   color: white;
   margin: 10px auto 10px auto;
 }
 
 .booster__breakdown-pack-size {
-  font-size: larger;
+  font-size: 14px;
   color: white;
   margin: 0 auto 10px;
 }
@@ -40,8 +40,9 @@
 .booster__list-container-title {
   margin: 0;
   color: white;
-  font-size: large;
-  font-weight: bold;
+  font-size: 16px;
+  /* font-weight: bold; */
+  border-bottom: 1pt white solid;
 }
 
 .booster__list-container-title_color {
@@ -59,6 +60,8 @@
 }
 
 .booster__breakdown-list-item {
+  font-size: 16px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   list-style: none;
   margin: 7px 0 0 0;
   color: white;

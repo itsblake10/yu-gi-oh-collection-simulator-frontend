@@ -1,0 +1,118 @@
+@keyframes scrollText {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.cardlist__item {
+  width: 105px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  background: white
+    url("/src/images/Backgrounds/yugioh-booster-sim\(grid-item\ background\).svg")
+    no-repeat center;
+  background-size: cover;
+  align-items: center;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
+}
+
+.cardlist__item-name {
+  font-size: 11px;
+  margin: 2px 0 0 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  min-height: 15px;
+  max-width: 90px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.cardlist__item-name span {
+  display: inline-block;
+  transform: translateX(0);
+  white-space: nowrap;
+}
+
+.cardlist__item-name.non-scrolling:hover span {
+  animation: none;
+}
+
+.cardlist__item-name:hover span {
+  animation: scrollText 6s linear infinite;
+}
+
+.cardlist__item-code {
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.cardlist__item-rarity {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 10px;
+  margin: 0 0 2px 0;
+  padding: 0 3px 0 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 90px;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.cardlist__item-rarity span {
+  display: inline-block;
+  transform: translateX(0);
+  white-space: nowrap;
+}
+
+.cardlist__item-rarity.non-scrolling:hover span {
+  animation: none;
+}
+
+.cardlist__item-rarity:hover span {
+  animation: scrollText 6s linear infinite;
+}
+
+.cardlist__item-open-button {
+  color: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  transition: transform 0.1s, opacity 0.1s;
+  min-height: 111px;
+  cursor: pointer;
+}
+
+.cardlist__item-open-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 10px 5px rgba(37, 172, 255, 0.6);
+}
+
+.cardlist__item-image {
+  max-width: 80px;
+  height: 110px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cardlist__item-image-text {
+  font-size: 12px;
+  position: absolute;
+  min-width: 75px;
+  bottom: 45px;
+  color: rgb(0, 162, 255);
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: opacity 0.1s ease;
+  opacity: 0;
+  padding: 3px 0 3px 0;
+}
+
+.cardlist__item-open-button:hover .cardlist__item-image-text {
+  opacity: 100%;
+}

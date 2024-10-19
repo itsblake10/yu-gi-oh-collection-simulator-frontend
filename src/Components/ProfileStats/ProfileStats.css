@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1500px;
 }
 
 .profile-stats__title {
   text-align: center;
   color: white;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 34px;
   margin: 10px 0 0 0;
 }
 
@@ -37,6 +36,7 @@
 }
 
 .profile-stats__sub-title {
+  font-size: 22px;
   color: white;
   text-decoration: underline;
 }
@@ -46,21 +46,6 @@
   flex-direction: row;
   gap: 5px;
   margin: 5px 0 0 0;
-}
-
-.profile-stats__text {
-  color: white;
-  font-weight: bold;
-  max-width: fit-content;
-}
-
-.profile-stats__text_color {
-  color: #f94040;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-weight: 600;
-  flex-wrap: nowrap;
 }
 
 .profile-stats__general {
@@ -74,15 +59,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 2pt solid #f94040;
-  padding: 0 40px 20px 40px;
+  border-bottom: 2.5pt solid #f94040;
+  border-radius: 10px;
+  padding: 20px 40px 20px 40px;
 }
 
 .profile-stats__all {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 15px 0 15px;
+  padding: 10px 15px 0 15px;
   max-height: fit-content;
 }
 
@@ -97,12 +83,24 @@
   text-overflow: ellipsis;
 }
 
-.profile-stats__list-item {
+.profile-stats__list-label {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   color: white;
-  font-weight: bold;
-  margin: 5px 0 0 0;
+  font-size: 16px;
+  margin: 8px 0 0 0;
   display: flex;
   gap: 5px;
+}
+
+.profile-stats__list-item {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  color: #f94040;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  flex-wrap: nowrap;
+  align-self: center;
 }
 
 .profile-stats__rarity {

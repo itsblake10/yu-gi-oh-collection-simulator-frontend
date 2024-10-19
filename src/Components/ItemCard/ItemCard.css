@@ -1,4 +1,4 @@
-.cardlist__item {
+.item__card {
   min-width: 100px;
   min-height: 150px;
   display: flex;
@@ -12,23 +12,22 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
 }
 
-.cardlist__item-name {
+.item__card-name {
   font-size: 11px;
   margin: 2px 0 0 0;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* white-space: nowrap; */
   max-height: 16px;
   max-width: 100px;
 }
 
-.cardlist__item-code {
+.item__card-code {
   font-size: 10px;
   margin-bottom: 3px;
 }
 
-.cardlist__item-open-button {
+.item__card-open-button {
   color: none;
   padding: 0;
   margin: 0;
@@ -38,18 +37,18 @@
   cursor: pointer;
 }
 
-.cardlist__item-open-button:hover {
+.item__card-open-button:hover {
   transform: scale(1.02);
   box-shadow: 0px 0px 10px 5px rgba(37, 172, 255, 0.6);
 }
 
-.cardlist__item-image {
+.item__card-image {
   max-width: 80px;
   height: 110px;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.cardlist__item-image-text {
+.item__card-image-text {
   font-size: 12px;
   position: absolute;
   align-self: center;
@@ -61,6 +60,6 @@
   opacity: 0;
 }
 
-.cardlist__item-open-button:hover .cardlist__item-image-text {
+.item__card-open-button:hover .item__card-image-text {
   opacity: 100%;
 }

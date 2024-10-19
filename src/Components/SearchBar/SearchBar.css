@@ -6,7 +6,6 @@
 
 .search-bar__container {
   align-content: center;
-  margin: 0 0 0 50px;
 }
 
 .search-bar__input {
@@ -19,6 +18,7 @@
   background: none;
   color: white;
   font-size: 20px;
+  font-family: "arimo", "Helvetica Neue", sans-serif;
 }
 
 .search-bar__input:focus {

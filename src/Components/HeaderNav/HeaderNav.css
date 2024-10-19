@@ -13,7 +13,8 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: 28px;
+  font-family: "audiowide", "Helvetica Neue", sans-serif;
+  font-size: 24px;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -27,7 +28,7 @@
   color: white;
   display: inline;
   padding: 0 10px 0 10px;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .header__nav-dropdown {
@@ -41,7 +42,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 28px;
+  font-family: "audiowide", "Helvetica Neue", sans-serif;
+  font-size: 24px;
 }
 
 .header__nav-menu {
@@ -69,7 +71,7 @@
 .header__nav-menu-icon {
   transition: transform 0.3s ease;
   margin: 0 0 0 8px;
-  min-width: 16px;
+  min-width: 14px;
 }
 
 .header__nav-menu-icon.open {
@@ -89,7 +91,8 @@
 }
 
 .header__nav-list-item {
-  font-size: 24px;
+  padding: 3px 3px 3px 3px;
+  font-size: 18px;
   border-bottom: white 1pt solid;
   transition: transform 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
 }

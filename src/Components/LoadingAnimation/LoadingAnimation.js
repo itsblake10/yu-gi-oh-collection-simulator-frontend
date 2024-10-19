@@ -3,14 +3,28 @@ import yugiohCardBack from "../../images/yu-gi-oh-card-back.png";
 
 const loadingAnimation = () => {
   return (
-    <main className="booster__page">
-      <div className="booster__container">
-        <img className="loadingImg1" src={yugiohCardBack} />
-        <img className="loadingImg2" src={yugiohCardBack} />
-        <img className="loadingImg3" src={yugiohCardBack} />
-        <img className="loadingImg4" src={yugiohCardBack} />
-      </div>
-    </main>
+    <div className="loading__container">
+      <img
+        className="loading__image1"
+        src={yugiohCardBack}
+        alt="loading-card"
+      />
+      <img
+        className="loading__image2"
+        src={yugiohCardBack}
+        alt="loading-card"
+      />
+      <img
+        className="loading__image3"
+        src={yugiohCardBack}
+        alt="loading-card"
+      />
+      <img
+        className="loading__image4"
+        src={yugiohCardBack}
+        alt="loading-card"
+      />
+    </div>
   );
 };
 

@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 0 0 40px 0;
+  margin: 0 0 40px 0;
   z-index: 2;
 }
 
@@ -49,10 +49,6 @@
   cursor: pointer;
   align-self: center;
   z-index: 1;
-}
-
-.booster__pack:hover {
-  opacity: 0.9;
 }
 
 .booster__pack-open-button {
@@ -79,28 +75,27 @@
   border: none;
 }
 
-/* -------------------------------- CARDLIST -------------------------------- */
-.booster__cardlist-container {
+/* -------------------------------- PREV CARDS -------------------------------- */
+.booster__prev-container {
   max-width: 1100px;
   min-height: max-content;
   background-color: white;
   border: 5px solid rgb(0, 162, 255);
   border-radius: 15px;
   background: transparent;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   z-index: 2;
 }
 
-.booster__cardlist-title {
+.booster__prev-title {
   color: white;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 26px;
   margin: 10px auto 0 auto;
   padding: 2px 3px 2px 3px;
   max-width: fit-content;
 }
 
-.booster__cardlist {
+.booster__prev-cardlist {
   list-style-type: none;
   padding: 10px 15px 10px 0;
   display: grid;
@@ -111,9 +106,40 @@
   overflow: scroll;
   justify-content: center;
 }
+/* -------------------------------- CARDLIST -------------------------------- */
+.booster__cardlist-container {
+  max-width: 1100px;
+  min-height: max-content;
+  background-color: white;
+  border: 5px solid rgb(0, 162, 255);
+  border-radius: 15px;
+  background: transparent;
+  margin: 0 auto;
+  padding: 0 0 5px 0;
+  z-index: 2;
+}
+
+.booster__cardlist-title {
+  color: white;
+  font-size: 26px;
+  margin: 10px auto 0 auto;
+  max-width: fit-content;
+}
+
+.booster__cardlist {
+  list-style-type: none;
+  padding: 10px 15px 10px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-rows: auto;
+  gap: 10px;
+  max-height: 300px;
+  overflow: scroll;
+  justify-content: center;
+}
 
 /* ------------------------------------ x ----------------------------------- */
-.booster__pack-cards {
+/* .booster__pack-cards {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -121,4 +147,4 @@
   min-width: max-content;
   margin: 0 0 30px 0;
   gap: 5px;
-}
+} */

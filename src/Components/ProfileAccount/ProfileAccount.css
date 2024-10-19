@@ -18,9 +18,9 @@
 }
 
 .profile-account__container {
-  max-width: 1100px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 20px 0 20px;
+  padding: 0 40px 0 40px;
 }
 
 .profile-account__settings {
@@ -29,7 +29,8 @@
   flex-direction: row;
   padding: 0 15px 0 15px;
   margin: 0 auto;
-  border-bottom: 2pt solid #f94040;
+  border-bottom: 2.5pt solid #f94040;
+  border-radius: 10px;
 }
 
 .profile-account__user-profile {
@@ -55,6 +56,8 @@
 }
 
 .profile-account__username {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  font-size: 16px;
   max-width: 220px;
   box-sizing: border-box;
   position: relative;
@@ -62,7 +65,7 @@
   left: 82px;
   color: white;
   border-bottom: 3px #f94040 solid;
-  padding: 0 30px 3px 20px;
+  padding: 0 20px 3px 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -77,6 +80,8 @@
 }
 
 .profile-account__button {
+  font-family: "arimo", "Helvetica Neue", sans-serif;
+  font-size: 14px;
   cursor: pointer;
   min-width: 125px;
   min-height: 30px;
@@ -84,6 +89,7 @@
   background-color: transparent;
   border: 2px solid #f94040;
   border-radius: 15px;
+  padding: 0 8px 0 8px;
   margin: 0 0 15px 0;
   transition: transform 0.3s ease, background-color 0.3s ease,
     box-shadow 0.3s ease;

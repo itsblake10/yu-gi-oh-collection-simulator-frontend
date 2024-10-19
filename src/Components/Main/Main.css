@@ -8,6 +8,7 @@
 .home__container {
   display: flex;
   flex-direction: column;
+  padding: 0 10px 0 10px;
 }
 
 .home__title {
@@ -29,11 +30,6 @@
   border-radius: 10px;
 }
 
-.home__grid-searchbar {
-  margin: 0;
-  padding: 0;
-}
-
 .home__grid-filter {
   padding: 0 0 0 5px;
   min-width: 160px;
@@ -41,11 +37,12 @@
   border-radius: 5px;
   border: 1pt solid white;
   font-size: 16px;
+  font-family: "arimo", "Helvetica Neue", sans-serif;
   background-color: transparent;
   color: white;
 }
 
-.home__grid-filter option {
+.home__grid-option {
   background-color: white;
   color: black;
 }
@@ -56,7 +53,33 @@
   grid-template-columns: repeat(auto-fit, 300px);
   grid-template-rows: auto;
   list-style-type: none;
-  margin: 40px 0 60px 0;
+  margin: 40px 0 30px 0;
   gap: 10px;
   overflow: hidden;
+}
+
+.home__grid-view-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 40px 30px 40px;
+}
+
+.home__grid-view-button {
+  font-family: "audiowide", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  min-width: 80%;
+  min-height: 30px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgb(0, 142, 235);
+  border-radius: 15px;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home__grid-view-more-button:hover {
+  transform: scale(1.01);
+  /* background-color: rgb(0, 142, 235); */
 }

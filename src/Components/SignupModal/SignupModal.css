@@ -3,7 +3,7 @@
   flex-direction: column;
   /* justify-items: center; */
   border: none;
-  min-width: 450px;
+  min-width: 200px;
 }
 
 .modal__label {

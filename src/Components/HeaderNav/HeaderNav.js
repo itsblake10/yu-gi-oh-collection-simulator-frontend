@@ -2,13 +2,16 @@ import "./HeaderNav.css";
 import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
 import { useState } from "react";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import HeaderProfile from "../HeaderProfile/HeaderProfile";
 
 const HeaderNav = ({ onClickSignin, onClickSignup }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  };
+
+  const AutoCloseMenu = () => {
+    setMenuOpen(false);
   };
 
   return (
@@ -22,8 +25,12 @@ const HeaderNav = ({ onClickSignin, onClickSignup }) => {
           Sign Up
         </button>
       </div>
-      <div className="header__nav-dropdown">
-        <button className="header__nav-menu-button" onClick={toggleMenu}>
+      <div
+        className="header__nav-dropdown"
+        onMouseEnter={toggleMenu}
+        onMouseLeave={AutoCloseMenu}
+      >
+        <button className="header__nav-menu-button">
           Menu
           <img
             className={`header__nav-menu-icon ${menuOpen ? "open" : ""}`}
@@ -55,7 +62,6 @@ const HeaderNav = ({ onClickSignin, onClickSignup }) => {
           </ul>
         </nav>
       </div>
-      {/* <HeaderProfile /> */}
     </div>
   );
 };

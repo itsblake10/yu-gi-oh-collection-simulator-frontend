@@ -10,26 +10,35 @@
   }
 }
 
-.loadingImg1,
-.loadingImg2,
-.loadingImg3,
-.loadingImg4 {
-  width: 50px;
-  animation: pulsate 4s ease-in-out infinite;
+.loading__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: fit-content;
+  padding: 30px 0 30px 0;
 }
 
-.loadingImg1 {
+.loading__image1,
+.loading__image2,
+.loading__image3,
+.loading__image4 {
+  width: 50px;
+  animation: pulsate 2.5s ease-in-out infinite;
+}
+
+.loading__image1 {
   animation-delay: 0s;
 }
 
-.loadingImg2 {
+.loading__image2 {
   animation-delay: 0.5s;
 }
 
-.loadingImg3 {
+.loading__image3 {
   animation-delay: 1s;
 }
 
-.loadingImg4 {
+.loading__image4 {
   animation-delay: 1.5s;
 }

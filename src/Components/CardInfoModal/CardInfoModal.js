@@ -1,8 +1,15 @@
 import "./CardInfoModal.css";
 import closeIcon from "../../images/close-icon.svg";
-import Armaill from "../../images/temp/Armaill.jpg";
 
-const CardInfoModal = ({ onClose }) => {
+const CardInfoModal = ({
+  onClose,
+  selectedCard,
+  selectedBooster,
+  cardCode,
+  cardRarity,
+}) => {
+  const imagePath = `/images/cards-1/${selectedCard.name}_${selectedBooster.set_code}.jpg`;
+
   return (
     <div className="modal">
       <div className="modal__container">
@@ -16,47 +23,50 @@ const CardInfoModal = ({ onClose }) => {
         <div className="card-info__container">
           <img
             className="card-info__Image"
-            src={Armaill}
-            // alt={item.name}
+            src={imagePath}
+            alt={selectedCard.name}
           />
           <ul className="card-info__list">
             <li className="card-info__list-label">
-              Code:<span className="card-info__list-item">LOB-002</span>
+              Code:<span className="card-info__list-item">{cardCode}</span>
             </li>
             <li className="card-info__list-label">
               Name:
-              <span className="card-info__list-item">
-                Blue eyes White Dragon
-              </span>
+              <span className="card-info__list-item">{selectedCard.name}</span>
             </li>
             <li className="card-info__list-label">
-              Rarity:<span className="card-info__list-item">Ultra Rare</span>
+              Rarity:<span className="card-info__list-item">{cardRarity}</span>
             </li>
             <li className="card-info__list-label">
-              Card Type:<span className="card-info__list-item">Monster</span>
+              Card Type:
+              <span className="card-info__list-item">{selectedCard.type}</span>
             </li>
             <li className="card-info__list-label">
               Types:
               <span className="card-info__list-item">
-                Dragon/Normal Monster
+                {selectedCard.race}/{selectedCard.humanReadableCardType}
               </span>
             </li>
             <li className="card-info__list-label">
-              Attribute:<span className="card-info__list-item">Light</span>
+              Attribute:
+              <span className="card-info__list-item">
+                {selectedCard.attribute}
+              </span>
             </li>
             <li className="card-info__list-label">
-              Level:<span className="card-info__list-item">8</span>
+              Level:
+              <span className="card-info__list-item">{selectedCard.level}</span>
             </li>
             <li className="card-info__list-label">
               ATK / DEF:
-              <span className="card-info__list-item">3000 / 2500</span>
+              <span className="card-info__list-item">
+                {selectedCard.atk} / {selectedCard.def}
+              </span>
             </li>
             <li className="card-info__list-label">
               Description:
               <p className="card-info__list-item_description">
-                dfgdfg dfgdfg dfg dfg df gfgsdf sdfsdfsdfsdfsdfsdf dfgdfg dfg
-                dfg df dfgdfg dfg dfg df gfgsdf sdfsdfsdfsdfsdfsdf dfgdfg dfg
-                dfg df dfg dfg df gfgsdf sdfsdfsdfsdfsdfsdf dfgdfg dfg dfg df
+                {selectedCard.desc}
               </p>
             </li>
           </ul>

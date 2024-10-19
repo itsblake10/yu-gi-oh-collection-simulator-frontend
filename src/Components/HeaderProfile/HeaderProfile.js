@@ -15,7 +15,7 @@ const HeaderProfile = () => {
     <div className="header__profile">
       <p className="header__profile-username">username123xdfdsfsd</p>
       <div className="header__profile-image-container">
-        <img className="header__profile-image" src={Armaill} />
+        <img className="header__profile-image" src={Armaill} alt="profile" />
       </div>
       <div className="header__profile-dropdown">
         <button className="header__profile-menu-button" onClick={toggleMenu}>

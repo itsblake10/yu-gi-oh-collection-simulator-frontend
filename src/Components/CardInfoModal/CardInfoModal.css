@@ -11,35 +11,41 @@
 }
 
 .card-info__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   list-style-type: none;
   padding: 0;
 }
 
 .card-info__list-label {
-  font-weight: bold;
-  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
 }
 
 .card-info__list-item {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   color: #f94040;
+  font-size: 14px;
+  margin: 0 0 0 8px;
   font-weight: normal;
-  margin: 0 0 0 5px;
 }
 
-.card-info__list-label:not(:nth-child(9)) {
+/* .card-info__list-label:not(:nth-child(9)) {
   margin: 0 0 3px 0;
-}
+} */
 
 .card-info__list-item_description {
   background-color: #d9d9d9;
   border: black 1px solid;
   border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
   min-height: 50px;
   max-height: 80px;
   max-width: 260px;
-  margin: 2px 0 0 0;
+  margin: 5px 0 0 0;
   padding: 5px 5px;
   overflow-y: auto;
 }
