@@ -8,17 +8,6 @@ export const checkResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
-export const getBoosterPackCardData = (name) => {
-  return fetch(`${cardsBaseUrl}?cardset=${encodeURIComponent(name)}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  }).then((res) => {
-    return checkResponse(res);
-  });
-};
-
 export const getAllBoosterPacks = () => {
   return fetch(`${cardSetsBaseUrl}`, {
     method: "GET",
@@ -30,8 +19,8 @@ export const getAllBoosterPacks = () => {
   });
 };
 
-export const getAllCards = () => {
-  return fetch(`${cardsBaseUrl}`, {
+export const getBoosterPackCardData = (name) => {
+  return fetch(`${cardsBaseUrl}?cardset=${encodeURIComponent(name)}`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8",

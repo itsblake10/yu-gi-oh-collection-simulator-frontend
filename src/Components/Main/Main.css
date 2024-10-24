@@ -23,7 +23,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px 20px 10px;
+  padding: 0 20px 20px 20px;
   margin: 0 40px 0 40px;
   min-width: max-content;
   border-bottom: 2.5pt white solid;
@@ -81,5 +81,14 @@
 
 .home__grid-view-more-button:hover {
   transform: scale(1.01);
-  /* background-color: rgb(0, 142, 235); */
+}
+
+.home__grid-no-results {
+  margin: 50px auto;
+}
+
+.home__grid-no-results-text {
+  font-size: 24px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  color: white;
 }

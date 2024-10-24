@@ -5,7 +5,7 @@ const CopyrightModal = ({ onClose }) => {
   return (
     <ModalWithText title="Copyright" onClose={onClose}>
       <p className="modal__text-text">
-        TERMS OF USE <br></br>Unless stated otherwise, the terms in this section
+        COPYRIGHT <br></br>Unless stated otherwise, the terms in this section
         apply generally when using our website.    Specific or additional
         conditions may apply in certain situations and are noted in this
         document.   By using our website, you confirm the following: ·        

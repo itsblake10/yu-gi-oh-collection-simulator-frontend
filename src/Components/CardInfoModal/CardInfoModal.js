@@ -1,72 +1,80 @@
 import "./CardInfoModal.css";
-import closeIcon from "../../images/close-icon.svg";
+import defaultCardImage from "../../images/blank-card.svg";
+import { useState } from "react";
 
-const CardInfoModal = ({
-  onClose,
-  selectedCard,
-  selectedBooster,
-  cardCode,
-  cardRarity,
-}) => {
-  const imagePath = `/images/cards-1/${selectedCard.name}_${selectedBooster.set_code}.jpg`;
+const CardInfoModal = ({ onClose, selectedCard, selectedBooster }) => {
+  // const sanitizedCardName = item.name.replace(/[:/\\?%*|"<>]/g, "");
+  const [imgSrc, setImgSrc] = useState(
+    `/images/cards-1/${selectedCard.cardName}_${selectedBooster.boosterPackCode}.jpg`
+  );
 
   return (
     <div className="modal">
       <div className="modal__container">
-        <img
-          className="modal__close-button"
-          src={closeIcon}
-          alt="close Button"
-          onClick={onClose}
-        />
+        <p className="modal__close-button" onClick={onClose}>
+          x
+        </p>
         <p className="modal__title">Card Information</p>
         <div className="card-info__container">
           <img
             className="card-info__Image"
-            src={imagePath}
-            alt={selectedCard.name}
+            src={imgSrc}
+            alt={selectedCard.cardName}
+            onError={() => setImgSrc(defaultCardImage)}
           />
           <ul className="card-info__list">
             <li className="card-info__list-label">
-              Code:<span className="card-info__list-item">{cardCode}</span>
+              Code:
+              <span className="card-info__list-item">
+                {selectedCard.cardCode}
+              </span>
             </li>
             <li className="card-info__list-label">
               Name:
-              <span className="card-info__list-item">{selectedCard.name}</span>
+              <span className="card-info__list-item">
+                {selectedCard.cardName}
+              </span>
             </li>
             <li className="card-info__list-label">
-              Rarity:<span className="card-info__list-item">{cardRarity}</span>
+              Rarity:
+              <span className="card-info__list-item">
+                {selectedCard.cardRarity}
+              </span>
             </li>
             <li className="card-info__list-label">
               Card Type:
-              <span className="card-info__list-item">{selectedCard.type}</span>
+              <span className="card-info__list-item">
+                {selectedCard.cardType}
+              </span>
             </li>
             <li className="card-info__list-label">
               Types:
               <span className="card-info__list-item">
-                {selectedCard.race}/{selectedCard.humanReadableCardType}
+                {selectedCard.cardRace}/{selectedCard.cardTypes}
               </span>
             </li>
             <li className="card-info__list-label">
               Attribute:
               <span className="card-info__list-item">
-                {selectedCard.attribute}
+                {selectedCard.cardAttribute}
               </span>
             </li>
             <li className="card-info__list-label">
               Level:
-              <span className="card-info__list-item">{selectedCard.level}</span>
+              <span className="card-info__list-item">
+                {selectedCard.cardLevel}
+              </span>
             </li>
             <li className="card-info__list-label">
               ATK / DEF:
               <span className="card-info__list-item">
-                {selectedCard.atk} / {selectedCard.def}
+                {selectedCard.cardAtk} / {selectedCard.cardDef}
               </span>
             </li>
             <li className="card-info__list-label">
               Description:
               <p className="card-info__list-item_description">
-                {selectedCard.desc}
+                {selectedCard.cardDescription}
               </p>
             </li>
           </ul>

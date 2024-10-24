@@ -1,18 +1,18 @@
 import "./HeaderNav.css";
-import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
-import { useState } from "react";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+// import menuDropdownIcon from "../../images/menu-dropdown-icon.svg";
+// import { useState } from "react";
+// import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const HeaderNav = ({ onClickSignin, onClickSignup }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  };
+  // const toggleMenu = () => {
+  //   setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+  // };
 
-  const AutoCloseMenu = () => {
-    setMenuOpen(false);
-  };
+  // const AutoCloseMenu = () => {
+  //   setMenuOpen(false);
+  // };
 
   return (
     <div className="header__nav-right">
@@ -25,7 +25,7 @@ const HeaderNav = ({ onClickSignin, onClickSignup }) => {
           Sign Up
         </button>
       </div>
-      <div
+      {/* <div
         className="header__nav-dropdown"
         onMouseEnter={toggleMenu}
         onMouseLeave={AutoCloseMenu}
@@ -53,15 +53,15 @@ const HeaderNav = ({ onClickSignin, onClickSignup }) => {
             <li className="header__nav-list-item">
               <NavLink
                 className="header__nav-list-link"
-                to="/all-cards"
+                to="/my-cards"
                 activeClassName="active"
               >
-                All Cards
+                My Cards
               </NavLink>
             </li>
           </ul>
         </nav>
-      </div>
+      </div> */}
     </div>
   );
 };

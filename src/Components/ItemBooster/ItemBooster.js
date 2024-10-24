@@ -1,16 +1,13 @@
 import "./ItemBooster.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { boosterPackData } from "../../utils/BoosterPacks";
 import defaultBooster from "../../images/default-booster.jpg";
 
 const ItemBooster = ({ item, onClickBoosterPack }) => {
-  const sanitizedSetName = item.set_name.replace(/[:/\\?%*|"<>]/g, "");
+  const sanitizedSetName = item.boosterPackName.replace(/[:/\\?%*|"<>]/g, "");
   const [imgSrc, setImgSrc] = useState(
     `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
-
-  const packSize = boosterPackData[item.set_code]?.packSize || "???";
 
   const isDefaultBooster = imgSrc === defaultBooster;
 
@@ -20,11 +17,14 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
     <>
       <li className="home__grid-item">
         <p className={`item__name ${!shouldScroll ? "non-scrolling" : ""}`}>
-          <span>{item.set_name}</span>
+          <span>{item.boosterPackName}</span>
         </p>
-        <p className="item__code">({item.set_code})</p>
-        <p className="item__release">{item.tcg_date}</p>
-        <NavLink className="item__link" to={`/booster-page/${item.set_name}`}>
+        <p className="item__code">({item.boosterPackCode})</p>
+        <p className="item__release">{item.boosterPackReleaseDate}</p>
+        <NavLink
+          className="item__link"
+          to={`/booster-page/${item.boosterPackName}`}
+        >
           <button
             className="item__open-button"
             type="button"
@@ -34,14 +34,14 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
             <img
               className="item__image"
               src={imgSrc}
-              alt={item.set_name}
+              alt={item.boosterPackName}
               onError={() => setImgSrc(defaultBooster)}
               loading="lazy"
             />
             <p className="item__image-text">OPEN</p>
           </button>
         </NavLink>
-        <p className="item__pack-size">{packSize} Cards</p>
+        <p className="item__pack-size">{item.boosterPackSize} Cards</p>
       </li>
     </>
   );

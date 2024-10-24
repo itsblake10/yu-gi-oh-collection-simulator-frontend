@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import BoosterPage from "../BoosterPage/BoosterPage";
 import ProfileAccount from "../ProfileAccount/ProfileAccount";
-import AllCards from "../AllCards/AllCards";
+import MyCards from "../MyCards/MyCards";
 import SearchResults from "../SearchResults/SearchResults";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
@@ -17,17 +17,16 @@ import ChangeUsernameModal from "../ChangeUsernameModal/ChangeUsernameModal";
 import ChangeAvatarModal from "../ChangeAvatarModal/ChangeAvatarModal";
 import ChangeEmailModal from "../ChangeEmailModal/ChangeEmailModal";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
+import { boosterPackData } from "../../utils/BoosterPacks";
 import { IsLoadingContext } from "../contexts/IsLoadingContext";
 import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 import { getBoosterPackCardData } from "../../utils/ygoProDeckApi";
-import { getAllCards } from "../../utils/ygoProDeckApi";
 import { IsLoggedInContext } from "../contexts/isLoggedInContext";
 // import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [boosterPacks, setBoosterPacks] = useState([]);
-  const [allCards, setAllCards] = useState([]);
   const [selectedBooster, setSelectedBooster] = useState({});
   const [selectedBoosterCardList, setSelectedBoosterCardList] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
@@ -60,40 +59,67 @@ function App() {
     };
   }, [activeModal]);
 
+  // GET ALL BOOSTER PACKS
   useEffect(() => {
     setIsLoading(true);
     getAllBoosterPacks()
       .then((data) => {
-        setBoosterPacks(data);
-        setIsLoading(false);
+        const formattedData = data.map((booster) => ({
+          boosterPackCode: booster.set_code,
+          boosterPackName: booster.set_name,
+          boosterPackSize: boosterPackData[booster.set_code]?.packSize || "???",
+          boosterPackReleaseDate: booster.tcg_date,
+          boosterPackTotalCards: booster.num_of_cards,
+          imageUrl: `/images/booster-packs-1/${booster.set_name.replace(
+            /[:/\\?%*|"<>]/g,
+            ""
+          )}.jpg`,
+        }));
+
+        setBoosterPacks(formattedData);
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      .catch((error) => console.error("Error fetching booster packs", error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-    getAllCards()
-      .then(({ data }) => {
-        setAllCards(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  // CHANGE??
-  useEffect(() => {
-    if (!selectedBooster || !selectedBooster.set_name) {
+    if (!selectedBooster || !selectedBooster.boosterPackName) {
       console.error("Selected booster is undefined or invalid.");
       return;
     }
     setIsLoading(true);
-    getBoosterPackCardData(selectedBooster.set_name)
+
+    // GET BOOSTER PACK CARDLIST
+    getBoosterPackCardData(selectedBooster.boosterPackName)
       .then(({ data }) => {
-        setSelectedBoosterCardList(data);
+        const formattedData = data.map((card) => {
+          const cardSet = card.card_sets.find(
+            (set) => set.set_name === selectedBooster.boosterPackName
+          );
+
+          return {
+            cardCode: cardSet ? cardSet.set_code : "",
+            cardRarity: cardSet ? cardSet.set_rarity : "",
+            cardRarityCode: cardSet ? cardSet.set_rarity_code : "",
+            cardName: card.name,
+            cardType: card.type,
+            cardRace: card.race,
+            cardArchetype: card.archetype,
+            cardTypes: card.humanReadableCardType,
+            cardAttribute: card.attribute,
+            cardLevel: card.level,
+            cardAtk: card.atk,
+            cardDef: card.def,
+            cardDescription: card.desc,
+            cardSets: card.card_sets,
+            imageUrl: `/images/cards-1/${card.name.replace(
+              /[:/\\?%*|"<>]/g,
+              ""
+            )}.jpg`,
+          };
+        });
+
+        setSelectedBoosterCardList(formattedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -193,13 +219,9 @@ function App() {
               )}
             />
             <Route
-              path="/all-cards"
+              path="/my-cards"
               render={(props) => (
-                <AllCards
-                  {...props}
-                  onClickCard={handleClickCardInfo}
-                  allCards={allCards}
-                />
+                <MyCards {...props} onClickCard={handleClickCardInfo} />
               )}
             />
             <Route

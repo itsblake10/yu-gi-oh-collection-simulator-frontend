@@ -7,9 +7,6 @@
   font-size: 16px;
   max-width: 220px;
   box-sizing: border-box;
-  position: absolute;
-  top: 70px;
-  right: 160px;
   color: white;
   border-bottom: 3px #f94040 solid;
   border-radius: 15px;
@@ -18,6 +15,36 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   z-index: 0;
+}
+
+.header__profile-username-container {
+  position: absolute;
+  top: 70px;
+  right: 160px;
+}
+
+.header__profile-username_tooltip {
+  visibility: hidden;
+  width: fit-content;
+  /* background-color: rgba(3, 0, 79, 0.5); */
+  color: #fff;
+  font-family: "arimo", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  padding: 3px;
+  /* border: #f94040 1pt solid; */
+  position: absolute;
+  bottom: 25px;
+  left: 90px;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.header__profile-username-container:hover .header__profile-username_tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .header__profile-image-container {

@@ -11,7 +11,7 @@ const ChangeEmailModal = ({ onClose, buttonText }) => {
     >
       <div className="modal__existing-email-container">
         <p className="modal__text">Existing Email:</p>
-        <p className="modal__existing-email">example@gmail.com</p>
+        <p className="modal__existing-email">exampleEmailsdas@gmail.com</p>
       </div>
       <fieldset className="modal__inputs">
         <label className="modal__label">

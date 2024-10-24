@@ -11,9 +11,17 @@ const HeaderProfile = () => {
     setMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
 
+  const username = "usernaNAMdfsdf34dsdfsdFF";
+  const isLongUsername = username.length > 17;
+
   return (
     <div className="header__profile">
-      <p className="header__profile-username">username123xdfdsfsd</p>
+      <div className="header__profile-username-container">
+        <p className="header__profile-username">{username}</p>
+        {isLongUsername && (
+          <span className="header__profile-username_tooltip">{username}</span>
+        )}
+      </div>
       <div className="header__profile-image-container">
         <img className="header__profile-image" src={Armaill} alt="profile" />
       </div>

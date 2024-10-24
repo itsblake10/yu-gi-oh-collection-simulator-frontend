@@ -3,13 +3,14 @@
   flex-direction: column;
   /* justify-items: center; */
   border: none;
-  min-width: 200px;
+  min-width: 300px;
 }
 
 .modal__label {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
 }
 
 .modal__input {

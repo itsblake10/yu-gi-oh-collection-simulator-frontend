@@ -9,6 +9,9 @@ const ProfileAccount = ({
   onClickChangePassword,
   onClickCardInfo,
 }) => {
+  const username = "usernaNAMdfsdf34dsdfsdFF";
+  const isLongUsername = username.length > 17;
+
   return (
     <main className="profile-account__page">
       <h1 className="profile-account__title">Profile/Account</h1>
@@ -17,11 +20,20 @@ const ProfileAccount = ({
           <div className="profile-account__settings">
             <div className="profile-account__user-profile">
               <div className="profile-account__user-image-container">
-                <img className="profile-account__user-image" src={Armaill} />
+                <img
+                  className="profile-account__user-image"
+                  src={Armaill}
+                  alt="user profile"
+                />
               </div>
-              <p className="profile-account__username">
-                username123xdfdsfsdfsdfsdf
-              </p>
+              <div className="profile-account__username-container">
+                <p className="profile-account__username">{username}</p>
+                {isLongUsername && (
+                  <span className="profile-account__username_tooltip">
+                    {username}
+                  </span>
+                )}
+              </div>
             </div>
             <div className="profile-account__buttons">
               <button

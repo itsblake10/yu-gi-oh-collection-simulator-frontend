@@ -12,21 +12,28 @@
 
 .booster__page {
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 .booster__page-background {
   background-color: rgba(3, 0, 79, 0.5);
   position: relative;
-  padding: 50px 0 40px 0;
+  padding: 50px 0 50px 0;
   border-top: 1px solid rgb(0, 162, 255);
   border-bottom: 1px solid rgb(0, 162, 255);
+}
+
+.booster__page-container {
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 0 40px 0 40px;
 }
 
 .booster__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 0 40px 0;
+  margin: 0 auto 40px auto;
   z-index: 2;
 }
 
@@ -58,6 +65,7 @@
 
 .booster__card-back {
   max-width: 135px;
+  opacity: 50%;
 }
 
 .booster__blank-card {
@@ -77,13 +85,13 @@
 
 /* -------------------------------- PREV CARDS -------------------------------- */
 .booster__prev-container {
-  max-width: 1100px;
+  max-width: 1500px;
   min-height: max-content;
   background-color: white;
   border: 5px solid rgb(0, 162, 255);
   border-radius: 15px;
   background: transparent;
-  margin: 0 auto 40px;
+  margin: 0 0 40px 0;
   z-index: 2;
 }
 
@@ -108,13 +116,12 @@
 }
 /* -------------------------------- CARDLIST -------------------------------- */
 .booster__cardlist-container {
-  max-width: 1100px;
-  min-height: max-content;
+  max-width: 1500px;
+  min-height: fit-content;
   background-color: white;
   border: 5px solid rgb(0, 162, 255);
   border-radius: 15px;
   background: transparent;
-  margin: 0 auto;
   padding: 0 0 5px 0;
   z-index: 2;
 }
@@ -126,16 +133,32 @@
   max-width: fit-content;
 }
 
+.booster__cardlist-search-bar {
+  margin: 0 0 0 25px;
+}
+
 .booster__cardlist {
   list-style-type: none;
-  padding: 10px 15px 10px 0;
+  padding: 20px 15px 10px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px);
   grid-template-rows: auto;
   gap: 10px;
-  max-height: 300px;
+  max-height: fit-content;
   overflow: scroll;
   justify-content: center;
+}
+
+.booster__cardlist-no-results {
+  margin: 50px 0 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.booster__cardlist-no-results-text {
+  font-size: 24px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  color: white;
 }
 
 /* ------------------------------------ x ----------------------------------- */

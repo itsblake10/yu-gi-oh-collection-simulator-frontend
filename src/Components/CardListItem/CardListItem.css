@@ -102,6 +102,7 @@
 }
 
 .cardlist__item-image-text {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   font-size: 12px;
   position: absolute;
   min-width: 75px;

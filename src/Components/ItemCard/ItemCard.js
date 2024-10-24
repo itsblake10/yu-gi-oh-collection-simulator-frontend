@@ -3,27 +3,13 @@ import defaultCardImage from "../../images/blank-card.svg";
 import { useState } from "react";
 
 const ItemCard = ({ item, onClickCardInfo }) => {
-  const sanitizedCardName = item.name.replace(/[:/\\?%*|"<>]/g, "");
+  const sanitizedCardName = item.cardName.replace(/[:/\\?%*|"<>]/g, "");
   const [imgSrc, setImgSrc] = useState();
   // `/images/cards-1/${sanitizedCardName}_${selectedBooster.set_code}.jpg`
 
-  // let cardCode = "";
-  // let cardRarity = "";
-
-  // const cardSet = item.card_sets.find(
-  //   (set) => set.set_name === selectedBooster.set_name
-  // );
-
-  // if (cardSet) {
-  //   cardCode = cardSet.set_code;
-  //   cardRarity = cardSet.set_rarity;
-  // } else {
-  //   console.error("Card set not found for", selectedBooster.set_name);
-  // }
-
   return (
     <li className="item__card">
-      <p className="item__card-name">{item.name}</p>
+      <p className="item__card-name">{item.cardName}</p>
       <p className="item__card-code">{item.code}lob-123</p>
       <button
         className="item__card-open-button"
@@ -32,7 +18,7 @@ const ItemCard = ({ item, onClickCardInfo }) => {
       >
         <img
           className="item__card-image"
-          alt={item.name}
+          alt={item.cardName}
           src={defaultCardImage}
           onError={() => setImgSrc(defaultCardImage)}
         />

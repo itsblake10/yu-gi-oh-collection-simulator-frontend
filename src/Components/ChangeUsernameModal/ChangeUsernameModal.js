@@ -9,6 +9,10 @@ const ChangeUsernameModal = ({ onClose, buttonText }) => {
       buttonText={buttonText}
       onClose={onClose}
     >
+      <div className="modal__current-username-container">
+        <p className="modal__text">Current Username:</p>
+        <p className="modal__current-username">usernadsfasdsd</p>
+      </div>
       <fieldset className="modal__inputs">
         <label className="modal__label">
           New Username:

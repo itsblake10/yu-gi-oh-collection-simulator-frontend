@@ -1,1 +1,21 @@
 /* ------------------------ STYLES IN SignupModal.css ----------------------- */
+
+.modal__current-username-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+.modal__current-username {
+  font-family: "arimo", "Helvetica Neue", sans-serif;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal__text {
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  margin: 0 5px 0 0;
+}
