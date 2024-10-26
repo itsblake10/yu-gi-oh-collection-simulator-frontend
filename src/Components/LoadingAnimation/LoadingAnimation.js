@@ -1,5 +1,5 @@
 import "./LoadingAnimation.css";
-import yugiohCardBack from "../../images/yu-gi-oh-card-back.png";
+import yugiohCardBack from "../../images/yu-gi-oh-card-back.jpg";
 
 const loadingAnimation = () => {
   return (

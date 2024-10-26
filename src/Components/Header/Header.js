@@ -1,6 +1,5 @@
 import "./Header.css";
 import yugiohLogo from "../../images/yu-gi-oh-booster-sim-logo.png";
-import SearchBar from "../SearchBar/SearchBar";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import { NavLink } from "react-router-dom";
 import React from "react";
@@ -14,9 +13,6 @@ const Header = ({ onClickSignin, onClickSignup }) => {
     <header className="header">
       <div className="header__container">
         <div className="header__nav">
-          <div className="header__search-bar">
-            <SearchBar searchBarPlaceHolder={"Search..."} />
-          </div>
           {!isLoggedIn ? (
             <HeaderNav
               onClickSignin={onClickSignin}

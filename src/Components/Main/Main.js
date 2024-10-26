@@ -1,5 +1,5 @@
 import "./Main.css";
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import ItemBooster from "../ItemBooster/ItemBooster";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
@@ -8,9 +8,15 @@ import { IsLoadingContext } from "../contexts/IsLoadingContext";
 const Main = ({ boosterPacks, onClickBoosterPack }) => {
   const { isLoading } = React.useContext(IsLoadingContext);
 
-  const [sortOrder, setSortOrder] = useState("newest");
+  const [sortOrder, setSortOrder] = useState(
+    localStorage.getItem("sortOrder") || "newest"
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleBoosterPacks, setVisibleBoosterPacks] = useState(30);
+
+  useEffect(() => {
+    localStorage.setItem("sortOrder", sortOrder);
+  }, [sortOrder]);
 
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
@@ -20,55 +26,34 @@ const Main = ({ boosterPacks, onClickBoosterPack }) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredBoosterPacks = [...boosterPacks]
-    .filter((item) => {
-      const setName = item.boosterPackName.toLowerCase();
-      const query = searchQuery.toLowerCase();
+  const filteredBoosterPacks = useMemo(() => {
+    return [...boosterPacks]
+      .filter((item) => {
+        const setName = item.boosterPackName.toLowerCase();
+        const query = searchQuery.toLowerCase();
 
-      return (
-        !setName.includes("starter deck") &&
-        !setName.includes("structure deck") &&
-        item.boosterPackTotalCards >= 10 &&
-        setName.includes(query)
-      );
-    })
-    .sort((a, b) => {
-      if (sortOrder === "newest") {
         return (
-          new Date(b.boosterPackReleaseDate) -
-          new Date(a.boosterPackReleaseDate)
+          !setName.includes("starter deck") &&
+          !setName.includes("structure deck") &&
+          !setName.includes("promotion") &&
+          item.boosterPackTotalCards >= 10 &&
+          setName.includes(query)
         );
-      } else {
-        return (
-          new Date(a.boosterPackReleaseDate) -
-          new Date(b.boosterPackReleaseDate)
-        );
-      }
-    });
-
-  // const sortedBoosterPacks = [...boosterPacks]
-  //   .filter((item) => {
-  //     const setName = item.boosterPackName.toLowerCase();
-  //     return (
-  //       !setName.includes("starter deck") && !setName.includes("structure deck")
-  //     );
-  //   })
-  //   .filter((item) => {
-  //     return item.boosterPackTotalCards >= 10;
-  //   })
-  //   .sort((a, b) => {
-  //     if (sortOrder === "newest") {
-  //       return (
-  //         new Date(b.boosterPackReleaseDate) -
-  //         new Date(a.boosterPackReleaseDate)
-  //       );
-  //     } else {
-  //       return (
-  //         new Date(a.boosterPackReleaseDate) -
-  //         new Date(b.boosterPackReleaseDate)
-  //       );
-  //     }
-  //   });
+      })
+      .sort((a, b) => {
+        if (sortOrder === "newest") {
+          return (
+            new Date(b.boosterPackReleaseDate) -
+            new Date(a.boosterPackReleaseDate)
+          );
+        } else {
+          return (
+            new Date(a.boosterPackReleaseDate) -
+            new Date(b.boosterPackReleaseDate)
+          );
+        }
+      });
+  }, [boosterPacks, searchQuery, sortOrder]);
 
   const handleViewMore = () => {
     setVisibleBoosterPacks((prevVisiblePacks) => prevVisiblePacks + 30);

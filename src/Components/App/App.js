@@ -4,7 +4,6 @@ import Main from "../Main/Main";
 import BoosterPage from "../BoosterPage/BoosterPage";
 import ProfileAccount from "../ProfileAccount/ProfileAccount";
 import MyCards from "../MyCards/MyCards";
-import SearchResults from "../SearchResults/SearchResults";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
@@ -27,13 +26,17 @@ import { IsLoggedInContext } from "../contexts/isLoggedInContext";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [boosterPacks, setBoosterPacks] = useState([]);
-  const [selectedBooster, setSelectedBooster] = useState({});
+  const [selectedBooster, setSelectedBooster] = useState(
+    JSON.parse(localStorage.getItem("selectedBooster")) || {}
+  );
   const [selectedBoosterCardList, setSelectedBoosterCardList] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
-  const [cardRarity, setCardRarity] = useState("");
-  const [cardCode, setCardCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("selectedBooster", JSON.stringify(selectedBooster));
+  }, [selectedBooster]);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -131,6 +134,11 @@ function App() {
     setSelectedBooster(item);
   };
 
+  const handleClickCardInfo = (item) => {
+    setActiveModal("card-info");
+    setSelectedCard(item);
+  };
+
   const handleClickSignin = () => {
     setActiveModal("sign-in");
   };
@@ -145,13 +153,6 @@ function App() {
 
   const handleClickCopyright = () => {
     setActiveModal("copyright");
-  };
-
-  const handleClickCardInfo = (item, code, rarity) => {
-    setActiveModal("card-info");
-    setSelectedCard(item);
-    setCardRarity(rarity);
-    setCardCode(code);
   };
 
   const handleClickChangeUsername = () => {
@@ -202,6 +203,7 @@ function App() {
                   onClickCard={handleClickCardInfo}
                   selectedBooster={selectedBooster}
                   selectedBoosterCardList={selectedBoosterCardList}
+                  // onOpenBoosterPack={handleOpenBoosterPack}
                 />
               )}
             />
@@ -224,12 +226,6 @@ function App() {
                 <MyCards {...props} onClickCard={handleClickCardInfo} />
               )}
             />
-            <Route
-              path="/search-results"
-              render={(props) => (
-                <SearchResults {...props} onClickCard={handleClickCardInfo} />
-              )}
-            />
           </Switch>
           <Footer
             onClickTOS={handleClickTOS}
@@ -250,8 +246,6 @@ function App() {
               onClose={handleModalClose}
               selectedCard={selectedCard}
               selectedBooster={selectedBooster}
-              cardCode={cardCode}
-              cardRarity={cardRarity}
             />
           )}
           {activeModal === "change-username" && (

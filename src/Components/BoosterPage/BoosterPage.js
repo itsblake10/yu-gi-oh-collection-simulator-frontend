@@ -2,7 +2,8 @@ import "./BoosterPage.css";
 import React from "react";
 import { useState } from "react";
 import BoosterPackStats from "../BoosterPackStats/BoosterPackStats";
-import yugiohCardBack from "../../images/yu-gi-oh-card-back.png";
+import yugiohCardBack from "../../images/yu-gi-oh-card-back.jpg";
+import yugiohCardBackStack from "../../images/yu-gi-oh-card-back-stack.jpg";
 import blankCard from "../../images/blank-card.svg";
 import CardListItem from "../CardListItem/CardListItem";
 import SearchBar from "../SearchBar/SearchBar";
@@ -23,18 +24,60 @@ const BoosterPage = ({
   const [imgSrc, setImgSrc] = useState(
     `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
+  const [cardImage, setCardImage] = useState(yugiohCardBack);
+  const [cardClass, setCardClass] = useState("");
+  const [sortOrder, setSortOrder] = useState("alphabetical");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSortChange = (event) => {
+    setSortOrder(event.target.value);
+  };
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredCards = [...selectedBoosterCardList].filter((item) => {
-    const cardName = item.cardName.toLowerCase();
-    const query = searchQuery.toLowerCase();
+  const handleOpenBoosterPack = () => {
+    setCardImage(yugiohCardBackStack);
+    setCardClass("booster__card-back_visible");
+  };
 
-    return cardName.includes(query);
-  });
+  const filteredCards = [...selectedBoosterCardList]
+    .filter((item) => {
+      const cardName = item.cardName.toLowerCase();
+      const query = searchQuery.toLowerCase();
+
+      return cardName.includes(query);
+    })
+    .sort((a, b) => {
+      switch (sortOrder) {
+        case "alphabetical":
+          return a.cardName.localeCompare(b.cardName);
+
+        case "rarity":
+          const rarityOrder = [
+            "common",
+            "short print",
+            "super short print",
+            "rare",
+            "super rare",
+            "secret rare",
+            "ultra rare",
+          ];
+          return (
+            rarityOrder.indexOf(a.cardRarity.toLowerCase()) -
+            rarityOrder.indexOf(b.cardRarity.toLowerCase())
+          );
+
+        case "card code":
+          const aCode = parseInt(a.cardCode.split("-")[1], 10);
+          const bCode = parseInt(b.cardCode.split("-")[1], 10);
+          return aCode - bCode;
+
+        default:
+          return 0;
+      }
+    });
 
   return (
     <main className="booster__page">
@@ -47,7 +90,10 @@ const BoosterPage = ({
               packSize={selectedBooster.boosterPackSize}
             />
             <div className="booster__pack-opener">
-              <button className="booster__pack-open-button">
+              <button
+                className="booster__pack-open-button"
+                onClick={handleOpenBoosterPack}
+              >
                 <img
                   className="booster__pack"
                   src={imgSrc}
@@ -57,9 +103,9 @@ const BoosterPage = ({
               </button>
               <button className="booster__pack-card-button">
                 <img
-                  className="booster__card-back"
-                  src={yugiohCardBack}
-                  alt={"yu-gi-oh card back"}
+                  className={`booster__card-back ${cardClass}`}
+                  src={cardImage}
+                  alt={"yu-gi-oh card"}
                 />
               </button>
               <button className="booster__card-button">
@@ -91,12 +137,30 @@ const BoosterPage = ({
 
           <div className="booster__cardlist-container">
             <h3 className="booster__cardlist-title">Card List</h3>
-            <div className="booster__cardlist-search-bar">
+            <div className="booster__cardlist-options">
               <SearchBar
                 searchBarPlaceHolder={"Search Cards..."}
                 onSearchInputChange={handleSearchInputChange}
                 searchQuery={searchQuery}
               />
+              <select
+                className="booster__cardlist-filter"
+                value={sortOrder}
+                onChange={handleSortChange}
+              >
+                <option
+                  className="booster__cardlist-option"
+                  value="alphabetical"
+                >
+                  Alphabetical
+                </option>
+                <option className="booster__cardlist-option" value="card code">
+                  Card Code
+                </option>
+                <option className="booster__cardlist-option" value="rarity">
+                  Rarity
+                </option>
+              </select>
             </div>
 
             {isLoading ? (

@@ -68,6 +68,10 @@
   opacity: 50%;
 }
 
+.booster__card-back_visible {
+  opacity: 100%;
+}
+
 .booster__blank-card {
   max-width: 135px;
   opacity: 50%;
@@ -133,13 +137,38 @@
   max-width: fit-content;
 }
 
-.booster__cardlist-search-bar {
-  margin: 0 0 0 25px;
+.booster__cardlist-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px;
+  margin: 0 40px 0 40px;
+  min-width: max-content;
+  border-bottom: 2.5pt white solid;
+  border-radius: 10px;
+}
+
+.booster__cardlist-option {
+  background-color: white;
+  color: black;
+}
+
+.booster__cardlist-filter {
+  padding: 0 0 0 5px;
+  min-width: 160px;
+  min-height: 30px;
+  border-radius: 5px;
+  border: 1pt solid white;
+  font-size: 16px;
+  font-family: "arimo", "Helvetica Neue", sans-serif;
+  background-color: transparent;
+  color: white;
 }
 
 .booster__cardlist {
   list-style-type: none;
-  padding: 20px 15px 10px 0;
+  padding: 20px 10px 10px 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 100px);
   grid-template-rows: auto;

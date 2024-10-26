@@ -24,7 +24,7 @@
 .header__nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 0 0 10px 0;
 }
 
