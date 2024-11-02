@@ -1,6 +1,6 @@
 import "./BoosterPackStats.css";
 
-const BoosterPackStats = ({ selectedBoosterPack, packSize }) => {
+const BoosterPackStats = ({ selectedBoosterPack, packSize, totalCards }) => {
   return (
     <div className="booster__breakdown-container">
       <h2 className="booster__breakdown-title">Pack Breakdown</h2>
@@ -12,9 +12,7 @@ const BoosterPackStats = ({ selectedBoosterPack, packSize }) => {
       </h3>
       <div className="booster__breakdown-list">
         <ul className="booster__breakdown-list_total">
-          <p className="booster__list-container-title">
-            Total: {selectedBoosterPack.num_of_cards}
-          </p>
+          <p className="booster__list-container-title">Total: {totalCards}</p>
           <li className="booster__breakdown-list-item">
             Common:
             <p
@@ -70,31 +68,31 @@ const BoosterPackStats = ({ selectedBoosterPack, packSize }) => {
           <li className="booster__breakdown-list-item">
             Common:
             <p className="booster__breakdown-list-qauntity booster__breakdown-list-qauntity_color">
-              N/A
+              ---
             </p>
           </li>
           <li className="booster__breakdown-list-item">
             Rare:
             <p className="booster__breakdown-list-qauntity booster__breakdown-list-qauntity_color">
-              N/A
+              ---
             </p>
           </li>
           <li className="booster__breakdown-list-item">
             Super Rare:
             <p className="booster__breakdown-list-qauntity booster__breakdown-list-qauntity_color">
-              N/A
+              ---
             </p>
           </li>
           <li className="booster__breakdown-list-item">
             Ultra Rare:
             <p className="booster__breakdown-list-qauntity booster__breakdown-list-qauntity_color">
-              N/A
+              ---
             </p>
           </li>
           <li className="booster__breakdown-list-item">
             Secret Rare:
             <p className="booster__breakdown-list-qauntity booster__breakdown-list-qauntity_color">
-              N/A
+              ---
             </p>
           </li>
         </ul>

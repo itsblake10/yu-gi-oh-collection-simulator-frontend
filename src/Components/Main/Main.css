@@ -5,6 +5,37 @@
   padding: 0 40px;
 }
 
+.home__page-to-top-button {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: none;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.home__page-to-top-button-image {
+  padding: 5px 0 5px 5px;
+  width: 50px;
+}
+
+.home__page-to-bottom-button {
+  position: fixed;
+  top: 155px;
+  right: 20px;
+  transform: rotate(180deg);
+  background: none;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.home__page-to-bottom-button-image {
+  padding: 5px 5px 5px 0;
+  width: 50px;
+}
+
 .home__container {
   display: flex;
   flex-direction: column;

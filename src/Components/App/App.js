@@ -130,6 +130,20 @@ function App() {
       .finally(() => setIsLoading(false));
   }, [selectedBooster]);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 80,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+
   const handleSelectBooster = (item) => {
     setSelectedBooster(item);
   };
@@ -192,6 +206,8 @@ function App() {
                   {...props}
                   boosterPacks={boosterPacks}
                   onClickBoosterPack={handleSelectBooster}
+                  onScrollToTop={scrollToTop}
+                  onScrollToBottom={scrollToBottom}
                 />
               )}
             />

@@ -9,15 +9,15 @@
   z-index: 1;
 }
 
+/* ------------------------- UPDATE in ModalWithText ------------------------ */
 .modal__close-button {
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
-  font-size: 60px;
+  font-size: 45px;
   color: #f94040;
   position: absolute;
-  top: 40px;
-  right: 10px;
+  top: -10px;
+  right: 6px;
   cursor: pointer;
-  line-height: 1;
 }
 
 .modal__close-button:hover {
@@ -25,7 +25,9 @@
   transition: 1s ease-in-out;
 }
 
+/* ------------------------- UPDATE in ModalWithText ------------------------ */
 .modal__container {
+  max-width: 40%;
   background: white
     url("/src/images/Backgrounds/yugioh-booster-sim\(grid-item\ background\).svg")
     no-repeat center;

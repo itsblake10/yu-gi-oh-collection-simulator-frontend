@@ -88,6 +88,7 @@ const BoosterPage = ({
             <BoosterPackStats
               selectedBoosterPack={selectedBooster}
               packSize={selectedBooster.boosterPackSize}
+              totalCards={filteredCards.length}
             />
             <div className="booster__pack-opener">
               <button

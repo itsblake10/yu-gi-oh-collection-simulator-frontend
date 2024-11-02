@@ -1,10 +1,30 @@
 import "./ItemBooster.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import defaultBooster from "../../images/default-booster.jpg";
 
 const ItemBooster = ({ item, onClickBoosterPack }) => {
   const sanitizedSetName = item.boosterPackName.replace(/[:/\\?%*|"<>]/g, "");
+
+  const multipleArtBoosterPackImages = useMemo(() => {
+    if (sanitizedSetName === "Ghosts From the Past The 2nd Haunting") {
+      return [
+        `/images/booster-packs-1/${sanitizedSetName}1.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}2.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}3.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}4.jpg`,
+      ];
+    } else {
+      return [
+        `/images/booster-packs-1/${sanitizedSetName}1.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}2.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}3.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}4.jpg`,
+        `/images/booster-packs-1/${sanitizedSetName}5.jpg`,
+      ];
+    }
+  }, [sanitizedSetName]);
+
   const [imgSrc, setImgSrc] = useState(
     `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
@@ -12,6 +32,22 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
   const isDefaultBooster = imgSrc === defaultBooster;
 
   const shouldScroll = sanitizedSetName.length > 25;
+
+  useEffect(() => {
+    if (
+      sanitizedSetName === "Battles of Legend Monstrous Revenge" ||
+      sanitizedSetName === "Battles of Legend Crystal Revenge" ||
+      sanitizedSetName === "Ghosts From the Past The 2nd Haunting"
+    ) {
+      let index = 0;
+      const intervalId = setInterval(() => {
+        index = (index + 1) % multipleArtBoosterPackImages.length;
+        setImgSrc(multipleArtBoosterPackImages[index]);
+      }, 15000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [sanitizedSetName, multipleArtBoosterPackImages]);
 
   return (
     <>
@@ -26,7 +62,9 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
           to={`/booster-page/${item.boosterPackName}`}
         >
           <button
-            className="item__open-button"
+            className={`item__open-button ${
+              isDefaultBooster ? "disabled" : ""
+            }`}
             type="button"
             onClick={() => onClickBoosterPack(item)}
             disabled={isDefaultBooster}

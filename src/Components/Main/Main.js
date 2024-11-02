@@ -4,8 +4,14 @@ import ItemBooster from "../ItemBooster/ItemBooster";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { IsLoadingContext } from "../contexts/IsLoadingContext";
+import backToTopButton from "../../images/back-to-top-button.svg";
 
-const Main = ({ boosterPacks, onClickBoosterPack }) => {
+const Main = ({
+  boosterPacks,
+  onClickBoosterPack,
+  onScrollToTop,
+  onScrollToBottom,
+}) => {
   const { isLoading } = React.useContext(IsLoadingContext);
 
   const [sortOrder, setSortOrder] = useState(
@@ -36,6 +42,15 @@ const Main = ({ boosterPacks, onClickBoosterPack }) => {
           !setName.includes("starter deck") &&
           !setName.includes("structure deck") &&
           !setName.includes("promotion") &&
+          !setName.includes("starter set") &&
+          !setName.includes("25th anniversary tin: dueling mirrors") &&
+          !setName.includes("25th anniversary ultimate kaiba set") &&
+          !setName.includes("25th anniversary tin: dueling heroes") &&
+          !setName.includes("speed duel: streets of battle city") &&
+          !setName.includes("the pot collection") &&
+          !setName.includes("(por)") &&
+          !setName.includes("speed duel gx: duelists of shadows") &&
+          !setName.includes("speed duel gx: midterm paradox") &&
           item.boosterPackTotalCards >= 10 &&
           setName.includes(query)
         );
@@ -69,6 +84,23 @@ const Main = ({ boosterPacks, onClickBoosterPack }) => {
 
   return (
     <main className="home__page">
+      <button className="home__page-to-top-button" onClick={onScrollToTop}>
+        <img
+          className="home__page-to-top-button-image"
+          src={backToTopButton}
+          alt="scroll to top"
+        />
+      </button>
+      <button
+        className="home__page-to-bottom-button"
+        onClick={onScrollToBottom}
+      >
+        <img
+          className="home__page-to-bottom-button-image"
+          src={backToTopButton}
+          alt="scroll to bottom"
+        />
+      </button>
       <h1 className="home__title">Booster Packs</h1>
       <div className="home__container">
         <div className="home__grid-options">
