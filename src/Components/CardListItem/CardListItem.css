@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes holographic-shimmer {
+  0% {
+    background-position: -200% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
 .cardlist__item {
   width: 105px;
   height: 160px;
@@ -64,6 +73,160 @@
   max-width: 90px;
   position: relative;
   text-overflow: ellipsis;
+}
+
+.cardlist__item-rarity_common {
+  color: #808080;
+}
+
+.cardlist__item-rarity_short-print {
+  color: #3d3d3d;
+}
+
+.cardlist__item-rarity_super-short-print {
+  color: #3d3d3d;
+}
+
+.cardlist__item-rarity_rare {
+  color: #1f4edb;
+}
+
+.cardlist__item-rarity_super-rare {
+  color: #ffa500;
+}
+
+.cardlist__item-rarity_ultra-rare {
+  color: #bc59de;
+}
+
+.cardlist__item-rarity_secret-rare {
+  background: linear-gradient(360deg, #e0e0e0, #9c9c9c, #ffffff);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cardlist__item-rarity_ultimate-rare {
+  background: linear-gradient(
+    90deg,
+    #9b4fd7,
+    #bc59de,
+    #ffffff,
+    #b85dec,
+    #a04de9
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_ghost-rare {
+  background: linear-gradient(360deg, #e9e7e7, #58b0eb);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cardlist__item-rarity_ultra-rare-pharaohs-rare {
+  background: linear-gradient(90deg, #ffd700, #8b00ff, #ffff, #ffd700);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_quarter-century-secret-rare {
+  background: linear-gradient(
+    90deg,
+    #e2bf25,
+    #e2bf25,
+    #c0c0c0,
+    #c0c0c0,
+    #eeeded,
+    #c0c0c0,
+    #c0c0c0,
+    #f7d53e
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_premium-gold-rare {
+  background: linear-gradient(90deg, #ebc90a, #ffd700, #ffff, #ffd700, #ffd700);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_starfoil-rare {
+  background: linear-gradient(
+    90deg,
+    #04b8ff,
+    #04b8ff,
+    #8b00ff,
+    #ffffff,
+    #8b00ff,
+    #04b8ff,
+    #04b8ff
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_starlight-rare {
+  background: linear-gradient(
+    90deg,
+    #ffd700,
+    #04b8ff,
+    #8b00ff,
+    #ffffff,
+    #8b00ff,
+    #04b8ff,
+    #ffd700
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_collectors-rare {
+  background: linear-gradient(90deg, #67a8fd, #38393b, #dddddd, #67a8fd);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
+}
+
+.cardlist__item-rarity_platinum-secret-rare {
+  background: linear-gradient(
+    90deg,
+    #b6b6b6,
+    #9e9e9e,
+    #ffffff,
+    #9e9e9e,
+    #b6b6b6
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: holographic-shimmer 6s infinite linear;
 }
 
 .cardlist__item-rarity span {

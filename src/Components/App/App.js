@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import BoosterPage from "../BoosterPage/BoosterPage";
 import ProfileAccount from "../ProfileAccount/ProfileAccount";
-import MyCards from "../MyCards/MyCards";
+// import MyCards from "../MyCards/MyCards";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
@@ -17,7 +17,7 @@ import ChangeAvatarModal from "../ChangeAvatarModal/ChangeAvatarModal";
 import ChangeEmailModal from "../ChangeEmailModal/ChangeEmailModal";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
 import { boosterPackData } from "../../utils/BoosterPacks";
-import { IsLoadingContext } from "../contexts/IsLoadingContext";
+// import { IsLoadingContext } from "../contexts/IsLoadingContext";
 import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 import { getBoosterPackCardData } from "../../utils/ygoProDeckApi";
 import { IsLoggedInContext } from "../contexts/isLoggedInContext";
@@ -29,9 +29,13 @@ function App() {
   const [selectedBooster, setSelectedBooster] = useState(
     JSON.parse(localStorage.getItem("selectedBooster")) || {}
   );
-  const [selectedBoosterCardList, setSelectedBoosterCardList] = useState([]);
+  const [selectedBoosterCardList, setSelectedBoosterCardList] = useState(() => {
+    const booster = JSON.parse(localStorage.getItem("selectedBooster"));
+    return booster?.boosterPackName ? booster : {};
+  });
   const [selectedCard, setSelectedCard] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
+  const [isCardListLoading, setIsCardListLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -64,7 +68,7 @@ function App() {
 
   // GET ALL BOOSTER PACKS
   useEffect(() => {
-    setIsLoading(true);
+    setIsBoosterPacksLoading(true);
     getAllBoosterPacks()
       .then((data) => {
         const formattedData = data.map((booster) => ({
@@ -82,7 +86,7 @@ function App() {
         setBoosterPacks(formattedData);
       })
       .catch((error) => console.error("Error fetching booster packs", error))
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsBoosterPacksLoading(false));
   }, []);
 
   useEffect(() => {
@@ -90,7 +94,7 @@ function App() {
       console.error("Selected booster is undefined or invalid.");
       return;
     }
-    setIsLoading(true);
+    setIsCardListLoading(true);
 
     // GET BOOSTER PACK CARDLIST
     getBoosterPackCardData(selectedBooster.boosterPackName)
@@ -115,19 +119,18 @@ function App() {
             cardDef: card.def,
             cardDescription: card.desc,
             cardSets: card.card_sets,
-            imageUrl: `/images/cards-1/${card.name.replace(
-              /[:/\\?%*|"<>]/g,
-              ""
-            )}.jpg`,
+            imageUrl: `/images/cards-1/${card.name
+              .replace(/[:/\\?%*"<>|]/g, "")
+              .replace(/#/g, "%23")}_${cardSet.set_code.split("-")[0]}.jpg`,
           };
         });
-
         setSelectedBoosterCardList(formattedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        // setIsCardListLoading(false);
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsCardListLoading(false));
   }, [selectedBooster]);
 
   const scrollToTop = () => {
@@ -191,105 +194,101 @@ function App() {
 
   return (
     <div className="App">
-      <IsLoadingContext.Provider value={{ isLoading }}>
-        <IsLoggedInContext.Provider value={{ isLoggedIn }}>
-          <Header
-            onClickSignin={handleClickSignin}
-            onClickSignup={handleClickSignup}
+      {/* <IsLoadingContext.Provider value={{ isLoading }}> */}
+      <IsLoggedInContext.Provider value={{ isLoggedIn }}>
+        <Header
+          onClickSignin={handleClickSignin}
+          onClickSignup={handleClickSignup}
+        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Main
+                {...props}
+                boosterPacks={boosterPacks}
+                onClickBoosterPack={handleSelectBooster}
+                onScrollToTop={scrollToTop}
+                onScrollToBottom={scrollToBottom}
+                isBoosterPacksLoading={isBoosterPacksLoading}
+              />
+            )}
           />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={(props) => (
-                <Main
-                  {...props}
-                  boosterPacks={boosterPacks}
-                  onClickBoosterPack={handleSelectBooster}
-                  onScrollToTop={scrollToTop}
-                  onScrollToBottom={scrollToBottom}
-                />
-              )}
-            />
-            <Route
-              path="/booster-page/:id"
-              render={(props) => (
-                <BoosterPage
-                  {...props}
-                  onClickCard={handleClickCardInfo}
-                  selectedBooster={selectedBooster}
-                  selectedBoosterCardList={selectedBoosterCardList}
-                  // onOpenBoosterPack={handleOpenBoosterPack}
-                />
-              )}
-            />
-            <Route
-              path="/profile-account"
-              render={(props) => (
-                <ProfileAccount
-                  {...props}
-                  onClickChangeUsername={handleClickChangeUsername}
-                  onClickChangeAvatar={handleClickChangeAvatar}
-                  onClickChangeEmail={handleClickChangeEmail}
-                  onClickChangePassword={handleClickChangePassword}
-                  onClickCardInfo={handleClickCardInfo}
-                />
-              )}
-            />
-            <Route
-              path="/my-cards"
-              render={(props) => (
-                <MyCards {...props} onClickCard={handleClickCardInfo} />
-              )}
-            />
-          </Switch>
-          <Footer
-            onClickTOS={handleClickTOS}
-            onClickCopyright={handleClickCopyright}
+          <Route
+            path="/booster-page/:id"
+            render={(props) => (
+              <BoosterPage
+                {...props}
+                onClickCard={handleClickCardInfo}
+                selectedBooster={selectedBooster}
+                selectedBoosterCardList={selectedBoosterCardList}
+                isCardListLoading={isCardListLoading}
+                setIsCardListLoading={setIsCardListLoading}
+              />
+            )}
           />
-          {activeModal === "sign-in" && (
-            <SigninModal onClose={handleModalClose} buttonText={"Sign In"} />
-          )}
-          {activeModal === "sign-up" && (
-            <SignupModal onClose={handleModalClose} buttonText={"Sign Up"} />
-          )}
-          {activeModal === "TOS" && <TOSModal onClose={handleModalClose} />}
-          {activeModal === "copyright" && (
-            <CopyrightModal onClose={handleModalClose} />
-          )}
-          {activeModal === "card-info" && (
-            <CardInfoModal
-              onClose={handleModalClose}
-              selectedCard={selectedCard}
-              selectedBooster={selectedBooster}
-            />
-          )}
-          {activeModal === "change-username" && (
-            <ChangeUsernameModal
-              onClose={handleModalClose}
-              buttonText={"Submit"}
-            />
-          )}
-          {activeModal === "change-avatar" && (
-            <ChangeAvatarModal
-              onClose={handleModalClose}
-              buttonText={"Submit"}
-            />
-          )}
-          {activeModal === "change-email" && (
-            <ChangeEmailModal
-              onClose={handleModalClose}
-              buttonText={"Submit"}
-            />
-          )}
-          {activeModal === "change-password" && (
-            <ChangePasswordModal
-              onClose={handleModalClose}
-              buttonText={"Submit"}
-            />
-          )}
-        </IsLoggedInContext.Provider>
-      </IsLoadingContext.Provider>
+          <Route
+            path="/profile-account"
+            render={(props) => (
+              <ProfileAccount
+                {...props}
+                onClickChangeUsername={handleClickChangeUsername}
+                onClickChangeAvatar={handleClickChangeAvatar}
+                onClickChangeEmail={handleClickChangeEmail}
+                onClickChangePassword={handleClickChangePassword}
+                onClickCardInfo={handleClickCardInfo}
+              />
+            )}
+          />
+          {/* <Route
+            path="/my-cards"
+            render={(props) => (
+              <MyCards {...props} onClickCard={handleClickCardInfo} />
+            )}
+          /> */}
+        </Switch>
+        <Footer
+          onClickTOS={handleClickTOS}
+          onClickCopyright={handleClickCopyright}
+        />
+        {activeModal === "sign-in" && (
+          <SigninModal onClose={handleModalClose} buttonText={"Sign In"} />
+        )}
+        {activeModal === "sign-up" && (
+          <SignupModal onClose={handleModalClose} buttonText={"Sign Up"} />
+        )}
+        {activeModal === "TOS" && <TOSModal onClose={handleModalClose} />}
+        {activeModal === "copyright" && (
+          <CopyrightModal onClose={handleModalClose} />
+        )}
+        {activeModal === "card-info" && (
+          <CardInfoModal
+            onClose={handleModalClose}
+            selectedCard={selectedCard}
+            selectedBooster={selectedBooster}
+          />
+        )}
+        {activeModal === "change-username" && (
+          <ChangeUsernameModal
+            onClose={handleModalClose}
+            buttonText={"Submit"}
+          />
+        )}
+        {activeModal === "change-avatar" && (
+          <ChangeAvatarModal onClose={handleModalClose} buttonText={"Submit"} />
+        )}
+        {activeModal === "change-email" && (
+          <ChangeEmailModal onClose={handleModalClose} buttonText={"Submit"} />
+        )}
+        {activeModal === "change-password" && (
+          <ChangePasswordModal
+            onClose={handleModalClose}
+            buttonText={"Submit"}
+          />
+        )}
+      </IsLoggedInContext.Provider>
+      {/* </IsLoadingContext.Provider> */}
     </div>
   );
 }

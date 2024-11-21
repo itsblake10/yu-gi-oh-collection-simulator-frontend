@@ -3,7 +3,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.02);
   }
   100% {
     transform: scale(1);
@@ -30,10 +30,11 @@
 }
 
 .booster__container {
+  max-width: 1500px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin: 0 auto 40px auto;
+  justify-content: space-evenly;
+  margin: 0 40px 40px 0;
   z-index: 2;
 }
 
@@ -47,15 +48,31 @@
 .booster__pack-opener {
   display: flex;
   flex-direction: row;
-  gap: 80px;
+  gap: 60px;
+  margin: 0 auto;
 }
 
-.booster__pack {
-  min-width: 135px;
-  max-height: 250px;
+.booster__pack_visible {
+  min-width: 180px;
+  max-height: 320px;
   cursor: pointer;
   align-self: center;
   z-index: 1;
+}
+
+.booster__pack_visible:hover {
+  cursor: pointer;
+  animation: pulsate-hover 0.5s infinite;
+}
+
+.booster__pack_disabled {
+  opacity: 50%;
+  cursor: default;
+}
+
+.booster__pack_disabled:hover {
+  animation: none;
+  cursor: default;
 }
 
 .booster__pack-open-button {
@@ -63,18 +80,21 @@
   border: none;
 }
 
-.booster__card-back {
-  max-width: 135px;
+.booster__card-back_disabled {
+  max-width: 180px;
   opacity: 50%;
+  margin: 25px 0 0 0;
 }
 
 .booster__card-back_visible {
   opacity: 100%;
+  cursor: pointer;
 }
 
 .booster__blank-card {
-  max-width: 135px;
+  max-width: 180px;
   opacity: 50%;
+  margin: 25px 0 0 0;
 }
 
 .booster__pack-card-button {
@@ -82,9 +102,8 @@
   border: none;
 }
 
-.booster__card-button {
-  background: none;
-  border: none;
+.booster__card-container {
+  align-self: center;
 }
 
 /* -------------------------------- PREV CARDS -------------------------------- */
@@ -152,6 +171,12 @@
 .booster__cardlist-option {
   background-color: white;
   color: black;
+}
+
+.booster__cardlist-filters {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .booster__cardlist-filter {

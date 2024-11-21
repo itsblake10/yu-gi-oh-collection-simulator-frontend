@@ -1,5 +1,10 @@
+.booster__stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .booster__breakdown-container {
-  min-width: 350px;
+  min-width: 300px;
   max-height: fit-content;
   background: transparent;
   border: 5px solid rgb(0, 162, 255);
@@ -7,20 +12,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 0 80px 0 0;
-}
-
-.booster__breakdown-title {
-  font-size: 18px;
-  text-decoration: underline;
-  color: white;
-  margin: 10px auto 10px auto;
+  margin: 0 50px 0 0;
 }
 
 .booster__breakdown-pack-size {
   font-size: 14px;
   color: white;
-  margin: 0 auto 10px;
+  margin: 10px auto 0;
 }
 
 .booster__breakdown-pack-size_color {
@@ -28,7 +26,38 @@
   margin: 0 0 0 5px;
 }
 
-.booster__breakdown-list_total {
+.booster__progress-container {
+  min-width: 300px;
+  max-height: fit-content;
+  background: transparent;
+  border: 5px solid rgb(0, 162, 255);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 50px 0 0;
+}
+
+.booster__progress-title {
+  font-size: 19px;
+  text-decoration: underline;
+  color: white;
+  margin: 10px auto 10px auto;
+}
+
+.booster__progress-pack-size {
+  font-size: 14px;
+  color: white;
+  margin: 0 auto 10px;
+}
+
+.booster__progress-pack-size_color {
+  color: #f94040;
+  margin: 0 0 0 5px;
+  display: inline;
+}
+
+.booster__progress-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -38,28 +67,27 @@
 }
 
 .booster__list-container-title {
-  margin: 0;
+  margin: 0 auto;
   color: white;
   font-size: 16px;
-  /* font-weight: bold; */
-  border-bottom: 1pt white solid;
+  display: inline;
 }
 
 .booster__list-container-title_color {
   color: #f94040;
   margin: 0 0 0 5px;
+  display: inline;
 }
 
-.booster__breakdown-list {
+.booster__progress-list-container {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   gap: 50px;
   max-width: fit-content;
-  align-self: center;
-  margin: 0 0 20px 0;
+  margin: 20px 20px 20px 20px;
 }
 
-.booster__breakdown-list-item {
+.booster__progress-list-item {
   font-size: 16px;
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   list-style: none;
@@ -67,15 +95,20 @@
   color: white;
 }
 
-.booster__breakdown-list-qauntity {
+.booster__progress-list-qauntity {
   margin: 0 0 0 5px;
   display: inline;
 }
 
-.booster__breakdown-list-qauntity_bold {
+.booster__progress-list-qauntity_bold {
   font-weight: bold;
 }
 
-.booster__breakdown-list-qauntity_color {
+.booster__progress-list-qauntity_color {
   color: #f94040;
+  display: inline;
+}
+
+.booster__progress-list-separator {
+  margin: 0 0 0 5px;
 }

@@ -3,9 +3,11 @@ import defaultCardImage from "../../images/blank-card.svg";
 import { useState } from "react";
 
 const CardInfoModal = ({ onClose, selectedCard, selectedBooster }) => {
-  // const sanitizedCardName = item.name.replace(/[:/\\?%*|"<>]/g, "");
+  const sanitizedCardName = selectedCard.cardName
+    .replace(/[:/\\?%*"<>|]/g, "")
+    .replace(/#/g, "%23");
   const [imgSrc, setImgSrc] = useState(
-    `/images/cards-1/${selectedCard.cardName}_${selectedBooster.boosterPackCode}.jpg`
+    `/images/cards-1/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg`
   );
 
   return (

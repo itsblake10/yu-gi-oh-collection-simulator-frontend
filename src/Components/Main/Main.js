@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import ItemBooster from "../ItemBooster/ItemBooster";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
-import { IsLoadingContext } from "../contexts/IsLoadingContext";
+// import { IsLoadingContext } from "../contexts/IsLoadingContext";
 import backToTopButton from "../../images/back-to-top-button.svg";
 
 const Main = ({
@@ -11,21 +11,39 @@ const Main = ({
   onClickBoosterPack,
   onScrollToTop,
   onScrollToBottom,
+  isBoosterPacksLoading,
 }) => {
-  const { isLoading } = React.useContext(IsLoadingContext);
+  // const { isLoading } = React.useContext(IsLoadingContext);
+  // const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
 
-  const [sortOrder, setSortOrder] = useState(
-    localStorage.getItem("sortOrder") || "newest"
+  const [primarySortOption, setPrimarySortOption] = useState(
+    localStorage.getItem("primarySortOption") || "release-date"
   );
+
+  const [secondarySortOption, setSecondarySortOption] = useState(
+    localStorage.getItem("secondarySortOption") || "descending"
+  );
+
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleBoosterPacks, setVisibleBoosterPacks] = useState(30);
 
   useEffect(() => {
-    localStorage.setItem("sortOrder", sortOrder);
-  }, [sortOrder]);
+    localStorage.setItem("primarySortOption", primarySortOption);
+    localStorage.setItem("secondarySortOption", secondarySortOption);
+  }, [primarySortOption, secondarySortOption]);
 
-  const handleSortChange = (event) => {
-    setSortOrder(event.target.value);
+  const handlePrimarySortChange = (event) => {
+    setPrimarySortOption(event.target.value);
+
+    if (event.target.value === "alphabetical") {
+      setSecondarySortOption("ascending");
+    } else {
+      setSecondarySortOption("descending");
+    }
+  };
+
+  const handleSecondarySortChange = (event) => {
+    setSecondarySortOption(event.target.value);
   };
 
   const handleSearchInputChange = (event) => {
@@ -51,24 +69,25 @@ const Main = ({
           !setName.includes("(por)") &&
           !setName.includes("speed duel gx: duelists of shadows") &&
           !setName.includes("speed duel gx: midterm paradox") &&
+          !setName.includes("speed duel gx: duel academy box") &&
           item.boosterPackTotalCards >= 10 &&
           setName.includes(query)
         );
       })
       .sort((a, b) => {
-        if (sortOrder === "newest") {
-          return (
-            new Date(b.boosterPackReleaseDate) -
-            new Date(a.boosterPackReleaseDate)
-          );
+        if (primarySortOption === "alphabetical") {
+          return secondarySortOption === "ascending"
+            ? a.boosterPackName.localeCompare(b.boosterPackName)
+            : b.boosterPackName.localeCompare(a.boosterPackName);
         } else {
-          return (
-            new Date(a.boosterPackReleaseDate) -
-            new Date(b.boosterPackReleaseDate)
-          );
+          return secondarySortOption === "descending"
+            ? new Date(b.boosterPackReleaseDate) -
+                new Date(a.boosterPackReleaseDate)
+            : new Date(a.boosterPackReleaseDate) -
+                new Date(b.boosterPackReleaseDate);
         }
       });
-  }, [boosterPacks, searchQuery, sortOrder]);
+  }, [boosterPacks, searchQuery, primarySortOption, secondarySortOption]);
 
   const handleViewMore = () => {
     setVisibleBoosterPacks((prevVisiblePacks) => prevVisiblePacks + 30);
@@ -109,20 +128,34 @@ const Main = ({
             onSearchInputChange={handleSearchInputChange}
             searchQuery={searchQuery}
           />
-          <select
-            className="home__grid-filter"
-            value={sortOrder}
-            onChange={handleSortChange}
-          >
-            <option className="home__grid-option" value="newest">
-              Newest Release
-            </option>
-            <option className="home__grid-option" value="oldest">
-              Oldest Release
-            </option>
-          </select>
+          <div className="home__grid-filters">
+            <select
+              className="home__grid-filter"
+              value={primarySortOption}
+              onChange={handlePrimarySortChange}
+            >
+              <option className="home__grid-option" value="release-date">
+                Release Date
+              </option>
+              <option className="home__grid-option" value="alphabetical">
+                Alphabetical
+              </option>
+            </select>
+            <select
+              className="home__grid-filter"
+              value={secondarySortOption}
+              onChange={handleSecondarySortChange}
+            >
+              <option className="home__grid-option" value="ascending">
+                Ascending
+              </option>
+              <option className="home__grid-option" value="descending">
+                Descending
+              </option>
+            </select>
+          </div>
         </div>
-        {isLoading ? (
+        {isBoosterPacksLoading ? (
           <LoadingAnimation />
         ) : filteredBoosterPacks.length === 0 ? (
           <div className="home__grid-no-results">

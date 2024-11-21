@@ -61,6 +61,12 @@
   border-radius: 10px;
 }
 
+.home__grid-filters {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .home__grid-filter {
   padding: 0 0 0 5px;
   min-width: 160px;

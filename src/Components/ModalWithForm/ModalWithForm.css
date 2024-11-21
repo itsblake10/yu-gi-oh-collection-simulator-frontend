@@ -27,7 +27,8 @@
 
 /* ------------------------- UPDATE in ModalWithText ------------------------ */
 .modal__container {
-  max-width: 40%;
+  min-width: 520px;
+  max-width: 650px;
   background: white
     url("/src/images/Backgrounds/yugioh-booster-sim\(grid-item\ background\).svg")
     no-repeat center;
