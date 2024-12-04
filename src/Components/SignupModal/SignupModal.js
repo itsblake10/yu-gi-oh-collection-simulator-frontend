@@ -8,6 +8,7 @@ const SignupModal = ({ onClose, buttonText }) => {
       name="register-user"
       buttonText={buttonText}
       onClose={onClose}
+      // onSubmit={handleSubmit}
     >
       <fieldset className="modal__inputs">
         <label className="modal__label">
@@ -17,11 +18,13 @@ const SignupModal = ({ onClose, buttonText }) => {
             type="text"
             name="username"
             placeholder="Username"
-            // value={userName}
+            // value={values.username}
             minLength="3"
             maxLength="20"
-            // onChange={handleNameChange}
+            required
+            // onChange={handleChange}
           />
+          {/* <span className="modal__error">{errors.username}</span> */}
         </label>
         <label className="modal__label">
           Email:

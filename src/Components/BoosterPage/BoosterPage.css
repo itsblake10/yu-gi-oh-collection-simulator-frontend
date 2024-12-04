@@ -203,6 +203,13 @@
   justify-content: center;
 }
 
+.booster__cardlist_hidden {
+  display: none;
+  /* visibility: hidden; */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
 .booster__cardlist-no-results {
   margin: 50px 0 50px 0;
   display: flex;

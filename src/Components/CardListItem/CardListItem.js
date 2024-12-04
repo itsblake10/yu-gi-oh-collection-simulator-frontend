@@ -2,7 +2,12 @@ import "./CardListItem.css";
 import defaultCardImage from "../../images/blank-card.svg";
 import { useState } from "react";
 
-const CardListItem = ({ item, onClickCard, selectedBooster }) => {
+const CardListItem = ({
+  item,
+  onClickCard,
+  selectedBooster,
+  handleCardLoad,
+}) => {
   const sanitizedCardName = item.cardName
     .replace(/[:/\\?%*"<>|]/g, "")
     .replace(/#/g, "%23");
@@ -32,7 +37,9 @@ const CardListItem = ({ item, onClickCard, selectedBooster }) => {
           className="cardlist__item-image"
           src={imgSrc}
           alt={item.cardName}
+          onLoad={handleCardLoad}
           onError={() => {
+            handleCardLoad();
             setImgSrc(defaultCardImage);
           }}
         />

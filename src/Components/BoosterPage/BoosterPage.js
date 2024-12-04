@@ -1,6 +1,6 @@
 import "./BoosterPage.css";
 import React from "react";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import BoosterPackStats from "../BoosterPackStats/BoosterPackStats";
 import OpenedCardItem from "../OpenedCardItem/OpenedCardItem";
 import yugiohCardBack from "../../images/yu-gi-oh-card-back.jpg";
@@ -10,6 +10,7 @@ import blankCard from "../../images/blank-card.svg";
 import CardListItem from "../CardListItem/CardListItem";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
+import LoadingAnimationTwo from "../LoadingAnimationTwo/LoadingAnimationTwo";
 import defaultBooster from "../../images/default-booster.jpg";
 // import { IsLoadingContext } from "../contexts/IsLoadingContext";
 
@@ -17,10 +18,7 @@ const BoosterPage = ({
   onClickCard,
   selectedBooster,
   selectedBoosterCardList,
-  isCardListLoading,
 }) => {
-  // const { isLoading } = React.useContext(IsLoadingContext);
-  // const [isCardListLoading, setIsCardListLoading] = useState(false);
   const sanitizedSetName = selectedBooster.boosterPackName.replace(
     /[:/\\?%*|"<>]/g,
     ""
@@ -34,47 +32,97 @@ const BoosterPage = ({
   const [openedPack, setOpenedPack] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(-1);
   const [currentOpenedCards, setCurrentOpenedCards] = useState([]);
-  const [primarySortOption, setPrimarySortOption] = useState("alphabetical");
-  const [secondarySortOption, setSecondarySortOption] = useState("ascending");
+  const [cardListSortOptions, setCardListSortOptions] = useState([
+    { primary: "alphabetical", secondary: "ascending" },
+    { primary: "alphabetical", secondary: "ascending" },
+  ]);
+  const [openedCardsSortOptions, setOpenedCardsSortOptions] = useState([
+    { primary: "alphabetical", secondary: "ascending" },
+    { primary: "alphabetical", secondary: "ascending" },
+  ]);
+
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [loadedCards, setLoadedCards] = useState(0);
+  const [isCardListLoading, setIsCardListLoading] = useState(true);
+  const [cardListClass, setCardListClass] = useState(
+    "booster__cardlist_hidden"
+  );
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    if (loadedCards === selectedBoosterCardList.length) {
+      setIsCardListLoading(false);
+      setCardListClass("");
+    }
+  }, [loadedCards, selectedBoosterCardList.length]);
+
+  useEffect(() => {
+    setLoadedCards(0);
+    setIsCardListLoading(true);
+    setCardListClass("booster__cardlist_hidden");
+  }, [selectedBoosterCardList]);
+
+  // useEffect(() => {
+  //   if (cardListClass === "booster__cardlist_hidden") {
+  //     setIsCardListLoading(true);
+  //   } else {
+  //     setIsCardListLoading(false);
+  //   }
+  // }, [cardListClass]);
+
+  const handleCardLoad = () => {
+    setLoadedCards((prev) => prev + 1);
+    console.log("image loaded");
+  };
 
   const isBoosterOpen = cardBackImage === yugiohCardBackFullStack;
 
-  const commonCards = useMemo(() => {
-    return selectedBoosterCardList.filter((card) =>
-      ["common", "short print", "super short print"].some((rarity) =>
-        card.cardRarity.toLowerCase().includes(rarity)
-      )
-    );
-  }, [selectedBoosterCardList]);
-
-  const rareCards = useMemo(() => {
-    return selectedBoosterCardList.filter((card) =>
-      [
-        "rare",
-        "super rare",
-        "ultra rare",
-        "secret rare",
-        "ultimate rare",
-        "ghost rare",
-        "ultra rare (pharaoh's rare)",
-        "quarter century secret rare",
-        "premium gold rare",
-        "starfoil rare",
-        "starlight rare",
-        "collectors rare",
-        "platinum secret rare",
-      ].some((rarity) => card.cardRarity.toLowerCase().includes(rarity))
-    );
+  const cardGroups = useMemo(() => {
+    const common = ["common", "short print", "super short print"];
+    const rare = [
+      "rare",
+      "super rare",
+      "ultra rare",
+      "secret rare",
+      "ultimate rare",
+      "ghost rare",
+      "ultra rare (pharaoh's rare)",
+      "quarter century secret rare",
+      "premium gold rare",
+      "starfoil rare",
+      "starlight rare",
+      "collectors rare",
+      "platinum secret rare",
+    ];
+    return {
+      commonCards: selectedBoosterCardList.filter((card) =>
+        common.some((rarity) => card.cardRarity.toLowerCase().includes(rarity))
+      ),
+      rareCards: selectedBoosterCardList.filter((card) =>
+        rare.some((rarity) => card.cardRarity.toLowerCase().includes(rarity))
+      ),
+    };
   }, [selectedBoosterCardList]);
 
   const handlePrimarySortChange = (event) => {
-    setPrimarySortOption(event.target.value);
-    setSecondarySortOption("ascending");
+    if (event.target.id === "opened-cards-primary") {
+      setOpenedCardsSortOptions({ primary: event.target.value });
+    }
+
+    if (event.target.id === "card-list-primary") {
+      setCardListSortOptions({ primary: event.target.value });
+    }
   };
 
   const handleSecondarySortChange = (event) => {
-    setSecondarySortOption(event.target.value);
+    if (event.target.id === "opened-cards-secondary") {
+      setOpenedCardsSortOptions({ secondary: event.target.value });
+    }
+
+    if (event.target.id === "card-list-secondary") {
+      setCardListSortOptions({ secondary: event.target.value });
+    }
   };
 
   const handleSearchInputChange = (event) => {
@@ -88,11 +136,16 @@ const BoosterPage = ({
     setCurrentCardIndex(-1);
     const selectedCommons = Array.from(
       { length: 8 },
-      () => commonCards[Math.floor(Math.random() * commonCards.length)]
+      () =>
+        cardGroups.commonCards[
+          Math.floor(Math.random() * cardGroups.commonCards.length)
+        ]
     );
 
     const selectedRares =
-      rareCards[Math.floor(Math.random() * rareCards.length)];
+      cardGroups.rareCards[
+        Math.floor(Math.random() * cardGroups.rareCards.length)
+      ];
 
     setOpenedPack([...selectedCommons, selectedRares]);
     setCurrentCardIndex(-1);
@@ -100,29 +153,34 @@ const BoosterPage = ({
 
   const handleRevealCard = () => {
     if (currentCardIndex < openedPack.length - 1) {
-      setCurrentOpenedCards((prev) => [
-        ...prev,
-        openedPack[currentCardIndex + 1],
-      ]);
-      setCurrentCardIndex((prevIndex) => prevIndex + 1);
-    }
+      setIsButtonDisabled(true); // Disable the button
+      setTimeout(() => {
+        setCurrentOpenedCards((prev) => [
+          ...prev,
+          openedPack[currentCardIndex + 1],
+        ]);
+        setCurrentCardIndex((prevIndex) => prevIndex + 1);
 
-    if (currentCardIndex === openedPack.length - 2) {
-      setCardBackImage(yugiohCardBack);
-      setCardBackClass("");
-      setBoosterPackClass("");
-    }
+        if (currentCardIndex === openedPack.length - 2) {
+          setCardBackImage(yugiohCardBack);
+          setCardBackClass("");
+          setBoosterPackClass("");
+        }
 
-    if (currentCardIndex === openedPack.length - 3) {
-      setCardBackImage(yugiohCardBack);
-    }
+        if (currentCardIndex === openedPack.length - 3) {
+          setCardBackImage(yugiohCardBack);
+        }
 
-    if (currentCardIndex === openedPack.length - 4) {
-      setCardBackImage(yugiohCardBackHalfStack);
+        if (currentCardIndex === openedPack.length - 4) {
+          setCardBackImage(yugiohCardBackHalfStack);
+        }
+
+        setIsButtonDisabled(false); // Re-enable the button after 1 second
+      }, 1000);
     }
   };
 
-  const filteredCards = [...selectedBoosterCardList]
+  const filteredCardList = [...selectedBoosterCardList]
     .filter((item) => {
       const cardName = item.cardName.toLowerCase();
       const query = searchQuery.toLowerCase();
@@ -130,11 +188,11 @@ const BoosterPage = ({
       return cardName.includes(query);
     })
     .sort((a, b) => {
-      if (primarySortOption === "alphabetical") {
-        return secondarySortOption === "ascending"
+      if (cardListSortOptions.primary === "alphabetical") {
+        return cardListSortOptions.secondary === "ascending"
           ? a.cardName.localeCompare(b.cardName)
           : b.cardName.localeCompare(a.cardName);
-      } else if (primarySortOption === "rarity") {
+      } else if (cardListSortOptions.primary === "rarity") {
         const rarityOrder = [
           "common",
           "short print",
@@ -158,26 +216,15 @@ const BoosterPage = ({
           rarityOrder.indexOf(a.cardRarity.toLowerCase()) -
           rarityOrder.indexOf(b.cardRarity.toLowerCase());
 
-        return secondarySortOption === "ascending"
+        return cardListSortOptions.secondary === "ascending"
           ? rarityComparison
           : -rarityComparison;
-      } else if (primarySortOption === "card code") {
-        const aCode = parseInt(
-          a.cardCode.includes("EN")
-            ? a.cardCode.split("EN")[1]
-            : a.cardCode.split("-")[1],
-          10
-        );
-        const bCode = parseInt(
-          b.cardCode.includes("EN")
-            ? b.cardCode.split("EN")[1]
-            : b.cardCode.split("-")[1],
-          10
-        );
+      } else if (cardListSortOptions.primary === "card code") {
+        const parseCode = (code) => parseInt(code.replace(/[^0-9]/g, ""), 10);
 
-        return secondarySortOption === "ascending"
-          ? aCode - bCode
-          : bCode - aCode;
+        return cardListSortOptions.secondary === "ascending"
+          ? parseCode(a.cardCode) - parseCode(b.cardCode)
+          : parseCode(b.cardCode) - parseCode(a.cardCode);
       }
 
       return 0;
@@ -191,11 +238,11 @@ const BoosterPage = ({
       return cardName.includes(query);
     })
     .sort((a, b) => {
-      if (primarySortOption === "alphabetical") {
-        return secondarySortOption === "ascending"
+      if (openedCardsSortOptions.primary === "alphabetical") {
+        return openedCardsSortOptions.secondary === "ascending"
           ? a.cardName.localeCompare(b.cardName)
           : b.cardName.localeCompare(a.cardName);
-      } else if (primarySortOption === "rarity") {
+      } else if (openedCardsSortOptions.primary === "rarity") {
         const rarityOrder = [
           "common",
           "short print",
@@ -219,26 +266,15 @@ const BoosterPage = ({
           rarityOrder.indexOf(a.cardRarity.toLowerCase()) -
           rarityOrder.indexOf(b.cardRarity.toLowerCase());
 
-        return secondarySortOption === "ascending"
+        return openedCardsSortOptions.secondary === "ascending"
           ? rarityComparison
           : -rarityComparison;
-      } else if (primarySortOption === "card code") {
-        const aCode = parseInt(
-          a.cardCode.includes("EN")
-            ? a.cardCode.split("EN")[1]
-            : a.cardCode.split("-")[1],
-          10
-        );
-        const bCode = parseInt(
-          b.cardCode.includes("EN")
-            ? b.cardCode.split("EN")[1]
-            : b.cardCode.split("-")[1],
-          10
-        );
+      } else if (openedCardsSortOptions.primary === "card code") {
+        const parseCode = (code) => parseInt(code.replace(/[^0-9]/g, ""), 10);
 
-        return secondarySortOption === "ascending"
-          ? aCode - bCode
-          : bCode - aCode;
+        return openedCardsSortOptions.secondary === "ascending"
+          ? parseCode(a.cardCode) - parseCode(b.cardCode)
+          : parseCode(b.cardCode) - parseCode(a.cardCode);
       }
 
       return 0;
@@ -253,45 +289,55 @@ const BoosterPage = ({
             <BoosterPackStats
               selectedBoosterPack={selectedBooster}
               packSize={selectedBooster.boosterPackSize}
-              totalCards={filteredCards.length}
+              totalCards={filteredCardList.length}
               selectedBoosterCardList={selectedBoosterCardList}
             />
+
             <div className="booster__pack-opener">
-              <button
-                className="booster__pack-open-button"
-                onClick={handleOpenBoosterPack}
-                disabled={isBoosterOpen}
-              >
-                <img
-                  className={`booster__pack_visible ${boosterPackClass}`}
-                  src={imgSrc}
-                  onError={() => setImgSrc(defaultBooster)}
-                  alt={selectedBooster.boosterPackName}
-                />
-                <div className="booster__pack-slash"></div>
-              </button>
-              <button className="booster__pack-card-button">
-                <img
-                  className={`booster__card-back_disabled ${cardBackClass}`}
-                  src={cardBackImage}
-                  alt={"yu-gi-oh card"}
-                  onClick={handleRevealCard}
-                />
-              </button>
-              <div className="booster__card-container">
-                {currentCardIndex === -1 ? (
-                  <img
-                    className="booster__blank-card"
-                    src={blankCard}
-                    alt="blank yugioh card"
-                  />
-                ) : (
-                  <OpenedCardItem
-                    item={openedPack[currentCardIndex]}
-                    onClickCard={onClickCard}
-                  />
-                )}
-              </div>
+              {isCardListLoading ? (
+                <LoadingAnimationTwo />
+              ) : (
+                <>
+                  <button
+                    className="booster__pack-open-button"
+                    onClick={handleOpenBoosterPack}
+                    disabled={isBoosterOpen}
+                  >
+                    <img
+                      className={`booster__pack_visible ${boosterPackClass}`}
+                      src={imgSrc}
+                      onError={() => setImgSrc(defaultBooster)}
+                      alt={selectedBooster.boosterPackName}
+                    />
+                    <div className="booster__pack-slash"></div>
+                  </button>
+                  <button
+                    className="booster__pack-card-button"
+                    onClick={handleRevealCard}
+                    disabled={isButtonDisabled}
+                  >
+                    <img
+                      className={`booster__card-back_disabled ${cardBackClass}`}
+                      src={cardBackImage}
+                      alt={"yu-gi-oh card"}
+                    />
+                  </button>
+                  <div className="booster__card-container">
+                    {currentCardIndex === -1 ? (
+                      <img
+                        className="booster__blank-card"
+                        src={blankCard}
+                        alt="blank yugioh card"
+                      />
+                    ) : (
+                      <OpenedCardItem
+                        item={openedPack[currentCardIndex]}
+                        onClickCard={onClickCard}
+                      />
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
@@ -306,7 +352,8 @@ const BoosterPage = ({
               <div className="booster__cardlist-filters">
                 <select
                   className="booster__cardlist-filter"
-                  value={primarySortOption}
+                  value={openedCardsSortOptions.primary}
+                  id="opened-cards-primary"
                   onChange={handlePrimarySortChange}
                 >
                   <option
@@ -327,8 +374,9 @@ const BoosterPage = ({
                 </select>
                 <select
                   className="booster__cardlist-filter"
-                  value={secondarySortOption}
+                  value={openedCardsSortOptions.secondary}
                   onChange={handleSecondarySortChange}
+                  id="opened-cards-secondary"
                 >
                   <option
                     className="booster__cardlist-option"
@@ -369,8 +417,9 @@ const BoosterPage = ({
               <div className="booster__cardlist-filters">
                 <select
                   className="booster__cardlist-filter"
-                  value={primarySortOption}
+                  value={cardListSortOptions.primary}
                   onChange={handlePrimarySortChange}
+                  id="card-list-primary"
                 >
                   <option
                     className="booster__cardlist-option"
@@ -390,8 +439,9 @@ const BoosterPage = ({
                 </select>
                 <select
                   className="booster__cardlist-filter"
-                  value={secondarySortOption}
+                  value={cardListSortOptions.secondary}
                   onChange={handleSecondarySortChange}
+                  id="card-list-secondary"
                 >
                   <option
                     className="booster__cardlist-option"
@@ -408,24 +458,25 @@ const BoosterPage = ({
                 </select>
               </div>
             </div>
-
-            {isCardListLoading ? (
-              <LoadingAnimation />
-            ) : filteredCards.length === 0 ? (
+            {filteredCardList.length === 0 ? (
               <div className="booster__cardlist-no-results">
                 <p className="booster__cardlist-no-results-text">NO RESULTS</p>
               </div>
             ) : (
-              <ul className="booster__cardlist">
-                {filteredCards.map((item) => (
-                  <CardListItem
-                    item={item}
-                    key={item.cardName}
-                    onClickCard={onClickCard}
-                    selectedBooster={selectedBooster}
-                  />
-                ))}
-              </ul>
+              <>
+                {isCardListLoading && <LoadingAnimation />}
+                <ul className={`booster__cardlist ${cardListClass}`}>
+                  {filteredCardList.map((item) => (
+                    <CardListItem
+                      item={item}
+                      key={item.cardName}
+                      onClickCard={onClickCard}
+                      selectedBooster={selectedBooster}
+                      handleCardLoad={handleCardLoad}
+                    />
+                  ))}
+                </ul>
+              </>
             )}
           </div>
         </div>

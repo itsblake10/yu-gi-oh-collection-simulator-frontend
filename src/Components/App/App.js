@@ -27,15 +27,16 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [boosterPacks, setBoosterPacks] = useState([]);
   const [selectedBooster, setSelectedBooster] = useState(
-    JSON.parse(localStorage.getItem("selectedBooster")) || {}
+    () => JSON.parse(localStorage.getItem("selectedBooster")) || {}
   );
   const [selectedBoosterCardList, setSelectedBoosterCardList] = useState(() => {
     const booster = JSON.parse(localStorage.getItem("selectedBooster"));
-    return booster?.boosterPackName ? booster : {};
+    return booster?.cardList && Array.isArray(booster.cardList)
+      ? booster.cardList
+      : [];
   });
   const [selectedCard, setSelectedCard] = useState({});
   const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
-  const [isCardListLoading, setIsCardListLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -94,7 +95,6 @@ function App() {
       console.error("Selected booster is undefined or invalid.");
       return;
     }
-    setIsCardListLoading(true);
 
     // GET BOOSTER PACK CARDLIST
     getBoosterPackCardData(selectedBooster.boosterPackName)
@@ -128,9 +128,7 @@ function App() {
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        // setIsCardListLoading(false);
-      })
-      .finally(() => setIsCardListLoading(false));
+      });
   }, [selectedBooster]);
 
   const scrollToTop = () => {
@@ -223,8 +221,6 @@ function App() {
                 onClickCard={handleClickCardInfo}
                 selectedBooster={selectedBooster}
                 selectedBoosterCardList={selectedBoosterCardList}
-                isCardListLoading={isCardListLoading}
-                setIsCardListLoading={setIsCardListLoading}
               />
             )}
           />

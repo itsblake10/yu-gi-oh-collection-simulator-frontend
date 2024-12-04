@@ -24,6 +24,13 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
 }
 
+.opened-card__container_hidden {
+  display: none;
+  /* visibility: hidden; */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
 .opened-card__name {
   color: white;
   font-weight: bold;

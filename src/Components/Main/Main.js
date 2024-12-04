@@ -13,9 +13,6 @@ const Main = ({
   onScrollToBottom,
   isBoosterPacksLoading,
 }) => {
-  // const { isLoading } = React.useContext(IsLoadingContext);
-  // const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
-
   const [primarySortOption, setPrimarySortOption] = useState(
     localStorage.getItem("primarySortOption") || "release-date"
   );
