@@ -32,3 +32,40 @@
   align-content: center;
   margin: 0 0 0 50px;
 }
+
+@media (max-width: 800px) {
+  .header__nav {
+    justify-content: center;
+    margin: 0 0 30px 0;
+  }
+}
+
+@media (max-width: 665px) {
+  .header__logo {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header__logo {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 545px) {
+  .header__logo {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 455px) {
+  .header__logo {
+    max-width: 325px;
+  }
+}
+
+@media (max-width: 410px) {
+  .header__logo {
+    max-width: 300px;
+  }
+}

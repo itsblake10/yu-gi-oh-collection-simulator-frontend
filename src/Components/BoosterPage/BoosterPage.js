@@ -23,6 +23,7 @@ const BoosterPage = ({
     /[:/\\?%*|"<>]/g,
     ""
   );
+  // .trim();
   const [imgSrc, setImgSrc] = useState(
     `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
@@ -32,14 +33,14 @@ const BoosterPage = ({
   const [openedPack, setOpenedPack] = useState([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(-1);
   const [currentOpenedCards, setCurrentOpenedCards] = useState([]);
-  const [cardListSortOptions, setCardListSortOptions] = useState([
-    { primary: "alphabetical", secondary: "ascending" },
-    { primary: "alphabetical", secondary: "ascending" },
-  ]);
-  const [openedCardsSortOptions, setOpenedCardsSortOptions] = useState([
-    { primary: "alphabetical", secondary: "ascending" },
-    { primary: "alphabetical", secondary: "ascending" },
-  ]);
+  const [cardListSortOptions, setCardListSortOptions] = useState({
+    primary: "alphabetical",
+    secondary: "ascending",
+  });
+  const [openedCardsSortOptions, setOpenedCardsSortOptions] = useState({
+    primary: "alphabetical",
+    secondary: "ascending",
+  });
 
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -49,6 +50,7 @@ const BoosterPage = ({
     "booster__cardlist_hidden"
   );
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [filteredCardList, setFilteredCardList] = useState([]);
 
   useEffect(() => {
     if (loadedCards === selectedBoosterCardList.length) {
@@ -62,14 +64,6 @@ const BoosterPage = ({
     setIsCardListLoading(true);
     setCardListClass("booster__cardlist_hidden");
   }, [selectedBoosterCardList]);
-
-  // useEffect(() => {
-  //   if (cardListClass === "booster__cardlist_hidden") {
-  //     setIsCardListLoading(true);
-  //   } else {
-  //     setIsCardListLoading(false);
-  //   }
-  // }, [cardListClass]);
 
   const handleCardLoad = () => {
     setLoadedCards((prev) => prev + 1);
@@ -153,7 +147,7 @@ const BoosterPage = ({
 
   const handleRevealCard = () => {
     if (currentCardIndex < openedPack.length - 1) {
-      setIsButtonDisabled(true); // Disable the button
+      setIsButtonDisabled(true);
       setTimeout(() => {
         setCurrentOpenedCards((prev) => [
           ...prev,
@@ -175,60 +169,64 @@ const BoosterPage = ({
           setCardBackImage(yugiohCardBackHalfStack);
         }
 
-        setIsButtonDisabled(false); // Re-enable the button after 1 second
+        setIsButtonDisabled(false);
       }, 1000);
     }
   };
 
-  const filteredCardList = [...selectedBoosterCardList]
-    .filter((item) => {
-      const cardName = item.cardName.toLowerCase();
-      const query = searchQuery.toLowerCase();
+  useEffect(() => {
+    const filteredCards = [...selectedBoosterCardList]
+      .filter((item) => {
+        const cardName = item.cardName.toLowerCase();
+        const query = searchQuery.toLowerCase();
 
-      return cardName.includes(query);
-    })
-    .sort((a, b) => {
-      if (cardListSortOptions.primary === "alphabetical") {
-        return cardListSortOptions.secondary === "ascending"
-          ? a.cardName.localeCompare(b.cardName)
-          : b.cardName.localeCompare(a.cardName);
-      } else if (cardListSortOptions.primary === "rarity") {
-        const rarityOrder = [
-          "common",
-          "short print",
-          "super short print",
-          "rare",
-          "super rare",
-          "ultra rare",
-          "secret rare",
-          "ultimate rare",
-          "ghost rare",
-          "ultra rare (pharaoh's rare)",
-          "quarter century secret rare",
-          "premium gold rare",
-          "starfoil rare",
-          "starlight rare",
-          "collectors rare",
-          "platinum secret rare",
-        ];
+        return cardName.includes(query);
+      })
+      .sort((a, b) => {
+        if (cardListSortOptions.primary === "alphabetical") {
+          return cardListSortOptions.secondary === "ascending"
+            ? a.cardName.localeCompare(b.cardName)
+            : b.cardName.localeCompare(a.cardName);
+        } else if (cardListSortOptions.primary === "rarity") {
+          const rarityOrder = [
+            "common",
+            "short print",
+            "super short print",
+            "rare",
+            "super rare",
+            "ultra rare",
+            "secret rare",
+            "ultimate rare",
+            "ghost rare",
+            "ultra rare (pharaoh's rare)",
+            "quarter century secret rare",
+            "premium gold rare",
+            "starfoil rare",
+            "starlight rare",
+            "collectors rare",
+            "platinum secret rare",
+          ];
 
-        const rarityComparison =
-          rarityOrder.indexOf(a.cardRarity.toLowerCase()) -
-          rarityOrder.indexOf(b.cardRarity.toLowerCase());
+          const rarityComparison =
+            rarityOrder.indexOf(a.cardRarity.toLowerCase()) -
+            rarityOrder.indexOf(b.cardRarity.toLowerCase());
 
-        return cardListSortOptions.secondary === "ascending"
-          ? rarityComparison
-          : -rarityComparison;
-      } else if (cardListSortOptions.primary === "card code") {
-        const parseCode = (code) => parseInt(code.replace(/[^0-9]/g, ""), 10);
+          return cardListSortOptions.secondary === "ascending"
+            ? rarityComparison
+            : -rarityComparison;
+        } else if (cardListSortOptions.primary === "card code") {
+          const parseCode = (code) => parseInt(code.replace(/[^0-9]/g, ""), 10);
 
-        return cardListSortOptions.secondary === "ascending"
-          ? parseCode(a.cardCode) - parseCode(b.cardCode)
-          : parseCode(b.cardCode) - parseCode(a.cardCode);
-      }
+          return cardListSortOptions.secondary === "ascending"
+            ? parseCode(a.cardCode) - parseCode(b.cardCode)
+            : parseCode(b.cardCode) - parseCode(a.cardCode);
+        }
 
-      return 0;
-    });
+        return 0;
+      });
+
+    setFilteredCardList(filteredCards);
+  }, [selectedBoosterCardList, searchQuery, cardListSortOptions]);
 
   const filteredOpenedCards = [...currentOpenedCards]
     .filter((item) => {
@@ -394,10 +392,10 @@ const BoosterPage = ({
               </div>
             </div>
             <ul className="booster__prev-cardlist">
-              {filteredOpenedCards.map((item, index) => (
+              {filteredOpenedCards.map((item) => (
                 <CardListItem
                   item={item}
-                  key={`${item.cardName}-${index}`}
+                  key={`${item.cardName}-${item.cardCode}`}
                   onClickCard={onClickCard}
                   selectedBooster={selectedBooster}
                 />
@@ -469,7 +467,7 @@ const BoosterPage = ({
                   {filteredCardList.map((item) => (
                     <CardListItem
                       item={item}
-                      key={item.cardName}
+                      key={`${item.cardName}-${item.cardCode}`}
                       onClickCard={onClickCard}
                       selectedBooster={selectedBooster}
                       handleCardLoad={handleCardLoad}

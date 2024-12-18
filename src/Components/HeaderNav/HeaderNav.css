@@ -117,3 +117,36 @@
   border-bottom: #f94040 1pt solid;
   transform: scale(0.96);
 }
+
+@media (max-width: 665px) {
+  .header__sign-in,
+  .header__sign-up {
+    font-size: 22px;
+  }
+
+  .header__nav-slash {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header__sign-in,
+  .header__sign-up {
+    font-size: 20px;
+  }
+
+  .header__nav-slash {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 545px) {
+  .header__sign-in,
+  .header__sign-up {
+    font-size: 18px;
+  }
+
+  .header__nav-slash {
+    font-size: 18px;
+  }
+}

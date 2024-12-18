@@ -122,3 +122,19 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+@media (max-width: 400px) {
+  .home__grid-item {
+    max-width: 280px;
+  }
+
+  .item__name {
+    max-width: 270px;
+  }
+}
+
+@media (max-width: 380px) {
+  .item__name {
+    max-width: 250px;
+  }
+}

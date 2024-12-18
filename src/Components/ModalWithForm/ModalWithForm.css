@@ -81,3 +81,16 @@
   background-color: rgb(0, 142, 235); /* Slightly darker blue on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.modal__button:disabled {
+  transform: none;
+  background-color: rgb(192, 192, 192);
+  box-shadow: none;
+  cursor: default;
+}
+
+@media (max-width: 545px) {
+  .modal__container {
+    min-width: 500px;
+  }
+}

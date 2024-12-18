@@ -42,3 +42,9 @@
 .search-bar__button-image {
   min-width: 25px;
 }
+
+@media (max-width: 415px) {
+  .search-bar__input {
+    width: 200px;
+  }
+}

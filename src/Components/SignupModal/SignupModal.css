@@ -9,7 +9,7 @@
 .modal__label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
 }
 
@@ -21,6 +21,32 @@
   margin-top: 5px;
 }
 
-/* .modal__error {
+.modal__input_invalid {
+  border: 1.8pt red solid;
+}
+
+.modal__error {
+  font-family: "arimo", "Helvetica Neue", sans-serif;
   color: red;
-} */
+  margin-bottom: 5px;
+}
+
+@media (max-width: 650px) {
+  .modal__input {
+    min-width: 400px;
+  }
+
+  .modal__inputs {
+    align-items: center;
+  }
+}
+
+@media (max-width: 545px) {
+  .modal__input {
+    min-width: 350px;
+  }
+
+  .modal__inputs {
+    align-items: center;
+  }
+}

@@ -1,41 +1,66 @@
 import "./SigninModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useFormValidation } from "../../hooks/useFormValidation";
+import FormInput from "../FormInput/FormInput";
 
 const SigninModal = ({ onClose, buttonText }) => {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormValidation({
+      username: "",
+      password: "",
+    });
+
+  const inputs = [
+    {
+      id: 1,
+      name: "username",
+      type: "text",
+      placeholder: "Username...",
+      errorMessage: errors.username,
+      label: "Username:",
+      minLength: 3,
+      maxLength: 20,
+      required: true,
+    },
+    {
+      id: 2,
+      name: "password",
+      type: "password",
+      placeholder: "Password...",
+      errorMessage: errors.password,
+      label: "Password:",
+      minLength: 8,
+      required: true,
+    },
+  ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (isValid) {
+      console.log(values);
+      resetForm();
+      onClose();
+    }
+  };
+
   return (
     <ModalWithForm
       title="Sign In"
       name="Login-user"
       buttonText={buttonText}
       onClose={onClose}
+      handleSubmit={handleSubmit}
+      isValid={isValid}
     >
       <fieldset className="modal__inputs">
-        <label className="modal__label">
-          Username:
-          <input
-            className="modal__input"
-            type="text"
-            name="username"
-            placeholder="Username"
-            // value={userName}
-            minLength="3"
-            maxLength="20"
-            // onChange={handleNameChange}
+        {inputs.map((input) => (
+          <FormInput
+            key={input.id}
+            input={input}
+            inputValue={values[input.name] || ""}
+            handleChange={handleChange}
           />
-        </label>
-        <label className="modal__label">
-          Password:
-          <input
-            className="modal__input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            // value={userPassword}
-            minLength="5"
-            maxLength="1000"
-            // onChange={handlePasswordChange}
-          />
-        </label>
+        ))}
       </fieldset>
     </ModalWithForm>
   );

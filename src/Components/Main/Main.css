@@ -129,3 +129,163 @@
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   color: white;
 }
+
+@media (max-width: 810px) {
+  .home__grid-options {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .home__grid-filters {
+    width: 100%;
+    padding-top: 25px;
+    justify-content: space-around;
+  }
+
+  .home__grid-filter {
+    padding: 0 0 0 5px;
+    min-width: 250px;
+    min-height: 30px;
+  }
+
+  .home__title {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 730px) {
+  .home__grid-filters {
+    justify-content: space-around;
+  }
+
+  .home__grid-filter {
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .home__title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 670px) {
+  .home__grid-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home__grid-filter {
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 570px) {
+  .home__grid-filter {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 545px) {
+  .home__title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 515px) {
+  .home__grid-filter {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 490px) {
+  .home__page-to-top-button {
+    display: none;
+  }
+
+  .home__page-to-top-button-image {
+    display: none;
+  }
+
+  .home__page-to-bottom-button {
+    display: none;
+  }
+
+  .home__page-to-bottom-button-image {
+    display: none;
+  }
+}
+
+@media (max-width: 455px) {
+  .home__title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 470px) {
+  .home__grid-filter {
+    min-width: 220px;
+  }
+
+  .home__grid-filters {
+    flex-direction: column;
+    max-width: 220px;
+  }
+
+  .home__grid-options {
+    flex-direction: column;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 440px) {
+  .home__grid-filter {
+    min-width: 200px;
+  }
+
+  .home__grid-filters {
+    max-width: 200px;
+  }
+
+  .home__grid-options {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 415px) {
+  .home__grid-filter {
+    min-width: 180px;
+  }
+
+  .home__grid-filters {
+    max-width: 180px;
+  }
+
+  .home__title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .home__grid-filter {
+    min-width: 160px;
+  }
+
+  .home__grid-options {
+    min-width: 160px;
+  }
+
+  .home__grid {
+    grid-template-columns: repeat(auto-fit, 280px);
+  }
+}
+
+@media (max-width: 380px) {
+  .home__grid {
+    grid-template-columns: repeat(auto-fit, 260px);
+  }
+
+  .home__title {
+    font-size: 26px;
+  }
+}
