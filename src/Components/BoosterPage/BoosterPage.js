@@ -392,10 +392,10 @@ const BoosterPage = ({
               </div>
             </div>
             <ul className="booster__prev-cardlist">
-              {filteredOpenedCards.map((item) => (
+              {filteredOpenedCards.map((item, index) => (
                 <CardListItem
                   item={item}
-                  key={`${item.cardName}-${item.cardCode}`}
+                  key={`${item.cardName}-${item.cardCode}-${index}`}
                   onClickCard={onClickCard}
                   selectedBooster={selectedBooster}
                 />
