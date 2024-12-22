@@ -115,14 +115,14 @@
 
 @media (max-width: 1150px) {
   .booster__progress-container {
-    min-width: 300px;
-    max-height: fit-content;
-    background: transparent;
-    border: 5px solid rgb(0, 162, 255);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     margin: 0 0 40px 0;
+  }
+}
+
+@media (max-width: 610px) {
+  .booster__progress-list-container {
+    flex-direction: column;
+    gap: 0;
   }
 }
