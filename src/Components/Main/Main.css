@@ -130,7 +130,7 @@
   color: white;
 }
 
-@media (max-width: 810px) {
+@media (max-width: 840px) {
   .home__grid-options {
     flex-direction: column;
     padding-bottom: 10px;

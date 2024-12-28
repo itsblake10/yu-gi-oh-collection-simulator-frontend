@@ -12,7 +12,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import LoadingAnimationTwo from "../LoadingAnimationTwo/LoadingAnimationTwo";
 import defaultBooster from "../../images/default-booster.jpg";
-// import { IsLoadingContext } from "../contexts/IsLoadingContext";
+// import backToTopButton from "../../images/back-to-top-button.svg";
 
 const BoosterPage = ({
   onClickCard,
@@ -23,7 +23,7 @@ const BoosterPage = ({
     /[:/\\?%*|"<>]/g,
     ""
   );
-  // .trim();
+
   const [imgSrc, setImgSrc] = useState(
     `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
@@ -42,7 +42,8 @@ const BoosterPage = ({
     secondary: "ascending",
   });
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [CardlistSearchQuery, setCardlistSearchQuery] = useState("");
+  const [OpenedCardsSearchQuery, setOpenedCardsSearchQuery] = useState("");
 
   const [loadedCards, setLoadedCards] = useState(0);
   const [isCardListLoading, setIsCardListLoading] = useState(true);
@@ -52,6 +53,7 @@ const BoosterPage = ({
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [filteredCardList, setFilteredCardList] = useState([]);
 
+  /* ---------------------------- CARDLIST LOADING ---------------------------- */
   useEffect(() => {
     if (loadedCards === selectedBoosterCardList.length) {
       setIsCardListLoading(false);
@@ -72,6 +74,7 @@ const BoosterPage = ({
 
   const isBoosterOpen = cardBackImage === yugiohCardBackFullStack;
 
+  /* ------------------------------- CARD GROUPS ------------------------------ */
   const cardGroups = useMemo(() => {
     const common = ["common", "short print", "super short print"];
     const rare = [
@@ -99,37 +102,51 @@ const BoosterPage = ({
     };
   }, [selectedBoosterCardList]);
 
+  /* ----------------------------- SORTING OPTIONS ---------------------------- */
   const handlePrimarySortChange = (event) => {
     if (event.target.id === "opened-cards-primary") {
-      setOpenedCardsSortOptions({ primary: event.target.value });
+      setOpenedCardsSortOptions((prev) => {
+        return { ...prev, primary: event.target.value };
+      });
     }
 
     if (event.target.id === "card-list-primary") {
-      setCardListSortOptions({ primary: event.target.value });
+      setCardListSortOptions((prev) => {
+        return { ...prev, primary: event.target.value };
+      });
     }
   };
 
   const handleSecondarySortChange = (event) => {
     if (event.target.id === "opened-cards-secondary") {
-      setOpenedCardsSortOptions({ secondary: event.target.value });
+      setOpenedCardsSortOptions((prev) => {
+        return { ...prev, secondary: event.target.value };
+      });
     }
 
     if (event.target.id === "card-list-secondary") {
-      setCardListSortOptions({ secondary: event.target.value });
+      setCardListSortOptions((prev) => {
+        return { ...prev, secondary: event.target.value };
+      });
     }
   };
 
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
+  const handleCardlistSearchInputChange = (event) => {
+    setCardlistSearchQuery(event.target.value);
   };
 
+  const handleOpenedCardsSearchInputChange = (event) => {
+    setOpenedCardsSearchQuery(event.target.value);
+  };
+
+  /* -------------------------- BOOSTER PACK OPENING -------------------------- */
   const handleOpenBoosterPack = () => {
     setCardBackImage(yugiohCardBackFullStack);
     setCardBackClass("booster__card-back_visible");
     setBoosterPackClass("booster__pack_disabled");
     setCurrentCardIndex(-1);
     const selectedCommons = Array.from(
-      { length: 8 },
+      { length: selectedBooster.boosterPackSize - 1 },
       () =>
         cardGroups.commonCards[
           Math.floor(Math.random() * cardGroups.commonCards.length)
@@ -174,11 +191,12 @@ const BoosterPage = ({
     }
   };
 
+  /* --------------------- FILTERING AND SORTING CARDLIST --------------------- */
   useEffect(() => {
     const filteredCards = [...selectedBoosterCardList]
       .filter((item) => {
         const cardName = item.cardName.toLowerCase();
-        const query = searchQuery.toLowerCase();
+        const query = CardlistSearchQuery.toLowerCase();
 
         return cardName.includes(query);
       })
@@ -226,12 +244,13 @@ const BoosterPage = ({
       });
 
     setFilteredCardList(filteredCards);
-  }, [selectedBoosterCardList, searchQuery, cardListSortOptions]);
+  }, [selectedBoosterCardList, CardlistSearchQuery, cardListSortOptions]);
 
+  /* ----------------- FILTERING AND SORTING OPENED CARDLIST ---------------- */
   const filteredOpenedCards = [...currentOpenedCards]
     .filter((item) => {
       const cardName = item.cardName.toLowerCase();
-      const query = searchQuery.toLowerCase();
+      const query = OpenedCardsSearchQuery.toLowerCase();
 
       return cardName.includes(query);
     })
@@ -283,6 +302,16 @@ const BoosterPage = ({
       <h1 className="booster__title">{selectedBooster.boosterPackName}</h1>
       <div className="booster__page-background">
         <div className="booster__page-container">
+          {/* <button
+            className="booster__page-back-button"
+            // onClick={}
+          >
+            <img
+              className="booster__page-back-button-image"
+              src={backToTopButton}
+              alt="back button"
+            />
+          </button> */}
           <div className="booster__container">
             <BoosterPackStats
               selectedBoosterPack={selectedBooster}
@@ -344,8 +373,9 @@ const BoosterPage = ({
             <div className="booster__cardlist-options">
               <SearchBar
                 searchBarPlaceHolder={"Search Cards..."}
-                onSearchInputChange={handleSearchInputChange}
-                searchQuery={searchQuery}
+                onSearchInputChange={handleOpenedCardsSearchInputChange}
+                searchQuery={OpenedCardsSearchQuery}
+                setSearchQuery={setOpenedCardsSearchQuery}
               />
               <div className="booster__cardlist-filters">
                 <select
@@ -409,8 +439,9 @@ const BoosterPage = ({
             <div className="booster__cardlist-options">
               <SearchBar
                 searchBarPlaceHolder={"Search Cards..."}
-                onSearchInputChange={handleSearchInputChange}
-                searchQuery={searchQuery}
+                onSearchInputChange={handleCardlistSearchInputChange}
+                searchQuery={CardlistSearchQuery}
+                setSearchQuery={setCardlistSearchQuery}
               />
               <div className="booster__cardlist-filters">
                 <select

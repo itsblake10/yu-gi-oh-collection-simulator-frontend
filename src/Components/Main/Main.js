@@ -3,7 +3,6 @@ import React, { useState, useMemo, useEffect } from "react";
 import ItemBooster from "../ItemBooster/ItemBooster";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
-// import { IsLoadingContext } from "../contexts/IsLoadingContext";
 import backToTopButton from "../../images/back-to-top-button.svg";
 
 const Main = ({
@@ -67,6 +66,9 @@ const Main = ({
           !setName.includes("speed duel gx: duelists of shadows") &&
           !setName.includes("speed duel gx: midterm paradox") &&
           !setName.includes("speed duel gx: duel academy box") &&
+          !setName.includes("duel terminal - preview wave 1") &&
+          !setName.includes("egyptian god deck: obelisk the tormentor") &&
+          !setName.includes("egyptian god deck: slifer the sky dragon") &&
           item.boosterPackTotalCards >= 10 &&
           setName.includes(query)
         );
@@ -124,6 +126,7 @@ const Main = ({
             searchBarPlaceHolder={"Search Booster Packs..."}
             onSearchInputChange={handleSearchInputChange}
             searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
           <div className="home__grid-filters">
             <select

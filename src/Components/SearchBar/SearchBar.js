@@ -1,11 +1,14 @@
 import "./SearchBar.css";
-import searchBarButton from "../../images/search-bar-button.svg";
 
 const SearchBar = ({
   searchBarPlaceHolder,
   searchQuery,
+  setSearchQuery,
   onSearchInputChange,
 }) => {
+  const handleSearchClear = () => {
+    setSearchQuery("");
+  };
   return (
     <form className="search-bar" onSubmit={(e) => e.preventDefault()}>
       <div className="search-bar__container">
@@ -16,16 +19,11 @@ const SearchBar = ({
           onChange={onSearchInputChange}
           placeholder={searchBarPlaceHolder}
         />
-        {searchBarPlaceHolder !== "Search Booster Packs..." &&
-          searchBarPlaceHolder !== "Search Cards..." && (
-            <button className="search-bar__button" type="submit">
-              <img
-                className="search-bar__button-image"
-                src={searchBarButton}
-                alt="search bar button"
-              />
-            </button>
-          )}
+        {searchQuery !== "" && (
+          <p className="search-bar__delete-button" onClick={handleSearchClear}>
+            x
+          </p>
+        )}
       </div>
     </form>
   );

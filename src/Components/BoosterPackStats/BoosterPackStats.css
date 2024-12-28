@@ -16,7 +16,8 @@
 }
 
 .booster__breakdown-pack-size {
-  font-size: 14px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  font-size: 16px;
   color: white;
   margin: 10px auto 0;
 }
@@ -34,24 +35,43 @@
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
   justify-content: flex-start;
   margin: 0 50px 0 0;
 }
 
+@-moz-document url-prefix() {
+  .booster__progress-container {
+    scroll-padding: 0 5px 0 0;
+    scrollbar-width: thin;
+    scrollbar-color: #f94040 transparent;
+  }
+}
+
+.booster__progress-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.booster__progress-container::-webkit-scrollbar-thumb {
+  background-color: #f94040;
+  border-radius: 4px;
+}
+
+.booster__progress-container::-webkit-scrollbar-track {
+  background: none;
+}
+
 .booster__progress-title {
-  font-size: 19px;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
+  font-size: 22px;
   text-decoration: underline;
   color: white;
   margin: 10px auto 10px auto;
 }
 
-.booster__progress-pack-size {
-  font-size: 14px;
-  color: white;
-  margin: 0 auto 10px;
-}
-
 .booster__progress-pack-size_color {
+  font-family: "arimo", "Helvetica Neue", sans-serif;
   color: #f94040;
   margin: 0 0 0 5px;
   display: inline;
@@ -69,6 +89,7 @@
 .booster__list-container-title {
   margin: 0 auto;
   color: white;
+  font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   font-size: 16px;
   display: inline;
 }
@@ -124,5 +145,10 @@
   .booster__progress-list-container {
     flex-direction: column;
     gap: 0;
+  }
+
+  .booster__progress-container {
+    max-height: 450px;
+    overflow-y: scroll;
   }
 }

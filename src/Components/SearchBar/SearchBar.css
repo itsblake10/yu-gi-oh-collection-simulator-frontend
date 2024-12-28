@@ -6,6 +6,7 @@
 
 .search-bar__container {
   align-content: center;
+  max-height: 30px;
 }
 
 .search-bar__input {
@@ -25,26 +26,49 @@
   outline: none;
 }
 
-.search-bar__button {
-  border: none;
-  background: none;
+.search-bar__delete-button {
+  font-family: "arimo", "Helvetica Neue", sans-serif;
+  font-size: 36px;
   color: white;
-  font-size: medium;
+  position: relative;
+  top: -40px;
+  left: 260px;
   cursor: pointer;
-  transition: transform 0.3s ease-out, color 0.3s ease-out;
+  max-width: fit-content;
 }
 
-.search-bar__button:hover {
-  transform: scale(1.1);
-  opacity: 70%;
+.search-bar__delete-button:hover {
+  transform: scale(1.01);
 }
 
-.search-bar__button-image {
-  min-width: 25px;
+@media (max-width: 540px) {
+  .search-bar__input {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 470px) {
+  .search-bar__input {
+    min-width: 220px;
+    max-width: 220px;
+  }
+
+  .search-bar__delete-button {
+    font-size: 32px;
+    top: -37px;
+    left: 230px;
+  }
 }
 
 @media (max-width: 415px) {
   .search-bar__input {
-    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+  }
+
+  .search-bar__delete-button {
+    font-size: 30px;
+    top: -34px;
+    left: 208px;
   }
 }

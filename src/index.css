@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "audiowide";
-  src: url("./vendor/fonts/audiowide-regular-webfont.woff2") format("woff2"),
-    url("./vendor/fonts/audiowide-regular-webfont.woff") format("woff");
+  font-family: "OCR A Extended";
+  src: url("./vendor/fonts/ocraext-webfont.woff2") format("woff2"),
+    url("./vendor/fonts/ocraext-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  font-family: "audiowide", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  font-family: "OCR A Extended", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +32,6 @@ body {
 }
 
 code {
-  font-family: "audiowide", source-code-pro, Menlo, Monaco, Consolas,
+  font-family: "OCR A Extended", source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
 }
