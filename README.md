@@ -4,25 +4,31 @@ Yu-Gi-Oh Collection Simulator is a React-based web application that simulates th
 
 ## Features
 
-- **card collecting**:
+- ### card collecting:
+
   Users have the ability to collect cards as they open booster packs.
 
-- **Booster pack opening feature**:
+- ### Booster pack opening feature:
+
   Booster packs can be opened to obtain a randomized set of cards.
 
-- **Booster pack progress/stats**:
+- ### Booster pack progress/stats:
+
   Users will be able to view thier collection progress for each booster pack as well as stats such as how many of that pack the user has opened.
 
-- **Filtering/sorting options**:
+- ### Filtering/sorting options:
+
   The user can filter/sort items based on certain criteria, as well as a search bar for finding specific items.
 
-- **Card information modal**:
+- ### Card information modal:
+
   A modal that displays information for a specific card, including an enlarged image of the card.
 
-- **User-Friendly Interface**:
+- ### User-Friendly Interface:
+
   A clean and intuitive user interface for ease of use.
 
-- **Responsive Design**:
+- ### Responsive Design:
   The app is designed to be responsive, ensuring a seamless experience across various devices and screen sizes.
 
 ## Technologies Used
