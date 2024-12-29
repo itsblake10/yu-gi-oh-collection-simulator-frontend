@@ -151,3 +151,14 @@
     font-size: 18px;
   }
 }
+
+@media (max-width: 335px) {
+  .header__sign-in,
+  .header__sign-up {
+    font-size: 16px;
+  }
+
+  .header__nav-slash {
+    font-size: 16px;
+  }
+}

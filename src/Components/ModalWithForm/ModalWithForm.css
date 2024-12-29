@@ -57,7 +57,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px 30px 20px 30px;
-  width: 80%;
+  min-width: 230px;
   margin: 0 auto;
 }
 

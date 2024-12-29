@@ -1,9 +1,9 @@
 .modal__inputs {
   display: flex;
   flex-direction: column;
-  /* justify-items: center; */
   border: none;
-  min-width: 300px;
+  padding: 0;
+  min-width: 230px;
 }
 
 .modal__label {
@@ -19,6 +19,8 @@
   min-height: 28px;
   padding: 5px;
   margin-top: 5px;
+  width: 400px;
+  font-family: "arimo", "Helvetica Neue", sans-serif;
 }
 
 .modal__input_invalid {
@@ -31,22 +33,32 @@
   margin-bottom: 5px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 510px) {
   .modal__input {
-    min-width: 400px;
-  }
-
-  .modal__inputs {
-    align-items: center;
+    width: 350px;
   }
 }
 
-@media (max-width: 545px) {
+@media (max-width: 455px) {
   .modal__input {
-    min-width: 350px;
+    width: 300px;
   }
+}
 
-  .modal__inputs {
-    align-items: center;
+@media (max-width: 400px) {
+  .modal__input {
+    width: 280px;
+  }
+}
+
+@media (max-width: 380px) {
+  .modal__input {
+    width: 250px;
+  }
+}
+
+@media (max-width: 350px) {
+  .modal__input {
+    width: 230px;
   }
 }

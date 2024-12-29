@@ -12,7 +12,6 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import LoadingAnimationTwo from "../LoadingAnimationTwo/LoadingAnimationTwo";
 import defaultBooster from "../../images/default-booster.jpg";
-// import backToTopButton from "../../images/back-to-top-button.svg";
 
 const BoosterPage = ({
   onClickCard,

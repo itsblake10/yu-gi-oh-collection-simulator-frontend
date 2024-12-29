@@ -144,9 +144,9 @@
   list-style-type: none;
   padding: 10px 15px 10px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-columns: repeat(auto-fill, 125px);
   grid-template-rows: auto;
-  gap: 8px;
+  gap: 10px;
   max-height: 300px;
   /* overflow: scroll; */
   overflow-y: auto;
@@ -232,9 +232,10 @@
   list-style-type: none;
   padding: 10px 10px 10px 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-columns: repeat(auto-fill, 125px);
   grid-template-rows: auto;
-  gap: 10px;
+  column-gap: 10px;
+  row-gap: 6px;
   max-height: 500px;
   /* overflow: scroll; */
   overflow-y: auto;
