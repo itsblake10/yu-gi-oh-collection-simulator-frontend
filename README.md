@@ -4,7 +4,7 @@ Yu-Gi-Oh Collection Simulator is a React-based web application that simulates th
 
 ## Features
 
-- ### card collecting:
+- ### Card collecting:
 
   Users have the ability to collect cards as they open booster packs.
 

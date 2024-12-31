@@ -134,6 +134,7 @@
   .home__grid-options {
     flex-direction: column;
     padding-bottom: 10px;
+    margin: 0 auto;
   }
 
   .home__grid-filters {
@@ -256,6 +257,12 @@
   }
 }
 
+@media (max-width: 510px) {
+  .home__grid {
+    grid-template-columns: repeat(2, 180px);
+  }
+}
+
 @media (max-width: 490px) {
   .home__page-to-top-button {
     display: none;
@@ -278,16 +285,6 @@
   }
 }
 
-@media (max-width: 455px) {
-  .home__title {
-    font-size: 32px;
-  }
-
-  .home__grid {
-    grid-template-columns: repeat(2, 150px);
-  }
-}
-
 @media (max-width: 470px) {
   .home__grid-filter {
     min-width: 220px;
@@ -301,6 +298,14 @@
   .home__grid-options {
     flex-direction: column;
     min-width: 220px;
+  }
+
+  .home__title {
+    font-size: 32px;
+  }
+
+  .home__grid {
+    grid-template-columns: repeat(2, 150px);
   }
 }
 
@@ -318,7 +323,7 @@
   }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 430px) {
   .home__grid-filter {
     min-width: 180px;
   }
@@ -346,13 +351,13 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
   .home__title {
     font-size: 26px;
   }
 
   .home__grid {
-    grid-template-columns: repeat(2, 120px);
+    grid-template-columns: repeat(2, 110px);
   }
 
   .home__grid-filter {
@@ -367,7 +372,7 @@
 
 @media (max-width: 355px) {
   .home__grid {
-    grid-template-columns: repeat(2, 110px);
+    grid-template-columns: repeat(2, 100px);
   }
 
   .home__grid-filter {
@@ -380,6 +385,10 @@
 }
 
 @media (max-width: 335px) {
+  .home__grid {
+    grid-template-columns: repeat(2, 95px);
+  }
+
   .home__grid-filter {
     min-width: 110px;
   }
@@ -389,8 +398,8 @@
   }
 }
 
-@media (max-width: 330px) {
+/* @media (max-width: 330px) {
   .home__grid {
     grid-template-columns: repeat(2, 100px);
   }
-}
+} */

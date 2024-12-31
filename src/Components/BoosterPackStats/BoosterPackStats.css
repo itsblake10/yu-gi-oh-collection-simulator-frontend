@@ -84,6 +84,7 @@
   list-style-type: none;
   margin: 0 0 0 0;
   padding: 0;
+  width: fit-content;
 }
 
 .booster__list-container-title {
@@ -109,7 +110,7 @@
 }
 
 .booster__progress-list-item {
-  font-size: 16px;
+  font-size: 15px;
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   list-style: none;
   margin: 7px 0 0 0;
@@ -134,21 +135,76 @@
   margin: 0 0 0 5px;
 }
 
+@media (max-width: 1285px) {
+  .booster__progress-list-item {
+    font-size: 14px;
+  }
+
+  .booster__progress-list-container {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 1255px) {
+  .booster__progress-list-item {
+    font-size: 13px;
+  }
+
+  .booster__progress-list-container {
+    gap: 30px;
+  }
+}
+
 @media (max-width: 1150px) {
   .booster__progress-container {
     align-items: center;
     margin: 0 0 40px 0;
   }
+
+  .booster__progress-list-item {
+    font-size: 16px;
+  }
+
+  .booster__progress-list-container {
+    gap: 70px;
+  }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 600px) {
   .booster__progress-list-container {
     flex-direction: column;
     gap: 0;
   }
 
+  .booster__progress-list-item {
+    font-size: 15px;
+  }
+
+  .booster__progress-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .booster__progress-list-item {
+    font-size: 14px;
+  }
+
+  .booster__progress-title {
+    font-size: 18px;
+  }
+
+  .booster__breakdown-pack-size {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 390px) {
+  .booster__progress-list-item {
+    font-size: 13px;
+  }
+
   .booster__progress-container {
-    max-height: 450px;
-    overflow-y: scroll;
+    min-width: 240px;
   }
 }

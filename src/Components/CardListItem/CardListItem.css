@@ -37,7 +37,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
-  min-height: 15px;
+  min-height: fit-content;
   max-width: 110px;
   white-space: nowrap;
   position: relative;
@@ -67,7 +67,7 @@
   text-align: center;
   font-size: 12px;
   margin: 0 0 2px 0;
-  padding: 0 3px 0 3px;
+  padding: 3px 3px 0 3px;
   overflow: hidden;
   white-space: nowrap;
   max-width: 100px;
@@ -244,12 +244,12 @@
 }
 
 .cardlist__item-open-button {
-  color: none;
+  color: transparent;
   padding: 0;
   margin: 0;
   border: none;
+  max-height: 160px;
   transition: transform 0.1s, opacity 0.1s;
-  min-height: 111px;
   cursor: pointer;
 }
 
@@ -267,9 +267,8 @@
 .cardlist__item-image-text {
   font-family: "arimo-bold", "Helvetica Neue", sans-serif;
   font-size: 12px;
-  position: absolute;
-  min-width: 75px;
-  bottom: 45px;
+  position: relative;
+  bottom: 90px;
   color: rgb(0, 162, 255);
   background-color: rgba(255, 255, 255, 0.8);
   transition: opacity 0.1s ease;
@@ -279,4 +278,284 @@
 
 .cardlist__item-open-button:hover .cardlist__item-image-text {
   opacity: 100%;
+}
+
+@media (max-width: 529px) {
+  .cardlist__item {
+    width: 110px;
+    height: 190px;
+  }
+
+  .cardlist__item-image {
+    max-width: 90px;
+    height: 135px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 135px;
+  }
+
+  .cardlist__item-name {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    max-width: 105px;
+  }
+
+  .cardlist__item-code {
+    font-size: 11px;
+  }
+
+  .cardlist__item-rarity {
+    font-size: 11px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 11px;
+    bottom: 75px;
+  }
+}
+
+@media (max-width: 470px) {
+  .cardlist__item {
+    width: 100px;
+    height: 175px;
+  }
+
+  .cardlist__item-image {
+    max-width: 80px;
+    height: 120px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 120px;
+  }
+
+  .cardlist__item-name {
+    font-size: 12px;
+    max-width: 100px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 10px;
+    bottom: 67px;
+  }
+}
+
+@media (max-width: 450px) {
+  .cardlist__item {
+    width: 95px;
+    height: 170px;
+  }
+
+  .cardlist__item-image {
+    max-width: 75px;
+    height: 115px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 115px;
+  }
+
+  .cardlist__item-name {
+    font-size: 11px;
+    max-width: 95px;
+  }
+
+  .cardlist__item-code {
+    font-size: 10px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 10px;
+    bottom: 65px;
+  }
+}
+
+@media (max-width: 430px) {
+  .cardlist__item {
+    width: 90px;
+    height: 160px;
+  }
+
+  .cardlist__item-image {
+    max-width: 70px;
+    height: 110px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 110px;
+  }
+
+  .cardlist__item-code {
+    font-size: 9px;
+  }
+
+  .cardlist__item-name {
+    font-size: 10px;
+    max-width: 90px;
+  }
+
+  .cardlist__item-rarity {
+    font-size: 10px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 9px;
+    bottom: 62px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cardlist__item {
+    width: 85px;
+    height: 150px;
+  }
+
+  .cardlist__item-image {
+    max-width: 65px;
+    height: 100px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 100px;
+  }
+
+  .cardlist__item-name {
+    font-size: 10px;
+    max-width: 85px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 8px;
+    bottom: 57px;
+  }
+}
+
+@media (max-width: 390px) {
+  .cardlist__item {
+    width: 80px;
+    height: 140px;
+  }
+
+  .cardlist__item-image {
+    max-width: 60px;
+    height: 95px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 95px;
+  }
+
+  .cardlist__item-name {
+    max-width: 75px;
+  }
+
+  .cardlist__item-rarity {
+    font-size: 9px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 7px;
+    bottom: 53px;
+  }
+}
+
+@media (max-width: 370px) {
+  .cardlist__item {
+    width: 70px;
+    height: 132px;
+  }
+
+  .cardlist__item-image {
+    max-width: 55px;
+    height: 90px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 90px;
+  }
+
+  .cardlist__item-code {
+    font-size: 8px;
+  }
+
+  .cardlist__item-name {
+    font-size: 9px;
+    max-width: 70px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 7px;
+    bottom: 50px;
+  }
+}
+
+@media (max-width: 355px) {
+  .cardlist__item {
+    width: 70px;
+    height: 130px;
+  }
+
+  .cardlist__item-image {
+    height: 85px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 85px;
+  }
+}
+
+@media (max-width: 340px) {
+  .cardlist__item {
+    width: 65px;
+    height: 125px;
+  }
+
+  .cardlist__item-image {
+    max-width: 50px;
+    height: 80px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 80px;
+  }
+
+  .cardlist__item-name {
+    font-size: 9px;
+    max-width: 65px;
+  }
+
+  .cardlist__item-rarity {
+    font-size: 8px;
+  }
+
+  .cardlist__item-image-text {
+    font-size: 6px;
+    bottom: 46px;
+  }
+}
+
+@media (max-width: 330px) {
+  .cardlist__item {
+    width: 60px;
+    height: 120px;
+  }
+
+  .cardlist__item-image {
+    max-width: 45px;
+    height: 75px;
+  }
+
+  .cardlist__item-open-button {
+    max-height: 75px;
+  }
+
+  .cardlist__item-name {
+    font-size: 8px;
+    max-width: 60px;
+  }
+
+  .cardlist__item-image-text {
+    bottom: 44px;
+  }
 }

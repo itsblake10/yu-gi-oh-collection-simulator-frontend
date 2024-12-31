@@ -285,3 +285,38 @@
 .opened-card__button:hover .opened-card__image-text {
   opacity: 100%;
 }
+
+@media (max-width: 700px) {
+  .opened-card__image {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .opened-card__name {
+    font-size: 14px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 610px) {
+  .opened-card__image {
+    max-width: 130px;
+  }
+
+  .opened-card__name {
+    font-size: 14px;
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 560px) {
+  .opened-card__image {
+    max-width: 120px;
+  }
+
+  .opened-card__name {
+    font-size: 14px;
+    max-width: 140px;
+  }
+}

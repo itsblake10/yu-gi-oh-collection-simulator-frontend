@@ -42,3 +42,12 @@
 .loading__image4 {
   animation-delay: 1.5s;
 }
+
+@media (max-width: 400px) {
+  .loading__image1,
+  .loading__image2,
+  .loading__image3,
+  .loading__image4 {
+    width: 40px;
+  }
+}

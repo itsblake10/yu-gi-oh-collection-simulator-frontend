@@ -429,7 +429,6 @@ const BoosterPage = ({
                   selectedBooster={selectedBooster}
                 />
               ))}
-              ;
             </ul>
           </div>
 
