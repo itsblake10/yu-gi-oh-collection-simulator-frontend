@@ -32,7 +32,7 @@
 }
 
 .footer__nav-item:hover {
-  color: rgb(236, 78, 78);
+  color: #f94040;
   transform: scale(1.02);
 }
 

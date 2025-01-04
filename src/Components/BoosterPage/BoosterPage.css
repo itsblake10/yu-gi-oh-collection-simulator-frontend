@@ -173,6 +173,7 @@
 .booster__prev-cardlist::-webkit-scrollbar-track {
   background: none;
 }
+
 /* -------------------------------- CARDLIST -------------------------------- */
 .booster__cardlist-container {
   max-width: 1500px;
@@ -199,7 +200,6 @@
   justify-content: space-between;
   padding: 0 20px 20px 20px;
   margin: 15px 40px 8px 40px;
-  /* min-width: max-content; */
   border-bottom: 2.5pt white solid;
   border-radius: 10px;
 }
@@ -438,13 +438,11 @@
 
 @media (max-width: 529px) {
   .booster__cardlist {
-    grid-template-columns: repeat(3, 110px);
     column-gap: 5px;
     row-gap: 10px;
   }
 
   .booster__prev-cardlist {
-    grid-template-columns: repeat(3, 110px);
     column-gap: 5px;
     row-gap: 10px;
   }

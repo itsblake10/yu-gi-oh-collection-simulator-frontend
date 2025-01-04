@@ -21,7 +21,6 @@ import { boosterPackData } from "../../utils/BoosterPacks";
 import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 import { getBoosterPackCardData } from "../../utils/ygoProDeckApi";
 import { IsLoggedInContext } from "../contexts/isLoggedInContext";
-// import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");

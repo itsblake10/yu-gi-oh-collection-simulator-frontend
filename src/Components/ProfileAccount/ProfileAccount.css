@@ -7,6 +7,7 @@
   color: white;
   padding: 40px 0 30px 0;
   text-align: center;
+  margin: 0;
 }
 
 .profile-account__page-background {
@@ -25,7 +26,6 @@
 
 .profile-account__settings {
   display: flex;
-  /* min-width: 1000px; */
   flex-direction: row;
   padding: 0 25px 0 25px;
   margin: 0 auto;
@@ -81,13 +81,11 @@
 .profile-account__username_tooltip {
   visibility: hidden;
   width: fit-content;
-  /* background-color: rgba(3, 0, 79, 0.5); */
   color: #fff;
   font-family: "arimo", "Helvetica Neue", sans-serif;
   font-size: 14px;
   text-align: center;
   padding: 3px;
-  /* border: #f94040 1pt solid; */
   position: absolute;
   bottom: 30px;
   left: 110px;
@@ -112,7 +110,7 @@
 
 .profile-account__button {
   font-family: "arimo", "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 17px;
   cursor: pointer;
   min-width: 125px;
   min-height: 30px;
@@ -127,6 +125,158 @@
 }
 
 .profile-account__button:hover {
-  color: #f94040;
+  color: rgb(0, 162, 255);
+  border: 2px solid rgb(0, 162, 255);
   transform: scale(102%);
+}
+
+@media (max-width: 1075px) {
+  .profile-account__buttons {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .profile-account__buttons {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .profile-account__settings {
+    flex-direction: column;
+  }
+
+  .profile-account__buttons {
+    margin: 0;
+    justify-content: space-around;
+    margin: 10px 0 0 0;
+  }
+
+  .profile-account__user-profile {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 868px) {
+  .profile-account__title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 690px) {
+  .profile-account__buttons {
+    flex-direction: column;
+    gap: 0;
+    margin: 10px 0 10px 0;
+  }
+
+  .profile-account__button {
+    font-size: 17px;
+    min-width: 500px;
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-account__button {
+    font-size: 17px;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 545px) {
+  .profile-account__title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 455px) {
+  .profile-account__title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 420px) {
+  .profile-account__user-profile {
+    min-width: 220px;
+    margin: 0;
+  }
+
+  .profile-account__username {
+    font-size: 14px;
+    max-width: 200px;
+  }
+
+  .profile-account__user-image-container {
+    width: 70px;
+    height: 70px;
+  }
+
+  .profile-account__username-container {
+    bottom: 48px;
+    left: 60px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 410px) {
+  .profile-account__title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .profile-account__user-profile {
+    min-width: 210px;
+  }
+
+  .profile-account__username {
+    font-size: 13px;
+    max-width: 190px;
+  }
+
+  .profile-account__user-image-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-account__username-container {
+    bottom: 43px;
+    left: 50px;
+    max-width: 200px;
+  }
+
+  .profile-account__username_tooltip {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 370px) {
+  .profile-account__container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 30px 0 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  .profile-account__title {
+    font-size: 28px;
+  }
+
+  .profile-account__username {
+    font-size: 13px;
+    max-width: 180px;
+  }
+
+  .profile-account__user-image-container {
+    width: 55px;
+    height: 55px;
+  }
+
+  .profile-account__username-container {
+    left: 45px;
+    max-width: 180px;
+  }
 }

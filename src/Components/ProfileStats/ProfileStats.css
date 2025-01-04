@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 0 0 250px;
+  margin: 0 0 0 auto;
 }
 
 .profile-stats__general-stats {
@@ -70,6 +70,7 @@
   justify-content: space-between;
   padding: 10px 15px 0 15px;
   max-height: fit-content;
+  gap: 20px;
 }
 
 .profile-stats__list {
@@ -81,6 +82,27 @@
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+@-moz-document url-prefix() {
+  .profile-stats__list {
+    scroll-padding: 0 5px 0 0;
+    scrollbar-width: thin;
+    scrollbar-color: #f94040 transparent;
+  }
+}
+
+.profile-stats__list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.profile-stats__list::-webkit-scrollbar-thumb {
+  background-color: #f94040;
+  border-radius: 4px;
+}
+
+.profile-stats__list::-webkit-scrollbar-track {
+  background: none;
 }
 
 .profile-stats__list-label {
@@ -114,7 +136,7 @@
 }
 
 .profile-stats__filter {
-  margin: 5px 0 0 0;
+  margin: 8px 0 5px 0;
   padding: 0 0 0 5px;
   min-width: 150px;
   min-height: 25px;
@@ -128,4 +150,87 @@
 .profile-stats__filter-option {
   background-color: white;
   color: black;
+}
+
+@media (max-width: 868px) {
+  .profile-stats__sub-title {
+    font-size: 20px;
+  }
+
+  .profile-stats__list-label {
+    font-size: 15px;
+  }
+
+  .profile-stats__title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 690px) {
+  .profile-stats__general-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 20px 0;
+  }
+
+  .profile-stats__general {
+    margin: 20px;
+  }
+
+  .profile-stats__all {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-auto-flow: row;
+    padding: 15px 15px 0 15px;
+    gap: 30px;
+  }
+
+  .profile-stats__all > :nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 555px) {
+  .profile-stats__sub-title {
+    font-size: 19px;
+  }
+
+  .profile-stats__list-label {
+    font-size: 14px;
+  }
+
+  .profile-stats__title {
+    font-size: 30px;
+  }
+
+  .profile-stats__list-item {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 530px) {
+  .profile-stats__all {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 0 15px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 410px) {
+  .profile-stats__title {
+    font-size: 28px;
+  }
+
+  .profile-stats__sub-title {
+    font-size: 18px;
+    margin: 15px 0 0 0;
+  }
+
+  .profile-stats__card-pulled-most {
+    flex-direction: column;
+    align-items: center;
+  }
 }

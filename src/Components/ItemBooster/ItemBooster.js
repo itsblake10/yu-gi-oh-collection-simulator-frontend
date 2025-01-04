@@ -53,7 +53,7 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
     <>
       <li className="home__grid-item">
         <p className={`item__name ${!shouldScroll ? "non-scrolling" : ""}`}>
-          <span>{item.boosterPackName}</span>
+          <span className="item__name-span">{item.boosterPackName}</span>
         </p>
         <p className="item__code">({item.boosterPackCode})</p>
         <p className="item__release">{item.boosterPackReleaseDate}</p>
