@@ -17,7 +17,6 @@ import ChangeAvatarModal from "../ChangeAvatarModal/ChangeAvatarModal";
 import ChangeEmailModal from "../ChangeEmailModal/ChangeEmailModal";
 import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
 import { boosterPackData } from "../../utils/BoosterPacks";
-// import { IsLoadingContext } from "../contexts/IsLoadingContext";
 import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 import { getBoosterPackCardData } from "../../utils/ygoProDeckApi";
 import { IsLoggedInContext } from "../contexts/isLoggedInContext";
@@ -36,6 +35,7 @@ function App() {
   });
   const [selectedCard, setSelectedCard] = useState({});
   const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -69,6 +69,7 @@ function App() {
   // GET ALL BOOSTER PACKS
   useEffect(() => {
     setIsBoosterPacksLoading(true);
+    setErrorMessage("");
     getAllBoosterPacks()
       .then((data) => {
         const formattedData = data.map((booster) => ({
@@ -85,17 +86,23 @@ function App() {
 
         setBoosterPacks(formattedData);
       })
-      .catch((error) => console.error("Error fetching booster packs", error))
+      .catch((error) => {
+        console.error("Error fetching booster packs", error);
+        setErrorMessage("Failed to load booster packs. Please try again.");
+      })
       .finally(() => setIsBoosterPacksLoading(false));
   }, []);
 
+  // GET BOOSTER PACK CARDLIST
   useEffect(() => {
+    setErrorMessage("");
+
     if (!selectedBooster || !selectedBooster.boosterPackName) {
       console.error("Selected booster is undefined or invalid.");
+      setErrorMessage("Selected booster is undefined or invalid.");
       return;
     }
 
-    // GET BOOSTER PACK CARDLIST
     getBoosterPackCardData(selectedBooster.boosterPackName)
       .then(({ data }) => {
         const formattedData = data.map((card) => {
@@ -126,7 +133,8 @@ function App() {
         setSelectedBoosterCardList(formattedData);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching card data", error);
+        setErrorMessage("Failed to load cards. Please try again.");
       });
   }, [selectedBooster]);
 
@@ -191,8 +199,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <IsLoadingContext.Provider value={{ isLoading }}> */}
       <IsLoggedInContext.Provider value={{ isLoggedIn }}>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <Header
           onClickSignin={handleClickSignin}
           onClickSignup={handleClickSignup}
@@ -283,7 +291,6 @@ function App() {
           />
         )}
       </IsLoggedInContext.Provider>
-      {/* </IsLoadingContext.Provider> */}
     </div>
   );
 }
