@@ -19,7 +19,7 @@ import ChangePasswordModal from "../ChangePasswordModal/ChangePasswordModal";
 import { boosterPackData } from "../../utils/BoosterPacks";
 import { getAllBoosterPacks } from "../../utils/ygoProDeckApi";
 import { getBoosterPackCardData } from "../../utils/ygoProDeckApi";
-import { IsLoggedInContext } from "../contexts/isLoggedInContext";
+// import { IsLoggedInContext } from "../contexts/isLoggedInContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -36,7 +36,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("selectedBooster", JSON.stringify(selectedBooster));
@@ -199,98 +199,92 @@ function App() {
 
   return (
     <div className="App">
-      <IsLoggedInContext.Provider value={{ isLoggedIn }}>
-        {errorMessage && <div className="error-message">{errorMessage}</div>}
-        <Header
-          onClickSignin={handleClickSignin}
-          onClickSignup={handleClickSignup}
+      {/* <IsLoggedInContext.Provider value={{ isLoggedIn }}> */}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      <Header
+        onClickSignin={handleClickSignin}
+        onClickSignup={handleClickSignup}
+      />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <Main
+              {...props}
+              boosterPacks={boosterPacks}
+              onClickBoosterPack={handleSelectBooster}
+              onScrollToTop={scrollToTop}
+              onScrollToBottom={scrollToBottom}
+              isBoosterPacksLoading={isBoosterPacksLoading}
+            />
+          )}
         />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => (
-              <Main
-                {...props}
-                boosterPacks={boosterPacks}
-                onClickBoosterPack={handleSelectBooster}
-                onScrollToTop={scrollToTop}
-                onScrollToBottom={scrollToBottom}
-                isBoosterPacksLoading={isBoosterPacksLoading}
-              />
-            )}
-          />
-          <Route
-            path="/booster-page/:id"
-            render={(props) => (
-              <BoosterPage
-                {...props}
-                onClickCard={handleClickCardInfo}
-                selectedBooster={selectedBooster}
-                selectedBoosterCardList={selectedBoosterCardList}
-              />
-            )}
-          />
-          <Route
-            path="/profile-account"
-            render={(props) => (
-              <ProfileAccount
-                {...props}
-                onClickChangeUsername={handleClickChangeUsername}
-                onClickChangeAvatar={handleClickChangeAvatar}
-                onClickChangeEmail={handleClickChangeEmail}
-                onClickChangePassword={handleClickChangePassword}
-                onClickCardInfo={handleClickCardInfo}
-              />
-            )}
-          />
-          {/* <Route
+        <Route
+          path="/booster-page/:id"
+          render={(props) => (
+            <BoosterPage
+              {...props}
+              onClickCard={handleClickCardInfo}
+              selectedBooster={selectedBooster}
+              selectedBoosterCardList={selectedBoosterCardList}
+            />
+          )}
+        />
+        <Route
+          path="/profile-account"
+          render={(props) => (
+            <ProfileAccount
+              {...props}
+              onClickChangeUsername={handleClickChangeUsername}
+              onClickChangeAvatar={handleClickChangeAvatar}
+              onClickChangeEmail={handleClickChangeEmail}
+              onClickChangePassword={handleClickChangePassword}
+              onClickCardInfo={handleClickCardInfo}
+            />
+          )}
+        />
+        {/* <Route
             path="/my-cards"
             render={(props) => (
               <MyCards {...props} onClickCard={handleClickCardInfo} />
             )}
           /> */}
-        </Switch>
-        <Footer
-          onClickTOS={handleClickTOS}
-          onClickCopyright={handleClickCopyright}
+      </Switch>
+      <Footer
+        onClickTOS={handleClickTOS}
+        onClickCopyright={handleClickCopyright}
+      />
+      {activeModal === "sign-in" && (
+        <SigninModal onClose={handleModalClose} buttonText={"Sign In"} />
+      )}
+      {activeModal === "sign-up" && (
+        <SignupModal onClose={handleModalClose} buttonText={"Sign Up"} />
+      )}
+      {activeModal === "TOS" && <TOSModal onClose={handleModalClose} />}
+      {activeModal === "copyright" && (
+        <CopyrightModal onClose={handleModalClose} />
+      )}
+      {activeModal === "card-info" && (
+        <CardInfoModal
+          onClose={handleModalClose}
+          selectedCard={selectedCard}
+          selectedBooster={selectedBooster}
         />
-        {activeModal === "sign-in" && (
-          <SigninModal onClose={handleModalClose} buttonText={"Sign In"} />
-        )}
-        {activeModal === "sign-up" && (
-          <SignupModal onClose={handleModalClose} buttonText={"Sign Up"} />
-        )}
-        {activeModal === "TOS" && <TOSModal onClose={handleModalClose} />}
-        {activeModal === "copyright" && (
-          <CopyrightModal onClose={handleModalClose} />
-        )}
-        {activeModal === "card-info" && (
-          <CardInfoModal
-            onClose={handleModalClose}
-            selectedCard={selectedCard}
-            selectedBooster={selectedBooster}
-          />
-        )}
-        {activeModal === "change-username" && (
-          <ChangeUsernameModal
-            onClose={handleModalClose}
-            buttonText={"Submit"}
-          />
-        )}
-        {activeModal === "change-avatar" && (
-          <ChangeAvatarModal onClose={handleModalClose} buttonText={"Submit"} />
-        )}
-        {activeModal === "change-email" && (
-          <ChangeEmailModal onClose={handleModalClose} buttonText={"Submit"} />
-        )}
-        {activeModal === "change-password" && (
-          <ChangePasswordModal
-            onClose={handleModalClose}
-            buttonText={"Submit"}
-          />
-        )}
-      </IsLoggedInContext.Provider>
+      )}
+      {activeModal === "change-username" && (
+        <ChangeUsernameModal onClose={handleModalClose} buttonText={"Submit"} />
+      )}
+      {activeModal === "change-avatar" && (
+        <ChangeAvatarModal onClose={handleModalClose} buttonText={"Submit"} />
+      )}
+      {activeModal === "change-email" && (
+        <ChangeEmailModal onClose={handleModalClose} buttonText={"Submit"} />
+      )}
+      {activeModal === "change-password" && (
+        <ChangePasswordModal onClose={handleModalClose} buttonText={"Submit"} />
+      )}
+      {/* </IsLoggedInContext.Provider> */}
     </div>
   );
 }
