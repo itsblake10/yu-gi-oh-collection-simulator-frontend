@@ -9,24 +9,25 @@ const ItemBooster = ({ item, onClickBoosterPack }) => {
   const multipleArtBoosterPackImages = useMemo(() => {
     if (sanitizedSetName === "Ghosts From the Past The 2nd Haunting") {
       return [
-        `/images/booster-packs-1/${sanitizedSetName}1.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}2.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}3.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}4.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}1.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}2.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}3.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}4.jpg`,
       ];
     } else {
       return [
-        `/images/booster-packs-1/${sanitizedSetName}1.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}2.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}3.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}4.jpg`,
-        `/images/booster-packs-1/${sanitizedSetName}5.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}1.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}2.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}3.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}4.jpg`,
+        `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}5.jpg`,
       ];
     }
   }, [sanitizedSetName]);
 
   const [imgSrc, setImgSrc] = useState(
-    `/images/booster-packs-1/${sanitizedSetName}.jpg`
+    `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}.jpg`
+    // `/images/booster-packs-1/${sanitizedSetName}.jpg`
   );
 
   const isDefaultBooster = imgSrc === defaultBooster;

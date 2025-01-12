@@ -8,12 +8,16 @@ const CardListItem = ({
   selectedBooster,
   handleCardLoad,
 }) => {
-  const sanitizedCardName = item.cardName
-    .replace(/[:/\\?%*"<>|]/g, "")
-    .replace(/#/g, "%23");
+  const sanitizedCardName = item.cardName.replace(/[:/\\?%*"<>|#&]/g, "");
+  // .replace(/#/g, "%23")
+  // .replace(/\s+/g, "%20");
+
   const [imgSrc, setImgSrc] = useState(
-    `/images/cards-1/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg?`
+    `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg`
   );
+  // const [imgSrc, setImgSrc] = useState(
+  //   `/images/cards-1/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg?`
+  // );
 
   const shouldScroll = sanitizedCardName.length > 14;
   const shouldScrollRarity = item.cardRarity.length > 16;

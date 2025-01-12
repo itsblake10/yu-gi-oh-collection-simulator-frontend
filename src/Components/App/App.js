@@ -78,7 +78,7 @@ function App() {
           boosterPackSize: boosterPackData[booster.set_code]?.packSize || "???",
           boosterPackReleaseDate: booster.tcg_date,
           boosterPackTotalCards: booster.num_of_cards,
-          imageUrl: `/images/booster-packs-1/${booster.set_name.replace(
+          imageUrl: `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${booster.set_name.replace(
             /[:/\\?%*|"<>]/g,
             ""
           )}.jpg`,
@@ -125,7 +125,7 @@ function App() {
             cardDef: card.def,
             cardDescription: card.desc,
             cardSets: card.card_sets,
-            imageUrl: `/images/cards-1/${card.name
+            imageUrl: `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736659102/${card.name
               .replace(/[:/\\?%*"<>|]/g, "")
               .replace(/#/g, "%23")}_${cardSet.set_code.split("-")[0]}.jpg`,
           };

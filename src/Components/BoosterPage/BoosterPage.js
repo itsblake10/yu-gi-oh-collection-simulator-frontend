@@ -24,7 +24,7 @@ const BoosterPage = ({
   );
 
   const [imgSrc, setImgSrc] = useState(
-    `/images/booster-packs-1/${sanitizedSetName}.jpg`
+    `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}.jpg`
   );
   const [cardBackImage, setCardBackImage] = useState(yugiohCardBack);
   const [cardBackClass, setCardBackClass] = useState("");

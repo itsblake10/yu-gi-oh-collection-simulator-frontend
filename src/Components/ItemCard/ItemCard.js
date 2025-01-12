@@ -5,6 +5,9 @@ import { useState } from "react";
 const ItemCard = ({ item, onClickCardInfo }) => {
   const sanitizedCardName = item.cardName.replace(/[:/\\?%*|"<>]/g, "");
   const [imgSrc, setImgSrc] = useState();
+  // const [imgSrc, setImgSrc] = useState(
+  //   `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedSetName}_${selectedBooster.set_code}.jpg`
+  // );
   // `/images/cards-1/${sanitizedCardName}_${selectedBooster.set_code}.jpg`
 
   return (

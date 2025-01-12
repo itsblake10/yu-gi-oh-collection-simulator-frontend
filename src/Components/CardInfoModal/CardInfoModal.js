@@ -7,7 +7,7 @@ const CardInfoModal = ({ onClose, selectedCard, selectedBooster }) => {
     .replace(/[:/\\?%*"<>|]/g, "")
     .replace(/#/g, "%23");
   const [imgSrc, setImgSrc] = useState(
-    `/images/cards-1/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg`
+    `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg`
   );
 
   return (
