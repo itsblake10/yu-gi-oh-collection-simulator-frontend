@@ -1,5 +1,5 @@
 import "./ProfileStats.css";
-import Armaill from "../../images/temp/Armaill.jpg";
+import defaultCardImage from "../../images/blank-card.svg";
 
 const ProfileStats = ({ onClickCardInfo }) => {
   return (
@@ -9,7 +9,7 @@ const ProfileStats = ({ onClickCardInfo }) => {
         <div className="profile-stats__card-pulled-most">
           <img
             className="profile-stats__card-image"
-            src={Armaill}
+            src={defaultCardImage}
             alt="card"
             onClick={onClickCardInfo}
           />

@@ -36,7 +36,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isBoosterPacksLoading, setIsBoosterPacksLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("selectedBooster", JSON.stringify(selectedBooster));

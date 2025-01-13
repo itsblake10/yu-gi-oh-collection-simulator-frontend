@@ -44,7 +44,16 @@ Yu-Gi-Oh Collection Simulator is a React-based web application that simulates th
   Styling and layout designed using CSS
 
 - ### Yu-Gi-Oh API Integration:
+
   Utilizes a Yu-Gi-Oh API to fetch data for Yu-Gi-Oh booster packs and card information.
+
+- ### Cloudinary CDN:
+
+  Utilizes a Content Management Systems (CMS) to ensure fast delivery of media assets.
+
+- ### Netlify:
+
+  Hosted and Deployed using Netlify
 
 ### LINK TO WEBSITE
 

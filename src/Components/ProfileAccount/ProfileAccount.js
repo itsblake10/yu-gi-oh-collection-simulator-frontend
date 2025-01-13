@@ -1,6 +1,6 @@
 import ProfileStats from "../ProfileStats/ProfileStats";
 import "./ProfileAccount.css";
-import Armaill from "../../images/temp/Armaill.jpg";
+import defaultCardImage from "../../images/blank-card.svg";
 
 const ProfileAccount = ({
   onClickChangeUsername,
@@ -22,7 +22,7 @@ const ProfileAccount = ({
               <div className="profile-account__user-image-container">
                 <img
                   className="profile-account__user-image"
-                  src={Armaill}
+                  src={defaultCardImage}
                   alt="user profile"
                 />
               </div>

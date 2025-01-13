@@ -15,9 +15,6 @@ const CardListItem = ({
   const [imgSrc, setImgSrc] = useState(
     `https://res.cloudinary.com/dsvu6oqd2/image/upload/v1736345586/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg`
   );
-  // const [imgSrc, setImgSrc] = useState(
-  //   `/images/cards-1/${sanitizedCardName}_${selectedBooster.boosterPackCode}.jpg?`
-  // );
 
   const shouldScroll = sanitizedCardName.length > 14;
   const shouldScrollRarity = item.cardRarity.length > 16;
