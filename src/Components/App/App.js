@@ -25,7 +25,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [boosterPacks, setBoosterPacks] = useState([]);
   const [selectedBooster, setSelectedBooster] = useState(
-    () => JSON.parse(localStorage.getItem("selectedBooster")) || {}
+    () => JSON.parse(localStorage.getItem("selectedBooster")) || null
   );
   const [selectedBoosterCardList, setSelectedBoosterCardList] = useState(() => {
     const booster = JSON.parse(localStorage.getItem("selectedBooster"));
@@ -97,11 +97,11 @@ function App() {
   useEffect(() => {
     setErrorMessage("");
 
-    // if (!selectedBooster || !selectedBooster.boosterPackName) {
-    //   console.error("Selected booster is undefined or invalid.");
-    //   setErrorMessage("Selected booster is undefined or invalid.");
-    //   return;
-    // }
+    if (!selectedBooster || !selectedBooster.boosterPackName) {
+      console.error("Selected booster is undefined or invalid.");
+      setErrorMessage("Selected booster is undefined or invalid.");
+      return;
+    }
 
     getBoosterPackCardData(selectedBooster.boosterPackName)
       .then(({ data }) => {
