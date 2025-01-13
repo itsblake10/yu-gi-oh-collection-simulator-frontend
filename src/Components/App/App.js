@@ -97,11 +97,11 @@ function App() {
   useEffect(() => {
     setErrorMessage("");
 
-    if (!selectedBooster || !selectedBooster.boosterPackName) {
-      console.error("Selected booster is undefined or invalid.");
-      setErrorMessage("Selected booster is undefined or invalid.");
-      return;
-    }
+    // if (!selectedBooster || !selectedBooster.boosterPackName) {
+    //   console.error("Selected booster is undefined or invalid.");
+    //   setErrorMessage("Selected booster is undefined or invalid.");
+    //   return;
+    // }
 
     getBoosterPackCardData(selectedBooster.boosterPackName)
       .then(({ data }) => {
