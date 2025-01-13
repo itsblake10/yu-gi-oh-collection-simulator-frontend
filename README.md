@@ -46,7 +46,11 @@ Yu-Gi-Oh Collection Simulator is a React-based web application that simulates th
 - ### Yu-Gi-Oh API Integration:
   Utilizes a Yu-Gi-Oh API to fetch data for Yu-Gi-Oh booster packs and card information.
 
-### LINK TO FRONT-END
+### LINK TO WEBSITE
+
+https://yugiohcollectionsim.com/
+
+### LINK TO FRONT-END REPO
 
 https://github.com/itsblake10/yu-gi-oh-collection-simulator-frontend.git
 
